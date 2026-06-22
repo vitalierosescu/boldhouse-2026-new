@@ -1,0 +1,5 @@
+MAX_CALLS_PER_HOUR=100
+CLAUDE_TIMEOUT_MINUTES=30
+ALLOWED_TOOLS="Write,Read,Edit,Bash(git diff),Bash(git status),Bash(git log *),Bash(npm *),Bash(npx *)"
+SESSION_CONTINUITY=true
+CLAUDE_OUTPUT_FORMAT=json
