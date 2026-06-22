@@ -1,0 +1,2096 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sat Jun 20 2026 13:32:13 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="69e0fdfc6da92a5c220bbe2b" data-wf-site="69e0fdfc6da92a5c220bbe58" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Style Guide</title>
+  <meta content="Relume Style Guide v3.0" name="description">
+  <meta content="Style Guide" property="og:title">
+  <meta content="Relume Style Guide v3.0" property="og:description">
+  <meta content="Style Guide" name="twitter:title">
+  <meta content="Relume Style Guide v3.0" name="twitter:description">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/boldhouse-2026.webflow.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.jpg" rel="icon" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="images/favicon-dark.jpg" rel="icon" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="images/favicon-48.jpg" rel="icon" type="image/png" sizes="48x48">
+  <link href="images/webclip-180.jpg" rel="apple-touch-icon" sizes="180x180">
+  <link href="images/webclip-192.jpg" rel="icon" type="image/png" sizes="192x192">
+  <link href="images/webclip.jpg" rel="icon" type="image/png" sizes="512x512">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--  Keep this css code to improve the font quality -->
+  <style>
+  * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -o-font-smoothing: antialiased;
+}
+[data-load-fast] {
+  -webkit-text-rendering: optimizeSpeed; 
+  text-rendering: optimizeSpeed;
+  -webkit-transform: translateZ(0); 
+  font-kerning: none;
+}
+[data-start="hidden"] {
+  visibility: hidden;
+}
+.line {
+/*
+	margin-top: -1rem;
+  margin-bottom: -1rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  */
+}
+</style>
+  <!--  LENIS CSS  -->
+  <style>
+html.lenis,html.lenis body{height:auto}.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}.lenis [data-lenis-prevent],.lenis [data-lenis-prevent-wheel],.lenis [data-lenis-prevent-touch]{overscroll-behavior:contain}.lenis.lenis-smooth iframe{pointer-events:none}.lenis.lenis-autoToggle{transition-property:overflow;transition-duration:1ms;transition-behavior:allow-discrete}
+</style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="global-styles">
+      <div class="u-embed-css w-embed">
+        <style>
+  /* ------------------------- Default -------------------------------------------------- */
+  /*
+  body * {
+    color: inherit;
+  }
+  */
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    text-size-adjust: none;
+  }
+  ::selection {
+    background-color: black;
+    color: white;
+    text-shadow: none;
+  }
+  *:focus-visible:not(input, textarea, select) {
+    outline: var(--color) auto 10px;
+    outline-offset: 5px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::after,
+    *::before {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+/*
+  svg {
+    max-width: none;
+    height: auto;
+    box-sizing: border-box;
+    vertical-align: middle;
+  }
+*/
+  a,
+  .w-input,
+  .w-select,
+  .w-tab-link,
+  .w-nav-link,
+  .w-slider-arrow-left,
+  .w-slider-arrow-right,
+  .w-dropdown-btn,
+  .w-dropdown-toggle,
+  .w-dropdown-link {
+    color: inherit;
+    text-decoration: inherit;
+    font-size: inherit;
+  }
+  /* Focus state style for keyboard navigation for the focusable elements */
+  *[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+    outline: 0.125rem solid #4d65ff;
+    outline-offset: 0.125rem;
+  }
+  /* Get rid of top margin on first element in any rich text element */
+  .w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+    margin-top: 0 !important;
+  }
+  /* Get rid of bottom margin on last element in any rich text element */
+  .w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+    margin-bottom: 0 !important;
+  }
+  /* Prevent all click and hover interaction with an element */
+  .pointer-events-off {
+    pointer-events: none;
+  }
+  /* Enables all click and hover interaction with an element */
+  .pointer-events-on {
+    pointer-events: auto;
+  }
+  /* Create a class of .div-square which maintains a 1:1 dimension of a div */
+  .div-square::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  /* Make sure containers never lose their center alignment */
+  .container-medium,.container-small, .container-large {
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  /* Apply "..." after 3 lines of text */
+  .text-style-3lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  /* Apply "..." after 2 lines of text */
+  .text-style-2lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  /* Adds inline flex display */
+  .display-inlineflex {
+    display: inline-flex;
+  }
+  /* These classes are never overwritten */
+  .hide {
+    display: none !important;
+  }
+  @media screen and (max-width: 991px) {
+    .hide, .hide-m {
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .hide-s{
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 479px) {
+    .hide-xs{
+      display: none !important;
+    }
+  }
+  @media screen and (min-width: 991px) {
+    .show-m-block, .show-m-flex{
+      display: none !important;
+    }
+  }
+  @media screen and (min-width: 767px) {
+    .show-s-block, .show-s-flex{
+      display: none !important;
+    }
+  }
+  @media screen and (min-width: 479px) {
+    .show-xs-block, .show-xs-flex{
+      display: none !important;
+    }
+  }
+  .margin-0 {
+    margin: 0rem !important;
+  }
+  .padding-0 {
+    padding: 0rem !important;
+  }
+  .spacing-clean {
+    padding: 0rem !important;
+    margin: 0rem !important;
+  }
+  .margin-top {
+    margin-right: 0rem !important;
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .padding-top {
+    padding-right: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+  }
+  .margin-right {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .padding-right {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+  }
+  .margin-bottom {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .padding-bottom {
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+  .margin-left {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+  .padding-left {
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+  .margin-horizontal {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+  .padding-horizontal {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+  .margin-vertical {
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .padding-vertical {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+  .truncate-width { 
+    width: 100%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; 
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* To get this shitty padding-bottom/padding-right 75px bug removed */
+  .wf-design-mode .wf-empty,
+  .wf-editor-mode .wf-empty {
+    padding: 0 !important;
+  }
+  .wf-empty[class*="--"] {
+    padding: 0;
+  }
+  /* ------------------------- Hide Scrollbar -------------------------------------------------- */
+  body ::-webkit-scrollbar,
+  body::-webkit-scrollbar {display: none;} /* Chrome, Safari, Opera */
+  body {-ms-overflow-style: none;} /* IE & Edge */
+  html {scrollbar-width: none;} /* Firefox */
+  /* ------------------------- Reset CSS -------------------------------------------------- */
+  .seo-title {
+    position: absolute;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+  }
+  /* Hide */
+  .u-hide-if-empty:empty,
+  .u-hide-if-empty:not(:has(> :not(.w-condition-invisible))),
+  .u-hide-if-empty-cms:not(:has(.w-dyn-item)),
+  .u-embed-js,
+  .u-embed-css {
+    display: none !important;
+  }
+  .wf-design-mode .webflow-info {
+    display: flex;
+  }
+  .rich-text-inherit > * {
+    font-size: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    font-weight: inherit !important;
+    font-family: inherit !important;
+    margin: inherit !important;
+    padding: inherit !important;
+  }
+  .w-richtext:before, .w-richtext:after {
+    content: none;
+  }
+</style>
+      </div>
+      <div class="u-embed-css w-embed">
+        <style>
+  :root {
+    --font-from: 18;
+    --font-to: 20;
+    --vw-from: calc(1920 / 100);
+    --vw-to: calc(2400 / 100);
+    --coefficient: calc((var(--font-to) - var(--font-from)) / (var(--vw-to) - var(--vw-from)));
+    --base: calc((var(--font-from) - var(--vw-from) * var(--coefficient)) / 16);
+  }
+  html {
+    font-size: calc(var(--base) * 1rem + var(--coefficient) * 1vw);
+  }
+  @media screen and (max-width: 1920px) {
+    :root {
+      --font-from: 16;
+      --font-to: 18;
+      --vw-from: calc(1440 / 100);
+      --vw-to: calc(1920 / 100);
+    }
+  }
+  @media screen and (max-width: 1440px) {
+    :root {
+      --font-from: 14;
+      --font-to: 16;
+      --vw-from: calc(991 / 100);
+      --vw-to: calc(1440 / 100);
+    }
+  }
+  @media screen and (max-width: 991px) {
+    :root {
+      --font-from: 14;
+      --font-to: 16;
+      --vw-from: calc(767 / 100);
+      --vw-to: calc(991 / 100);
+    }
+  }
+  @media screen and (max-width: 767px) {
+    :root {
+      --font-from: 14;
+      --font-to: 16;
+      --vw-from: calc(479 / 100);
+      --vw-to: calc(767 / 100);
+    }
+  }
+  @media screen and (max-width: 479px) {
+    :root {
+      --font-from: 12;
+      --font-to: 16;
+      --vw-from: calc(1 / 100);
+      --vw-to: calc(479 / 100);
+    }
+  }
+  .link_line.is-highlight {
+    transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+  }
+  .link_text-wrap,
+  .link_text,
+  .link_dot {
+    transition: transform 0.35s cubic-bezier(0.625, 0.05, 0, 1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .link:hover .link_line.is-highlight {
+      transform: scaleX(1);
+    }
+    .link:hover .link_text {
+      transform: translateY(-100%);
+    }
+    /* Show button on hover */
+    body:has([data-cursor]:hover) .cursor {
+      opacity: 1;
+    }
+    .button:hover .button-bg {
+      transform: scale(0.95);
+    }
+  }
+  /* FAQ */
+  .wf-design-mode .accordion_content_wrap {
+    display: block;
+  }
+  /* Underline Links - Contact page */
+  .link-underlined_wrap {
+    --on: 1;
+    --off: 0;
+  }
+  .link-underlined_wrap:focus-visible {
+    --on: 0;
+    --off: 1;
+  }
+  @media (hover: hover) {
+    .link-underlined_wrap:hover {
+      --on: 0;
+      --off: 1;
+    }
+  }
+  /* Form Input Autofull - Reset */
+  input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0px 9999px white;
+  }
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white inset;
+  }
+  .page-wrap:has([data-cursor-play]:hover) .cursor .button-default__svg {
+    display: flex;
+  }
+  /*
+------ Cursor
+  */
+  @media (hover: hover) and (pointer: fine) {
+    [data-cursor] .cursor-bubble {
+      transition:
+        transform 0.4s cubic-bezier(0.625, 0.05, 0, 1),
+        opacity 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+      transform: translateX(0%) scale(0.9) rotate(0.001deg);
+    }
+    [data-cursor='active'] .cursor-bubble {
+      opacity: 1;
+      transform: translateX(0%) scale(1) rotate(0.001deg);
+    }
+    [data-cursor='active-edge'] .cursor-bubble {
+      opacity: 1;
+      transform: translateX(-100%) scale(1) rotate(0.001deg);
+    }
+  }
+  @media (hover: none) and (pointer: coarse) {
+    .cursor {
+      display: none;
+    }
+  }
+</style>
+      </div>
+      <div class="u-embed-css w-embed">
+        <style>
+  .wf-design-mode {
+    & .seo-title {
+      position: static;
+      clip: unset;
+      clip-path: inset(0%);
+      overflow: hidden;
+      height: auto;
+      width: auto;
+    }
+    & .seo-title::after {
+      content: " (this title is only for SEO, not visible on live site)";
+      display: block;
+      font-size: 11px;
+    }
+    & .link-cover {
+      z-index: -1;
+    }
+    & .home--projects_item-content {
+      pointer-events: auto;
+    }
+    .form_label {
+      z-index: 4;
+    }
+    .page-transition_component {
+      display: none !important;
+    }
+    .img-swipe {
+      display: none;
+    }
+  }
+</style>
+      </div>
+      <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+        <style>
+  /* Characters */
+  .button [data-button-text],
+  [data-button-trigger] [data-button-text],
+  .link [data-button-text] {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+  }
+  .button [data-button-text] span,
+  .link [data-button-text] span,
+  [data-button-trigger] [data-button-text] span {
+    display: inline-block;
+    position: relative;
+    text-shadow: 0px 1.3em currentColor;
+    transform: translateY(0em) rotate(0.001deg);
+    transition: transform 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+  }
+  .button:hover [data-button-text] span,
+  .link:hover [data-button-text] span,
+  [data-button-trigger]:hover [data-button-text] span {
+    transform: translateY(-1.3em) rotate(0.001deg);
+  }
+  /* Background */
+  .button_bg {
+    inset: 0;
+    /*transition: inset 0.6s cubic-bezier(0.625, 0.05, 0, 1);*/
+  }
+  .button:hover .button_bg,
+  [data-button-trigger]:hover .button_bg {
+    inset: 0.125em;
+  }
+</style>
+      </div>
+      <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+        <style>
+[data-highlight-marker-reveal]{
+  visibility: hidden;
+}
+.wf-design-mode [data-highlight-marker-reveal]{
+  visibility: visible;  
+}
+[data-highlight-marker-reveal] .highlight-marker-line{
+  width: auto;
+  display: inline-block !important;
+  margin: -0.055em 0px;
+}
+.highlight-marker-bar{
+  position: absolute;
+  inset: -0.055em 0px;
+  z-index: 1;
+  pointer-events: none;
+}
+</style>
+      </div>
+      <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+        <style>
+[data-trail-item="hidden"] {
+  transform: translate(-50%, -50%) scale(0) rotate(-20deg);
+  position: absolute;
+}
+[data-trail-item="visible"] {
+  transform: translate(-50%, -50%) scale(1) rotate(0.001deg);
+  transition: transform 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+  position: absolute;
+}
+[data-trail-item="transition-out"] {
+  transform: translate(-50%, -50%) scale(0) rotate(180deg);
+  transition: transform 0.8s cubic-bezier(0.625, 0, 0.875, 0);
+  position: absolute;
+}
+</style>
+      </div>
+    </div>
+    <div class="main-wrap">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="rl-styleguide_nav">
+            <a href="#typography" class="rl-styleguide_nav-link w-inline-block">
+              <div>Typography</div>
+            </a>
+            <a href="#colors" class="rl-styleguide_nav-link w-inline-block">
+              <div>Colors</div>
+            </a>
+            <a href="#" class="rl-styleguide_nav-link w-inline-block">
+              <div>UI Elements</div>
+            </a>
+            <a href="#radius" class="rl-styleguide_nav-link w-inline-block">
+              <div>Radius</div>
+            </a>
+            <a href="#effects" class="rl-styleguide_nav-link w-inline-block">
+              <div>Effects</div>
+            </a>
+            <a href="#structure-classes" class="rl-styleguide_nav-link w-inline-block">
+              <div>Structure Classes</div>
+            </a>
+          </div>
+          <div class="rl-styleguide_elements">
+            <div class="rl-styleguide_header">
+              <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86205-220bbe2b" class="rl-styleguide_heading-wrapper"><img src="images/Logo.svg" loading="lazy" id="w-node-_336be75c-ab2b-838b-5642-972b6cc86207-220bbe2b" alt="">
+                <div class="margin-top margin-small">
+                  <div>Relume Style Guide V3.0</div>
+                </div>
+              </div>
+              <div class="button-group"></div>
+            </div>
+            <div id="typography" class="rl-styleguide_typography">
+              <div class="rl-styleguide_heading">Typography</div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">HTML Headings Tags<br><span class="rl-styleguide_subheading-small">HTML tags define default Heading styles.</span><br></div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8621b-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8621c-220bbe2b" class="rl-styleguide_label is-html-tag">All H1 Headings</div>
+                  <h1>Heading 1</h1>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86220-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86221-220bbe2b" class="rl-styleguide_label is-html-tag">All H2 Headings</div>
+                  <h2>Heading 2</h2>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86225-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86226-220bbe2b" class="rl-styleguide_label is-html-tag">All H3 Headings</div>
+                  <h3>Heading 3</h3>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8622a-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8622b-220bbe2b" class="rl-styleguide_label is-html-tag">All H4 Headings</div>
+                  <h4>Heading 4</h4>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8622f-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86230-220bbe2b" class="rl-styleguide_label is-html-tag">All H5 Headings</div>
+                  <h5>Heading 5</h5>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86234-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86235-220bbe2b" class="rl-styleguide_label is-html-tag">All H6 Headings</div>
+                  <h6>Heading 6</h6>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Heading Classes<br><span class="rl-styleguide_subheading-small">Heading classes when typography style doesn&#x27;t match the default HTML tag.</span></div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8623f-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86240-220bbe2b" class="rl-styleguide_label">heading-style-h1</div>
+                  <h2 class="h1">Heading-style-h1</h2>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86244-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86245-220bbe2b" class="rl-styleguide_label">heading-style-h2</div>
+                  <h2 class="h2">Heading-style-h2</h2>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86249-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8624a-220bbe2b" class="rl-styleguide_label">heading-style-h3</div>
+                  <h2 class="h3">Heading-style-h3</h2>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8624e-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8624f-220bbe2b" class="rl-styleguide_label">heading-style-h4</div>
+                  <h2 class="h4">Heading-style-h4</h2>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86253-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86254-220bbe2b" class="rl-styleguide_label">heading-style-h5</div>
+                  <h2 class="h5">Heading-style-h5</h2>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86258-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86259-220bbe2b" class="rl-styleguide_label">heading-style-h6</div>
+                  <h2 class="h6">Heading-style-h6</h2>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Other HTML Tags<br><span class="rl-styleguide_subheading-small">HTML tags define default text styles.</span></div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86263-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86264-220bbe2b" class="rl-styleguide_label is-html-tag">All Paragraphs</div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86268-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86269-220bbe2b" class="rl-styleguide_label is-html-tag">All Links</div>
+                  <a href="#">All Links</a>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8626d-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8626e-220bbe2b" class="rl-styleguide_label is-html-tag">All Block Quotes</div>
+                  <blockquote>Block Quote</blockquote>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86272-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86273-220bbe2b" class="rl-styleguide_label is-html-tag">All Unordered Lists</div>
+                  <ul role="list" class="w-list-unstyled">
+                    <li>
+                      <p>No bullet list</p>
+                    </li>
+                    <li>
+                      <p>No bullet list</p>
+                    </li>
+                  </ul>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8627c-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8627d-220bbe2b" class="rl-styleguide_label is-html-tag">All Unordered Lists</div>
+                  <ul role="list">
+                    <li>
+                      <p>No bullet list</p>
+                    </li>
+                    <li>
+                      <p>No bullet list</p>
+                    </li>
+                  </ul>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86286-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86287-220bbe2b" class="rl-styleguide_label is-html-tag">All Ordered Lists</div>
+                  <ol role="list">
+                    <li>
+                      <p>No bullet list</p>
+                    </li>
+                    <li>
+                      <p>No bullet list</p>
+                    </li>
+                    <li>
+                      <p>No bullet list</p>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Text Sizes<br><span class="rl-styleguide_subheading-small">Text sizes classes when typography size doesn&#x27;t match the default HTML tag.</span></div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86299-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8629a-220bbe2b" class="rl-styleguide_label">text-size-large</div>
+                  <p class="ts-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8629e-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8629f-220bbe2b" class="rl-styleguide_label">text-size-medium</div>
+                  <p class="ts-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862a3-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862a4-220bbe2b" class="rl-styleguide_label">text-size-regular</div>
+                  <p class="ts-regular">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862a8-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862a9-220bbe2b" class="rl-styleguide_label">text-size-small</div>
+                  <p class="ts-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862ad-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862ae-220bbe2b" class="rl-styleguide_label">text-size-tiny</div>
+                  <p class="ts-tiny">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Text Weights<br><span class="rl-styleguide_subheading-small">Text weight classes when typography weight doesn&#x27;t match the default HTML tag.</span></div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862b8-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862b9-220bbe2b" class="rl-styleguide_label">tw-xbold</div>
+                  <div class="tw-xbold">text-weight-xbold (800)</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862bd-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862be-220bbe2b" class="rl-styleguide_label">tw-bold</div>
+                  <div class="tw-bold">text-weight-bold (700)</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862c2-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862c3-220bbe2b" class="rl-styleguide_label">tw-semibold</div>
+                  <div class="tw-semibold">text-weight-semibold (600)</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862c7-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862c8-220bbe2b" class="rl-styleguide_label">tw-medium</div>
+                  <div class="tw-medium">text-weight-medium (500)</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862cc-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862cd-220bbe2b" class="rl-styleguide_label">tw-regular</div>
+                  <div class="tw-regular">text-weight-normal (400)</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862d1-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862d2-220bbe2b" class="rl-styleguide_label">tw-light</div>
+                  <div class="tw-light">text-weight-light (300)</div>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Text Styles<br><span class="rl-styleguide_subheading-small">Text style classes when typography style doesn&#x27;t match the default HTML tag.</span><br></div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862dd-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862de-220bbe2b" class="rl-styleguide_label">text-style-italic</div>
+                  <div class="text-style-italic">text-style-italic</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862e2-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862e3-220bbe2b" class="rl-styleguide_label">text-style-strikethrough</div>
+                  <div class="text-style-strikethrough">text-style-strikethrough</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862e7-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862e8-220bbe2b" class="rl-styleguide_label">text-style-allcaps</div>
+                  <div class="text-style-allcaps">text-style-allcaps</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862ec-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862ed-220bbe2b" class="rl-styleguide_label">text-style-nowrap</div>
+                  <div class="text-style-nowrap">text-style-nowrap</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862f1-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862f2-220bbe2b" class="rl-styleguide_label">text-style-quote</div>
+                  <div class="text-style-quote">text-style-quote</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862f6-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862f7-220bbe2b" class="rl-styleguide_label">text-style-link</div>
+                  <div class="text-style-link">text-style-link</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862fb-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc862fc-220bbe2b" class="rl-styleguide_label">text-style-2lines</div>
+                  <div class="text-style-2lines">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86300-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86301-220bbe2b" class="rl-styleguide_label">text-style-3lines</div>
+                  <div class="text-style-3lines">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86305-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86306-220bbe2b" class="rl-styleguide_label">text-style-muted</div>
+                  <div class="text-style-muted">text-style-muted</div>
+                </div>
+                <div id="w-node-aceb9adc-ab11-ae9c-832d-ba0cb63794ca-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-aceb9adc-ab11-ae9c-832d-ba0cb63794cb-220bbe2b" class="rl-styleguide_label">text-style-tagline</div>
+                  <div class="tagline">text-style-tagline</div>
+                </div>
+                <div id="w-node-a01e4585-6913-dc47-ad7c-9500af9e534b-220bbe2b" class="w-layout-grid rl-styleguide_item-row hide">
+                  <div id="w-node-a01e4585-6913-dc47-ad7c-9500af9e534c-220bbe2b" class="rl-styleguide_label">text-color-white</div>
+                  <div class="background-color-black">
+                    <div class="text-color-white">text-color-white</div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Text Alignment<br><span class="rl-styleguide_subheading-small">Text alignment classes when typography alignment doesn&#x27;t match the default HTML tag.</span></div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86310-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86311-220bbe2b" class="rl-styleguide_label">text-align-left</div>
+                  <div class="t-a-left">text-align-left</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86315-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86316-220bbe2b" class="rl-styleguide_label">text-align-center</div>
+                  <div class="t-a-center">text-align-center</div>
+                </div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8631a-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc8631b-220bbe2b" class="rl-styleguide_label">text-align-right</div>
+                  <div class="t-a-right">text-align-right</div>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Rich Text</div>
+                <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86322-220bbe2b" class="w-layout-grid rl-styleguide_item-row">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc86323-220bbe2b" class="rl-styleguide_label">text-rich-text</div>
+                  <div class="text-rich-text w-richtext">
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
+                    <blockquote>This is a block quote</blockquote>
+                    <p>The rich text element allows you to create and format headings, paragraphs, blockquotes, images, and video all in one place instead of having to add and format them individually. Just double-click and easily create content.</p>
+                    <p>
+                      <a href="https://relume.io">This is a link inside of a rich text</a>
+                    </p>
+                    <ul role="list">
+                      <li>List item</li>
+                      <li>List item</li>
+                      <li>List item</li>
+                    </ul>
+                    <ol start="" role="list">
+                      <li>List item</li>
+                      <li>List item</li>
+                      <li>List item</li>
+                    </ol>
+                    <figure class="w-richtext-align-normal w-richtext-figure-type-image">
+                      <div><img src="images/Placeholder-Image_1Placeholder-Image.avif" loading="lazy" alt=""></div>
+                      <figcaption>Caption goes here</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="colors" class="rl-styleguide_colors">
+              <div class="rl-styleguide_heading">Colors</div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Color Schemes<br><span class="rl-styleguide_subheading-small">Manage your colors easily with global color schemes simply adding the color scheme class to the section you want it applied to.</span></div>
+                <div id="w-node-f850239f-5feb-931e-45b8-7b579b43a164-220bbe2b" class="w-layout-grid rl-styleguide_scheme-list">
+                  <div class="rl-styleguide_scheme">
+                    <div class="margin-bottom margin-xsmall">
+                      <div class="rl-styleguide_label">color-scheme-1</div>
+                    </div>
+                    <div class="rl-styleguide_scheme-card">
+                      <div class="color-scheme-1">
+                        <div class="rl-styleguide_scheme-wrapper">
+                          <div class="margin-bottom margin-xsmall">
+                            <h5>Scheme 1</h5>
+                          </div>
+                          <div class="rl-styleguide_scheme-foreground">
+                            <div class="rl-styleguide-accent">
+                              <div class="icon-embed-xsmall w-embed"><svg width="100%" height="100%" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.73 7.12L20.59 6.87C20.4094 6.56769 20.1547 6.31643 19.85 6.14L13.14 2.27C12.8362 2.09375 12.4913 2.00062 12.14 2H11.85C11.4987 2.00062 11.1538 2.09375 10.85 2.27L4.14 6.15C3.83697 6.32526 3.58526 6.57697 3.41 6.88L3.27 7.13C3.09375 7.43384 3.00062 7.77874 3 8.13V15.88C3.00062 16.2313 3.09375 16.5762 3.27 16.88L3.41 17.13C3.58979 17.4295 3.84049 17.6802 4.14 17.86L10.86 21.73C11.1623 21.9099 11.5082 22.0033 11.86 22H12.14C12.4913 21.9994 12.8362 21.9063 13.14 21.73L19.85 17.85C20.156 17.6787 20.4087 17.426 20.58 17.12L20.73 16.87C20.9041 16.5653 20.9971 16.221 21 15.87V8.12C20.9994 7.76874 20.9063 7.42384 20.73 7.12ZM11.85 4H12.14L18 7.38L12 10.84L6 7.38L11.85 4ZM13 19.5L18.85 16.12L19 15.87V9.11L13 12.58V19.5Z" fill="currentColor"></path>
+                                </svg></div>
+                            </div>
+                            <p class="ts-regular">Text color</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="radius" class="rl-styleguide_borders">
+              <div class="rl-styleguide_heading">Radius</div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Large<br>‍<span class="rl-styleguide_subheading-small">Large radius is applied to elements which are 1 or 2 columns in width.</span></div>
+                <div class="w-layout-grid rl-styleguide_radius-large-list">
+                  <div class="rl-styleguide_radius-large"></div>
+                  <div class="rl-styleguide_radius-large"></div>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Medium<br>‍<span class="rl-styleguide_subheading-small">Medium radius is applied to elements which are between 2 and 3 columns in width.</span></div>
+                <div class="w-layout-grid rl-styleguide_radius-medium-list">
+                  <div class="rl-styleguide_radius-medium"></div>
+                  <div class="rl-styleguide_radius-medium"></div>
+                  <div class="rl-styleguide_radius-medium"></div>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Small<br>‍<span class="rl-styleguide_subheading-small">Small radius is applied to elements which are smaller than 4 columns in width.</span></div>
+                <div class="w-layout-grid rl-styleguide_radius-small-list">
+                  <div class="rl-styleguide_radius-small"></div>
+                  <div class="rl-styleguide_radius-small"></div>
+                  <div class="rl-styleguide_radius-small"></div>
+                  <div class="rl-styleguide_radius-small"></div>
+                  <div class="rl-styleguide_radius-small"></div>
+                  <div class="rl-styleguide_radius-small"></div>
+                </div>
+              </div>
+            </div>
+            <div id="effects" class="rl-styleguide_effects">
+              <div class="rl-styleguide_heading">Effects</div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Box Shadows<br>‍<span class="rl-styleguide_subheading-small">Shadows allow you to add depth and realism to designs by positioning elements on a z-axis.</span></div>
+                <div class="w-layout-grid rl-styleguide_shadows-list">
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863ba-220bbe2b" class="shadow-xxsmall">
+                    <div class="rl-styleguide_label">shadow-xxsmall</div>
+                    <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863bd-220bbe2b" class="rl-styleguide_empty-space"></div>
+                  </div>
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863be-220bbe2b" class="shadow-xsmall">
+                    <div class="rl-styleguide_label">shadow-xsmall</div>
+                    <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863c1-220bbe2b" class="rl-styleguide_empty-space"></div>
+                  </div>
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863c2-220bbe2b" class="shadow-small">
+                    <div class="rl-styleguide_label">shadow-small</div>
+                    <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863c5-220bbe2b" class="rl-styleguide_empty-space"></div>
+                  </div>
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863c6-220bbe2b" class="shadow-medium">
+                    <div class="rl-styleguide_label">shadow-medium</div>
+                    <div class="rl-styleguide_empty-space"></div>
+                  </div>
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863ca-220bbe2b" class="shadow-large">
+                    <div class="rl-styleguide_label">shadow-large</div>
+                    <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863cd-220bbe2b" class="rl-styleguide_empty-space"></div>
+                  </div>
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863ce-220bbe2b" class="shadow-xlarge">
+                    <div class="rl-styleguide_label">shadow-xlarge</div>
+                    <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863d1-220bbe2b" class="rl-styleguide_empty-space"></div>
+                  </div>
+                  <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863d2-220bbe2b" class="shadow-xxlarge">
+                    <div class="rl-styleguide_label">shadow-xxlarge</div>
+                    <div id="w-node-_336be75c-ab2b-838b-5642-972b6cc863d5-220bbe2b" class="rl-styleguide_empty-space"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rl-styleguide_classes">
+            <div id="structure-classes" class="rl-styleguide_structure">
+              <div class="rl-styleguide_heading">Structure Classes</div>
+              <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369290-220bbe2b" class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading is-text-small"><span>Defined and flexible core structure we can use on all or most pages.</span></div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369294-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369295-220bbe2b" class="rl-styleguide_label">page-wrapper</div>
+                  <div class="page-wrap">
+                    <div class="rl-styleguide_empty-box pointer-events-off"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936929a-220bbe2b" class="rl-styleguide_label">main-wrapper</div>
+                  <div class="main-wrap">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936929e-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936929f-220bbe2b" class="rl-styleguide_label">container-small</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692a1-220bbe2b" class="container-small">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692a3-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692a4-220bbe2b" class="rl-styleguide_label">container-medium</div>
+                  <div class="container-medium">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692a8-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692a9-220bbe2b" class="rl-styleguide_label">container-large</div>
+                  <div class="container-large">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692ad-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692ae-220bbe2b" class="rl-styleguide_label">padding-global</div>
+                  <div class="padding-global">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692b2-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692b3-220bbe2b" class="rl-styleguide_label">padding-section-small</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692b5-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692b6-220bbe2b" class="padding-section-small">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692b8-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692b9-220bbe2b" class="rl-styleguide_label">padding-section-medium</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692bb-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692bc-220bbe2b" class="padding-section-medium">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692be-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692bf-220bbe2b" class="rl-styleguide_label">padding-section-large</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692c1-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692c2-220bbe2b" class="padding-section-large">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692c4-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692c5-220bbe2b" class="rl-styleguide_label">button-group</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692c7-220bbe2b" class="button-group">
+                    <div class="rl-styleguide_empty-box"></div>
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rl-styleguide_max-width">
+              <div class="rl-styleguide_heading">Max Widths</div>
+              <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692cd-220bbe2b" class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading is-text-small">Use the max-width CSS property to contain inner content to a maximum width.</div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692d1-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692d2-220bbe2b" class="rl-styleguide_label">max-width-full</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692d4-220bbe2b" class="max-w-full">
+                    <div class="rl-styleguide_empty-box pointer-events-off"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692d6-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692d7-220bbe2b" class="rl-styleguide_label">max-width-full-tablet</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692d9-220bbe2b" class="max-width-full-tablet">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692db-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692dc-220bbe2b" class="rl-styleguide_label">max-width-full-mobile-landscape</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692de-220bbe2b" class="max-width-full-mobile-landscape">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692e0-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692e1-220bbe2b" class="rl-styleguide_label">max-width-full-mobile-portrait</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692e3-220bbe2b" class="max-width-full-mobile-portrait">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692e5-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692e6-220bbe2b" class="rl-styleguide_label">max-width-xxlarge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692e8-220bbe2b" class="max-width-xxlarge">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692ea-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692eb-220bbe2b" class="rl-styleguide_label">max-width-xlarge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692ed-220bbe2b" class="max-w-xlarge">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692ef-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692f0-220bbe2b" class="rl-styleguide_label">max-width-large</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692f2-220bbe2b" class="max-w-large">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692f4-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692f5-220bbe2b" class="rl-styleguide_label">max-width-medium</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692f7-220bbe2b" class="max-w-medium">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692f9-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692fa-220bbe2b" class="rl-styleguide_label">max-width-small</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692fc-220bbe2b" class="max-w-small">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692fe-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593692ff-220bbe2b" class="rl-styleguide_label">max-width-xsmall</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369301-220bbe2b" class="max-w-xsmall">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369303-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369304-220bbe2b" class="rl-styleguide_label">max-width-xxsmall</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369306-220bbe2b" class="max-w-xxsmall">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rl-styleguide_paddings">
+              <div class="rl-styleguide_heading">Paddings</div>
+              <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936930b-220bbe2b" class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Direction Classes</div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936930f-220bbe2b" class="rl-styleguide_label">padding-bottom</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369311-220bbe2b" class="padding-bottom">
+                    <div class="rl-styleguide_empty-box pointer-events-off"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369314-220bbe2b" class="rl-styleguide_label">padding-top</div>
+                  <div class="padding-top">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369319-220bbe2b" class="rl-styleguide_label">padding-vertical</div>
+                  <div class="padding-vertical">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936931e-220bbe2b" class="rl-styleguide_label">padding-horizontal</div>
+                  <div class="padding-horizontal">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369323-220bbe2b" class="rl-styleguide_label">padding-left</div>
+                  <div class="padding-left">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369328-220bbe2b" class="rl-styleguide_label">padding-right</div>
+                  <div class="padding-right">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Size Classes</div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936932f-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369330-220bbe2b" class="rl-styleguide_label">padding-0</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369332-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369333-220bbe2b" class="padding-0">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369335-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369336-220bbe2b" class="rl-styleguide_label">padding-tiny</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369338-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369339-220bbe2b" class="padding-tiny">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936933b-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936933c-220bbe2b" class="rl-styleguide_label">padding-xxsmall</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936933e-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936933f-220bbe2b" class="padding-xxsmall">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369341-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369342-220bbe2b" class="rl-styleguide_label">padding-xsmall</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369344-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369345-220bbe2b" class="padding-xsmall">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369347-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369348-220bbe2b" class="rl-styleguide_label">padding-small</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936934a-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936934b-220bbe2b" class="padding-small">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936934d-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936934e-220bbe2b" class="rl-styleguide_label">padding-medium</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369350-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369351-220bbe2b" class="padding-medium">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369353-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369354-220bbe2b" class="rl-styleguide_label">padding-large</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369356-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369357-220bbe2b" class="padding-large">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369359-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936935a-220bbe2b" class="rl-styleguide_label">padding-xlarge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936935c-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936935d-220bbe2b" class="padding-xlarge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936935f-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369360-220bbe2b" class="rl-styleguide_label">padding-xxlarge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369362-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369363-220bbe2b" class="padding-xxlarge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369365-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369366-220bbe2b" class="rl-styleguide_label">padding-huge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369368-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369369-220bbe2b" class="padding-huge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936936b-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936936c-220bbe2b" class="rl-styleguide_label">padding-xhuge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936936e-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936936f-220bbe2b" class="padding-xhuge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369371-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369372-220bbe2b" class="rl-styleguide_label">padding-xxhuge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369374-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369375-220bbe2b" class="padding-xxhuge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369377-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369378-220bbe2b" class="rl-styleguide_label">padding-custom1</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936937a-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936937b-220bbe2b" class="padding-custom1">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936937d-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936937e-220bbe2b" class="rl-styleguide_label">padding-custom2</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369380-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369381-220bbe2b" class="padding-custom2">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369383-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369384-220bbe2b" class="rl-styleguide_label">padding-custom3</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369386-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369387-220bbe2b" class="padding-custom3">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rl-styleguide_margins">
+              <div class="rl-styleguide_heading">Margins</div>
+              <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936938c-220bbe2b" class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Direction Classes</div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369390-220bbe2b" class="rl-styleguide_label">margin-bottom</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369392-220bbe2b" class="margin-bottom">
+                    <div class="rl-styleguide_empty-box pointer-events-off"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369395-220bbe2b" class="rl-styleguide_label">margin-top</div>
+                  <div class="margin-top">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936939a-220bbe2b" class="rl-styleguide_label">margin-vertical</div>
+                  <div class="margin-vertical">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936939f-220bbe2b" class="rl-styleguide_label">margin-horizontal</div>
+                  <div class="margin-horizontal">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693a4-220bbe2b" class="rl-styleguide_label">margin-left</div>
+                  <div class="margin-left">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693a9-220bbe2b" class="rl-styleguide_label">margin-right</div>
+                  <div class="margin-right">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Size Classes</div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693b0-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693b1-220bbe2b" class="rl-styleguide_label">margin-0</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693b3-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693b4-220bbe2b" class="margin-0">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693b6-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693b7-220bbe2b" class="rl-styleguide_label">margin-tiny</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693b9-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693ba-220bbe2b" class="margin-tiny">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693bc-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693bd-220bbe2b" class="rl-styleguide_label">margin-xxsmall</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693bf-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693c0-220bbe2b" class="margin-xxsmall">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693c2-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693c3-220bbe2b" class="rl-styleguide_label">margin-xsmall</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693c5-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693c6-220bbe2b" class="margin-xsmall">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693c8-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693c9-220bbe2b" class="rl-styleguide_label">margin-small</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693cb-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693cc-220bbe2b" class="margin-small">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693ce-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693cf-220bbe2b" class="rl-styleguide_label">margin-medium</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693d1-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693d2-220bbe2b" class="margin-medium">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693d4-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693d5-220bbe2b" class="rl-styleguide_label">margin-large</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693d7-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693d8-220bbe2b" class="margin-large">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693da-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693db-220bbe2b" class="rl-styleguide_label">margin-xlarge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693dd-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693de-220bbe2b" class="margin-xlarge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693e0-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693e1-220bbe2b" class="rl-styleguide_label">margin-xxlarge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693e3-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693e4-220bbe2b" class="margin-xxlarge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693e6-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693e7-220bbe2b" class="rl-styleguide_label">margin-huge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693e9-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693ea-220bbe2b" class="margin-huge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693ec-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693ed-220bbe2b" class="rl-styleguide_label">margin-xhuge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693ef-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693f0-220bbe2b" class="margin-xhuge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693f2-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693f3-220bbe2b" class="rl-styleguide_label">margin-xxhuge</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693f5-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693f6-220bbe2b" class="margin-xxhuge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693f8-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693f9-220bbe2b" class="rl-styleguide_label">margin-custom1</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693fb-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693fc-220bbe2b" class="margin-custom1">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693fe-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593693ff-220bbe2b" class="rl-styleguide_label">margin-custom2</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369401-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369402-220bbe2b" class="margin-custom2">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369404-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369405-220bbe2b" class="rl-styleguide_label">margin-custom3</div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369407-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369408-220bbe2b" class="margin-custom3">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rl-styleguide_spacers">
+              <div class="rl-styleguide_heading">Spacers</div>
+              <div id="w-node-aba73718-5f03-827e-9e0b-61449dc1d37c-220bbe2b" class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading">Unified spacer system for the project.</div>
+                <div id="w-node-_1a6e4211-c1a3-edfa-99df-59c05fb448f8-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_1a6e4211-c1a3-edfa-99df-59c05fb448f9-220bbe2b" class="rl-styleguide_label">spacer-tiny</div>
+                  <div id="w-node-_1a6e4211-c1a3-edfa-99df-59c05fb448fb-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_1a6e4211-c1a3-edfa-99df-59c05fb448fc-220bbe2b" class="spacer-tiny">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_16994295-7a31-57da-1001-8ec0ea846a1e-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_16994295-7a31-57da-1001-8ec0ea846a1f-220bbe2b" class="rl-styleguide_label">spacer-xxsmall</div>
+                  <div id="w-node-_16994295-7a31-57da-1001-8ec0ea846a21-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_16994295-7a31-57da-1001-8ec0ea846a22-220bbe2b" class="spacer-xxsmall">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_8f691932-76bb-1979-3d19-a80adf0a25f2-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_8f691932-76bb-1979-3d19-a80adf0a25f3-220bbe2b" class="rl-styleguide_label">spacer-xsmall</div>
+                  <div id="w-node-_8f691932-76bb-1979-3d19-a80adf0a25f5-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_8f691932-76bb-1979-3d19-a80adf0a25f6-220bbe2b" class="spacer-xsmall">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-f28919c2-e180-d075-d1c2-81b601b8a964-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-f28919c2-e180-d075-d1c2-81b601b8a965-220bbe2b" class="rl-styleguide_label">spacer-small</div>
+                  <div id="w-node-f28919c2-e180-d075-d1c2-81b601b8a967-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-f28919c2-e180-d075-d1c2-81b601b8a968-220bbe2b" class="spacer-small">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-b2bd7b9e-a5b1-0617-1861-ecb60c9b53b3-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-b2bd7b9e-a5b1-0617-1861-ecb60c9b53b4-220bbe2b" class="rl-styleguide_label">spacer-medium</div>
+                  <div id="w-node-b2bd7b9e-a5b1-0617-1861-ecb60c9b53b6-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-b2bd7b9e-a5b1-0617-1861-ecb60c9b53b7-220bbe2b" class="spacer-medium">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-ee961e8d-845a-edc3-3307-509470022457-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-ee961e8d-845a-edc3-3307-509470022458-220bbe2b" class="rl-styleguide_label">spacer-large</div>
+                  <div id="w-node-ee961e8d-845a-edc3-3307-50947002245a-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-ee961e8d-845a-edc3-3307-50947002245b-220bbe2b" class="spacer-large">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_588dd3e3-4aa6-cc42-1280-2d37cff319e1-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_588dd3e3-4aa6-cc42-1280-2d37cff319e2-220bbe2b" class="rl-styleguide_label">spacer-xlarge</div>
+                  <div id="w-node-_588dd3e3-4aa6-cc42-1280-2d37cff319e4-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_588dd3e3-4aa6-cc42-1280-2d37cff319e5-220bbe2b" class="spacer-xlarge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_626bd165-37fe-b21e-713f-accb16c57414-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_626bd165-37fe-b21e-713f-accb16c57415-220bbe2b" class="rl-styleguide_label">spacer-xxlarge</div>
+                  <div id="w-node-_626bd165-37fe-b21e-713f-accb16c57417-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_626bd165-37fe-b21e-713f-accb16c57418-220bbe2b" class="spacer-xxlarge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_8198cc96-510b-d5a9-b63d-22b6607f5f40-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_8198cc96-510b-d5a9-b63d-22b6607f5f41-220bbe2b" class="rl-styleguide_label">spacer-huge</div>
+                  <div id="w-node-_8198cc96-510b-d5a9-b63d-22b6607f5f43-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_8198cc96-510b-d5a9-b63d-22b6607f5f44-220bbe2b" class="spacer-huge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_2a26aaa0-f27b-d541-a441-687d55aa9ee5-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_2a26aaa0-f27b-d541-a441-687d55aa9ee6-220bbe2b" class="rl-styleguide_label">spacer-xhuge</div>
+                  <div id="w-node-_2a26aaa0-f27b-d541-a441-687d55aa9ee8-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_2a26aaa0-f27b-d541-a441-687d55aa9ee9-220bbe2b" class="spacer-xhuge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="w-node-_2abe4c27-4e03-1a95-b21e-aef8fb82fe33-220bbe2b" class="w-layout-grid rl-styleguide_item is-stretch">
+                  <div id="w-node-_2abe4c27-4e03-1a95-b21e-aef8fb82fe34-220bbe2b" class="rl-styleguide_label">spacer-xxhuge</div>
+                  <div id="w-node-_2abe4c27-4e03-1a95-b21e-aef8fb82fe36-220bbe2b" class="rl-styleguide_spacing">
+                    <div id="w-node-_2abe4c27-4e03-1a95-b21e-aef8fb82fe37-220bbe2b" class="spacer-xxhuge">
+                      <div class="rl-styleguide_empty-box"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rl-styleguide_spacing-all">
+              <div class="rl-styleguide_spacing-sizes">
+                <div class="padding-0"></div>
+                <div class="padding-tiny"></div>
+                <div class="padding-xxsmall"></div>
+                <div class="padding-xsmall"></div>
+                <div class="padding-small"></div>
+                <div class="padding-medium"></div>
+                <div class="padding-large"></div>
+                <div class="padding-xlarge"></div>
+                <div class="padding-xxlarge"></div>
+                <div class="padding-huge"></div>
+                <div class="padding-xhuge"></div>
+                <div class="padding-xxhuge"></div>
+                <div class="padding-custom1"></div>
+                <div class="padding-custom2"></div>
+                <div class="padding-custom3"></div>
+                <div class="margin-0"></div>
+                <div class="margin-tiny"></div>
+                <div class="margin-xxsmall"></div>
+                <div class="margin-xsmall"></div>
+                <div class="margin-small"></div>
+                <div class="margin-medium"></div>
+                <div class="margin-large"></div>
+                <div class="margin-xlarge"></div>
+                <div class="margin-xxlarge"></div>
+                <div class="margin-huge"></div>
+                <div class="margin-xhuge"></div>
+                <div class="margin-xxhuge"></div>
+                <div class="margin-custom1"></div>
+                <div class="margin-custom2"></div>
+                <div class="margin-custom3"></div>
+              </div>
+              <div class="rl-styleguide_spacing-directions">
+                <div class="stylesystem_padding-top">
+                  <div class="padding-top"></div>
+                  <div class="padding-top padding-0"></div>
+                  <div class="padding-top padding-tiny"></div>
+                  <div class="padding-top padding-xxsmall"></div>
+                  <div class="padding-top padding-xsmall"></div>
+                  <div class="padding-top padding-small"></div>
+                  <div class="padding-top padding-medium"></div>
+                  <div class="padding-top padding-large"></div>
+                  <div class="padding-top padding-xlarge"></div>
+                  <div class="padding-top padding-xxlarge"></div>
+                  <div class="padding-top padding-huge"></div>
+                  <div class="padding-top padding-xhuge"></div>
+                  <div class="padding-top padding-xxhuge"></div>
+                  <div class="padding-top padding-custom1"></div>
+                  <div class="padding-top padding-custom2"></div>
+                  <div class="padding-top padding-custom3"></div>
+                </div>
+                <div class="stylesystem_padding-bottom">
+                  <div class="padding-bottom"></div>
+                  <div class="padding-bottom padding-0"></div>
+                  <div class="padding-bottom padding-tiny"></div>
+                  <div class="padding-bottom padding-xxsmall"></div>
+                  <div class="padding-bottom padding-xsmall"></div>
+                  <div class="padding-bottom padding-small"></div>
+                  <div class="padding-bottom padding-medium"></div>
+                  <div class="padding-bottom padding-large"></div>
+                  <div class="padding-bottom padding-xlarge"></div>
+                  <div class="padding-bottom padding-xxlarge"></div>
+                  <div class="padding-bottom padding-huge"></div>
+                  <div class="padding-bottom padding-xhuge"></div>
+                  <div class="padding-bottom padding-xxhuge"></div>
+                  <div class="padding-bottom padding-custom1"></div>
+                  <div class="padding-bottom padding-custom2"></div>
+                  <div class="padding-bottom padding-custom3"></div>
+                </div>
+                <div class="stylesystem_padding-left">
+                  <div class="padding-left"></div>
+                  <div class="padding-left padding-0"></div>
+                  <div class="padding-left padding-tiny"></div>
+                  <div class="padding-left padding-xxsmall"></div>
+                  <div class="padding-left padding-xsmall"></div>
+                  <div class="padding-left padding-small"></div>
+                  <div class="padding-left padding-medium"></div>
+                  <div class="padding-left padding-large"></div>
+                  <div class="padding-left padding-xlarge"></div>
+                  <div class="padding-left padding-xxlarge"></div>
+                  <div class="padding-left padding-huge"></div>
+                  <div class="padding-left padding-xhuge"></div>
+                  <div class="padding-left padding-xxhuge"></div>
+                  <div class="padding-left padding-custom1"></div>
+                  <div class="padding-left padding-custom2"></div>
+                  <div class="padding-left padding-custom3"></div>
+                </div>
+                <div class="stylesystem_padding-right">
+                  <div class="padding-right"></div>
+                  <div class="padding-right padding-0"></div>
+                  <div class="padding-right padding-tiny"></div>
+                  <div class="padding-right padding-xxsmall"></div>
+                  <div class="padding-right padding-xsmall"></div>
+                  <div class="padding-right padding-small"></div>
+                  <div class="padding-right padding-medium"></div>
+                  <div class="padding-right padding-large"></div>
+                  <div class="padding-right padding-xlarge"></div>
+                  <div class="padding-right padding-xxlarge"></div>
+                  <div class="padding-right padding-huge"></div>
+                  <div class="padding-right padding-xhuge"></div>
+                  <div class="padding-right padding-xxhuge"></div>
+                  <div class="padding-right padding-custom1"></div>
+                  <div class="padding-right padding-custom2"></div>
+                  <div class="padding-right padding-custom3"></div>
+                </div>
+                <div class="stylesystem_padding-vertical">
+                  <div class="padding-vertical"></div>
+                  <div class="padding-vertical padding-0"></div>
+                  <div class="padding-vertical padding-tiny"></div>
+                  <div class="padding-vertical padding-xxsmall"></div>
+                  <div class="padding-vertical padding-xsmall"></div>
+                  <div class="padding-vertical padding-small"></div>
+                  <div class="padding-vertical padding-medium"></div>
+                  <div class="padding-vertical padding-large"></div>
+                  <div class="padding-vertical padding-xlarge"></div>
+                  <div class="padding-vertical padding-xxlarge"></div>
+                  <div class="padding-vertical padding-huge"></div>
+                  <div class="padding-vertical padding-xhuge"></div>
+                  <div class="padding-vertical padding-xxhuge"></div>
+                  <div class="padding-vertical padding-custom1"></div>
+                  <div class="padding-vertical padding-custom2"></div>
+                  <div class="padding-vertical padding-custom3"></div>
+                </div>
+                <div class="stylesystem_padding-horizontal">
+                  <div class="padding-horizontal"></div>
+                  <div class="padding-horizontal padding-0"></div>
+                  <div class="padding-horizontal padding-tiny"></div>
+                  <div class="padding-horizontal padding-xxsmall"></div>
+                  <div class="padding-horizontal padding-xsmall"></div>
+                  <div class="padding-horizontal padding-small"></div>
+                  <div class="padding-horizontal padding-medium"></div>
+                  <div class="padding-horizontal padding-large"></div>
+                  <div class="padding-horizontal padding-xlarge"></div>
+                  <div class="padding-horizontal padding-xxlarge"></div>
+                  <div class="padding-horizontal padding-huge"></div>
+                  <div class="padding-horizontal padding-xhuge"></div>
+                  <div class="padding-horizontal padding-xxhuge"></div>
+                  <div class="padding-horizontal padding-custom1"></div>
+                  <div class="padding-horizontal padding-custom2"></div>
+                  <div class="padding-horizontal padding-custom3"></div>
+                </div>
+                <div class="stylesystem_margin-top">
+                  <div class="margin-top"></div>
+                  <div class="margin-top margin-0"></div>
+                  <div class="margin-top margin-tiny"></div>
+                  <div class="margin-top margin-xxsmall"></div>
+                  <div class="margin-top margin-xsmall"></div>
+                  <div class="margin-top margin-small"></div>
+                  <div class="margin-top margin-medium"></div>
+                  <div class="margin-top margin-large"></div>
+                  <div class="margin-top margin-xlarge"></div>
+                  <div class="margin-top margin-xxlarge"></div>
+                  <div class="margin-top margin-huge"></div>
+                  <div class="margin-top margin-xhuge"></div>
+                  <div class="margin-top margin-xxhuge"></div>
+                  <div class="margin-top margin-custom1"></div>
+                  <div class="margin-top margin-custom2"></div>
+                  <div class="margin-top margin-custom3"></div>
+                </div>
+                <div class="stylesystem_margin-bottom">
+                  <div class="margin-bottom"></div>
+                  <div class="margin-bottom margin-0"></div>
+                  <div class="margin-bottom margin-tiny"></div>
+                  <div class="margin-bottom margin-xxsmall"></div>
+                  <div class="margin-bottom margin-xsmall"></div>
+                  <div class="margin-bottom margin-small"></div>
+                  <div class="margin-bottom margin-medium"></div>
+                  <div class="margin-bottom margin-large"></div>
+                  <div class="margin-bottom margin-xlarge"></div>
+                  <div class="margin-bottom margin-xxlarge"></div>
+                  <div class="margin-bottom margin-huge"></div>
+                  <div class="margin-bottom margin-xhuge"></div>
+                  <div class="margin-bottom margin-xxhuge"></div>
+                  <div class="margin-bottom margin-custom1"></div>
+                  <div class="margin-bottom margin-custom2"></div>
+                  <div class="margin-bottom margin-custom3"></div>
+                </div>
+                <div class="stylesystem_margin-left">
+                  <div class="margin-left"></div>
+                  <div class="margin-left margin-0"></div>
+                  <div class="margin-left margin-tiny"></div>
+                  <div class="margin-left margin-xxsmall"></div>
+                  <div class="margin-left margin-xsmall"></div>
+                  <div class="margin-left margin-small"></div>
+                  <div class="margin-left margin-medium"></div>
+                  <div class="margin-left margin-large"></div>
+                  <div class="margin-left margin-xlarge"></div>
+                  <div class="margin-left margin-xxlarge"></div>
+                  <div class="margin-left margin-huge"></div>
+                  <div class="margin-left margin-xhuge"></div>
+                  <div class="margin-left margin-xxhuge"></div>
+                  <div class="margin-left margin-custom1"></div>
+                  <div class="margin-left margin-custom2"></div>
+                  <div class="margin-left margin-custom3"></div>
+                </div>
+                <div class="stylesystem_margin-right">
+                  <div class="margin-right"></div>
+                  <div class="margin-right margin-0"></div>
+                  <div class="margin-right margin-tiny"></div>
+                  <div class="margin-right margin-xxsmall"></div>
+                  <div class="margin-right margin-xsmall"></div>
+                  <div class="margin-right margin-small"></div>
+                  <div class="margin-right margin-medium"></div>
+                  <div class="margin-right margin-large"></div>
+                  <div class="margin-right margin-xlarge"></div>
+                  <div class="margin-right margin-xxlarge"></div>
+                  <div class="margin-right margin-huge"></div>
+                  <div class="margin-right margin-xhuge"></div>
+                  <div class="margin-right margin-xxhuge"></div>
+                  <div class="margin-right margin-custom1"></div>
+                  <div class="margin-right margin-custom2"></div>
+                  <div class="margin-right margin-custom3"></div>
+                </div>
+                <div class="stylesystem_margin-vertical">
+                  <div class="margin-vertical"></div>
+                  <div class="margin-vertical margin-0"></div>
+                  <div class="margin-vertical margin-tiny"></div>
+                  <div class="margin-vertical margin-xxsmall"></div>
+                  <div class="margin-vertical margin-xsmall"></div>
+                  <div class="margin-vertical margin-small"></div>
+                  <div class="margin-vertical margin-medium"></div>
+                  <div class="margin-vertical margin-large"></div>
+                  <div class="margin-vertical margin-xlarge"></div>
+                  <div class="margin-vertical margin-xxlarge"></div>
+                  <div class="margin-vertical margin-huge"></div>
+                  <div class="margin-vertical margin-xhuge"></div>
+                  <div class="margin-vertical margin-xxhuge"></div>
+                  <div class="margin-vertical margin-custom1"></div>
+                  <div class="margin-vertical margin-custom2"></div>
+                  <div class="margin-vertical margin-custom3"></div>
+                </div>
+                <div class="stylesystem_margin-horizontal">
+                  <div class="margin-horizontal"></div>
+                  <div class="margin-horizontal margin-0"></div>
+                  <div class="margin-horizontal margin-tiny"></div>
+                  <div class="margin-horizontal margin-xxsmall"></div>
+                  <div class="margin-horizontal margin-xsmall"></div>
+                  <div class="margin-horizontal margin-small"></div>
+                  <div class="margin-horizontal margin-medium"></div>
+                  <div class="margin-horizontal margin-large"></div>
+                  <div class="margin-horizontal margin-xlarge"></div>
+                  <div class="margin-horizontal margin-xxlarge"></div>
+                  <div class="margin-horizontal margin-huge"></div>
+                  <div class="margin-horizontal margin-xhuge"></div>
+                  <div class="margin-horizontal margin-xxhuge"></div>
+                  <div class="margin-horizontal margin-custom1"></div>
+                  <div class="margin-horizontal margin-custom2"></div>
+                  <div class="margin-horizontal margin-custom3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="rl-styleguide_utility-classes">
+              <div class="rl-styleguide_heading">Utility Classes</div>
+              <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593694fa-220bbe2b" class="w-layout-grid rl-styleguide_list">
+                <div class="rl-styleguide_subheading"><span class="rl-styleguide_subheading-small">Useful utility classes we like to use in most of our projects to build faster.</span></div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593694fe-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a3593694ff-220bbe2b" class="rl-styleguide_label">hide</div>
+                  <div class="hide">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369503-220bbe2b">This element is hidden</div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369505-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369506-220bbe2b" class="rl-styleguide_label">hide-tablet</div>
+                  <div class="hide-tablet">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936950a-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936950b-220bbe2b" class="rl-styleguide_label">hide-mobile-portrait</div>
+                  <div class="hide-xs">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936950f-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369510-220bbe2b" class="rl-styleguide_label">hide-mobile-landscape</div>
+                  <div class="hide-s">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369514-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369515-220bbe2b" class="rl-styleguide_label">overflow-visible</div>
+                  <div class="overflow-visible">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369519-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936951a-220bbe2b" class="rl-styleguide_label">overflow-hidden</div>
+                  <div class="overflow-hidden">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936951e-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936951f-220bbe2b" class="rl-styleguide_label">overflow-auto</div>
+                  <div class="overflow-auto">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369523-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369524-220bbe2b" class="rl-styleguide_label">overflow-scroll</div>
+                  <div class="overflow-scroll">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369528-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369529-220bbe2b" class="rl-styleguide_label">pointer-events-auto</div>
+                  <div class="pointer-events-auto">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936952d-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936952e-220bbe2b" class="rl-styleguide_label">pointer-events-none</div>
+                  <div class="pointer-events-none">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369532-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369533-220bbe2b" class="rl-styleguide_label">layer</div>
+                  <div class="layer hide"></div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936953a-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936953b-220bbe2b" class="rl-styleguide_label">spacing-clean</div>
+                  <div class="spacing-clean">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936953f-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369540-220bbe2b" class="rl-styleguide_label">align-center</div>
+                  <div class="align-center">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369544-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369545-220bbe2b" class="rl-styleguide_label">z-index-1</div>
+                  <div class="z-index-1">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369549-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936954a-220bbe2b" class="rl-styleguide_label">z-index-2</div>
+                  <div class="z-index-2">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936954e-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a35936954f-220bbe2b" class="rl-styleguide_label">display-inlineflex</div>
+                  <div class="display-inlineflex">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369553-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_9a3cb5be-cc97-b70e-6a89-31a359369554-220bbe2b" class="rl-styleguide_label">margin-top-auto</div>
+                  <div class="margin-top-auto">
+                    <div class="rl-styleguide_empty-box"></div>
+                  </div>
+                </div>
+                <div id="w-node-de8106d9-b098-80e3-076c-80f3a0fa5e54-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-de8106d9-b098-80e3-076c-80f3a0fa5e55-220bbe2b" class="rl-styleguide_label">aspect-ratio-square</div>
+                  <div class="aspect-ratio-square">
+                    <div class="rl-styleguide_ratio-bg"></div>
+                  </div>
+                </div>
+                <div id="w-node-_680345d6-d141-aefc-5e81-01faad69a792-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_680345d6-d141-aefc-5e81-01faad69a793-220bbe2b" class="rl-styleguide_label">aspect-ratio-portrait</div>
+                  <div class="aspect-ratio-portrait">
+                    <div class="rl-styleguide_ratio-bg"></div>
+                  </div>
+                </div>
+                <div id="w-node-dc962921-5c74-5687-77a4-c1371012b297-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-dc962921-5c74-5687-77a4-c1371012b298-220bbe2b" class="rl-styleguide_label">aspect-ratio-landscape</div>
+                  <div class="aspect-ratio-landscape">
+                    <div class="rl-styleguide_ratio-bg"></div>
+                  </div>
+                </div>
+                <div id="w-node-bbf5f4a2-0660-a8f8-7799-a71df583db57-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-bbf5f4a2-0660-a8f8-7799-a71df583db58-220bbe2b" class="rl-styleguide_label">aspect-ratio-widescreen</div>
+                  <div class="aspect-ratio-widescreen">
+                    <div class="rl-styleguide_ratio-bg"></div>
+                  </div>
+                </div>
+                <div id="w-node-_723dac19-3a6b-8f5e-89ce-53b9006ba92c-220bbe2b" class="w-layout-grid rl-styleguide_item">
+                  <div id="w-node-_723dac19-3a6b-8f5e-89ce-53b9006ba92d-220bbe2b" class="rl-styleguide_label">inherit-color</div>
+                  <div class="inherit-color">
+                    <div class="rl-styleguide_color-spacer"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+function getColorThemes() {
+  const STORAGE_KEYS = {
+    THEMES: "colorThemes_data",
+    PUBLISH_DATE: "colorThemes_publishDate",
+  };
+  function getPublishDate() {
+    const htmlComment = document.documentElement.previousSibling;
+    return htmlComment?.nodeType === Node.COMMENT_NODE
+      ? new Date(
+          htmlComment.textContent.match(/Last Published: (.+?) GMT/)[1]
+        ).getTime()
+      : null;
+  }
+  function loadFromStorage() {
+    try {
+      const storedPublishDate = localStorage.getItem(STORAGE_KEYS.PUBLISH_DATE),
+        currentPublishDate = getPublishDate();
+      if (
+        !currentPublishDate ||
+        !storedPublishDate ||
+        storedPublishDate !== currentPublishDate.toString()
+      )
+        return null;
+      return JSON.parse(localStorage.getItem(STORAGE_KEYS.THEMES));
+    } catch (error) {
+      console.warn("Failed to load from localStorage:", error);
+      return null;
+    }
+  }
+  function saveToStorage(themes) {
+    try {
+      const publishDate = getPublishDate();
+      if (publishDate) {
+        localStorage.setItem(STORAGE_KEYS.PUBLISH_DATE, publishDate.toString());
+        localStorage.setItem(STORAGE_KEYS.THEMES, JSON.stringify(themes));
+      }
+    } catch (error) {
+      console.warn("Failed to save to localStorage:", error);
+    }
+  }
+  window.colorThemes = {
+    themes: {},
+    getTheme(themeName = "", brandName = "") {
+      if (!themeName)
+        return this.getTheme(Object.keys(this.themes)[0], brandName);
+      const theme = this.themes[themeName];
+      if (!theme) return {};
+      if (!theme.brands || Object.keys(theme.brands).length === 0) return theme;
+      if (!brandName) return theme.brands[Object.keys(theme.brands)[0]];
+      return theme.brands[brandName] || {};
+    },
+  };
+  const cachedThemes = loadFromStorage();
+  if (cachedThemes) {
+    window.colorThemes.themes = cachedThemes;
+    document.dispatchEvent(new CustomEvent("colorThemesReady"));
+    return;
+  }
+  const firstLink = document.querySelector('link[rel="stylesheet"]');
+  if (!firstLink?.href) return null;
+  const themeVariables = new Set(),
+    themeClasses = new Set(),
+    brandClasses = new Set();
+  fetch(firstLink.href)
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(`Failed to fetch stylesheet: ${response.statusText}`);
+      return response.text();
+    })
+    .then((cssText) => {
+      (cssText.match(/--_theme[\w-]+:\s*[^;]+/g) || []).forEach((variable) =>
+        themeVariables.add(variable.split(":")[0].trim())
+      );
+      (cssText.match(/\.u-(theme|brand)-[\w-]+/g) || []).forEach(
+        (className) => {
+          if (className.startsWith(".u-theme-")) themeClasses.add(className);
+          if (className.startsWith(".u-brand-")) brandClasses.add(className);
+        }
+      );
+      const themeVariablesArray = Array.from(themeVariables);
+      function checkClass(themeClass, brandClass = null) {
+        let documentClasses = document.documentElement.getAttribute("class");
+        document.documentElement.setAttribute("class", "");
+        document.documentElement.classList.add(themeClass, brandClass);
+        const styleObject = {};
+        themeVariablesArray.forEach(
+          (variable) =>
+            (styleObject[variable] = getComputedStyle(
+              document.documentElement
+            ).getPropertyValue(variable))
+        );
+        document.documentElement.setAttribute("class", documentClasses);
+        return styleObject;
+      }
+      themeClasses.forEach((themeClassWithDot) => {
+        const themeName = themeClassWithDot
+          .replace(".", "")
+          .replace("u-theme-", "");
+        window.colorThemes.themes[themeName] = { brands: {} };
+        brandClasses.forEach((brandClassWithDot) => {
+          const brandName = brandClassWithDot
+            .replace(".", "")
+            .replace("u-brand-", "");
+          window.colorThemes.themes[themeName].brands[brandName] = checkClass(
+            themeClassWithDot.replace(".", ""),
+            brandClassWithDot.replace(".", "")
+          );
+        });
+        if (!brandClasses.size)
+          window.colorThemes.themes[themeName] = checkClass(
+            themeClassWithDot.replace(".", "")
+          );
+      });
+      saveToStorage(window.colorThemes.themes);
+      document.dispatchEvent(new CustomEvent("colorThemesReady"));
+    })
+    .catch((error) => console.error("Error:", error.message));
+}
+window.addEventListener("DOMContentLoaded", (event) => {
+  getColorThemes();
+});
+</script>
+  <!--  JS  -->
+  <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js">
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Flip.min.js">
+</script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Draggable.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Observer.min.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/InertiaPlugin.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+  (function () {
+    var LOCALHOST_URL = [
+      'http://localhost:4000/@vite/client',
+      'http://localhost:4000/src/main.js',
+    ]
+    var PROD_URL = ['https://boldhouse.vercel.app/main.js']
+    function createScripts(arr, isDevMode) {
+      return arr.map(function (url) {
+        var s = document.createElement('script')
+        s.src = url
+        if (isDevMode) s.type = 'module'
+        return s
+      })
+    }
+    function insertScript(scriptArr) {
+      scriptArr.forEach(function (script) {
+        document.body.appendChild(script)
+      })
+    }
+    var localhostScripts = createScripts(LOCALHOST_URL, true)
+    var prodScripts = createScripts(PROD_URL, false)
+    var chosen = null
+    fetch(LOCALHOST_URL[0], {})
+      .then(function () { chosen = localhostScripts })
+      .catch(function () { chosen = prodScripts })
+      .finally(function () {
+        if (chosen) { insertScript(chosen); return }
+        console.error('No scripts loaded')
+      })
+  })()
+</script>
+</body>
+</html>
