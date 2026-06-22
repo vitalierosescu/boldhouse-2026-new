@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: Fraunces Variable;
-  src: url('../images/') format("woff2");
+  src: url('../fonts/Fraunces-VariableFont_SOFTWONKopszwght.woff2') format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -10172,7 +10172,7 @@ figcaption {
 }
 @font-face {
   font-family: 'Fraunces Variable';
-  src: url('../images/') format('woff2');
+  src: url('../fonts/Fraunces-VariableFont_SOFTWONKopszwght.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;

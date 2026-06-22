@@ -1,2 +1,11 @@
 # ShipStudio metadata
 .shipstudio/
+.vercel
+
+# Build
+node_modules
+dist
+
+# Env
+.env
+.env.local
