@@ -14,7 +14,7 @@ The shop is a **headless Shopify** integration on top of the Webflow/Vite build.
 | `src/shop/cart-drawer.js` | Sliding cart drawer — global, survives Barba transitions |
 | `src/shop/nav-cart-badge.js` | Nav badge item count — global |
 | `src/shop/shop-page.js` | Listing page logic. Exports `formatMoney` + `buildProductCardHTML` for reuse |
-| `src/shop/product-page.js` | PDP logic — 3-column editorial layout, related products, prev/next |
+| `src/shop/product-page.js` | PDP logic — 2-column editorial layout, related products, prev/next |
 | `src/shop/queries.js` | GraphQL queries for products/carts |
 | `src/shop/config.js` | Storefront domain + token |
 
@@ -106,32 +106,32 @@ Both shop pages include the standard site footer. Structure placed **after `</ma
 
 ---
 
-## Product Detail Page — editorial 3-column layout
+## Product Detail Page — editorial 2-column layout
 
 Modeled on noartmusic.com/products. `product-page.js` renders into `[data-product-detail]`:
 
 ```
 container-large
 ├─ .product-breadcrumb           Home / Shop / <title>
-├─ .product-layout (grid 3-col)
-│  ├─ .product-meta   (left, sticky)   editorial blocks: About, Materials, Care,
-│  │                                    Size & fit, Delivery & returns
-│  ├─ .product-gallery (center)        large main image + full-width stacked images
-│  └─ .product-buy    (right, sticky)  brand, title, price, boxed size selector,
-│                                       qty, Add to Cart (pill), reassurance note
+├─ .product-layout (grid 2-col)
+│  ├─ .product-gallery (left)         large main image + full-width stacked images
+│  └─ .product-buy    (right, sticky) brand, title, price, boxed size selector, qty,
+│                                      Add to Cart (sharp), reassurance note, then
+│                                      .product-buy__meta (About, Materials, Care,
+│                                      Size & fit, Delivery & returns) below the CTA
 ├─ .product-related              "You might also like" — 4 reused .shop-card cards
 └─ .product-pager                ‹ Prev  /  Next ›  (wraps around the catalogue)
 ```
 
-On ≤991px it collapses to one column, reordered **gallery → buy → meta**, and sticky is
-dropped.
+The meta blocks moved **into the buy column below the CTA** (was a 3rd column; the client
+wanted 2 columns). On ≤991px it collapses to one column (gallery → buy) and sticky is dropped.
 
-Only `.product-buy` re-renders on variant/qty change (via `renderBuy()`); the gallery, meta,
-related and pager are built once so the gallery doesn't reflow when switching options.
+Only `.product-buy` re-renders on variant/qty change (via `renderBuy()`); the gallery, related
+and pager are built once so the gallery doesn't reflow when switching options.
 
-### Meta column data — Shopify metafields with fallback
+### Meta block data — Shopify metafields with fallback
 
-The left column pulls per-product copy from **metafields** (namespace `custom`):
+The buy column's meta blocks pull per-product copy from **metafields** (namespace `custom`):
 
 | Block | Source |
 |-------|--------|
@@ -152,6 +152,41 @@ empty even before Dennis fills the metafields in Shopify admin.
   neighbours (wrap-around). No extra query.
 
 Active option/variant selection: `border-color: var(--brand--accent)` + `--bh-accent-tint` bg.
+
+The `product-page.js` line count grew with related/pager/meta; keep an eye on it and split out
+`buildGallery` / `buildMetaColumn` helpers if it gets unwieldy (they're already separate fns).
+
+---
+
+## Skeleton Loaders — zero layout shift
+
+Both shop surfaces show pulsing placeholders while data loads, with **zero CLS** (verified:
+listing first-card top 455→455px; PDP gallery top 130→132px).
+
+**The key technique: skeletons live in the static HTML, not injected by JS.** A JS-injected
+skeleton still causes an empty→filled jump when the bundle executes (and on a slow connection
+the grid sits empty with the footer pulled up). Baking them into the template means the layout
+is reserved from first paint — and because Barba *fetches* the page HTML, navigations are
+shift-free too.
+
+- **Listing** (`shop.html`): a `{% for i in range(0,9) %}` loop renders 9 `.shop-card--skeleton`
+  cards. `initShopPage` only injects skeletons as a fallback if the grid arrives empty
+  (`if (!grid.children.length)`), then replaces them with real cards and whisper-cross-fades
+  (`gsap.fromTo(cards, {autoAlpha:0}, {autoAlpha:1, 0.4s})`).
+- **PDP** (`shop-product.html`): a static skeleton inside `[data-product-detail]` mirrors the
+  2-column layout. The gallery block **reuses `.product-gallery__main`** so its 3:4 dimensions
+  match the real image exactly — that's what makes it zero-shift (the tall gallery dominates row
+  height). `product-page.js` no longer writes a "Loading…" line; it lets the skeleton stand,
+  then cross-fades the real content (`root.firstElementChild`) in.
+- **Style:** soft pulse via `@keyframes bh-skeleton-pulse` (opacity 1↔0.5, 1.6s). Both skeleton
+  sets and both cross-fades are guarded by `prefers-reduced-motion` (no pulse, no fade).
+- Listing cards also carry a static editorial index number (`.shop-card__index`, `01..NN`) and
+  the grid header shows a static count (`[data-shop-count]`).
+
+**Verifying a loading/skeleton state:** localhost serves the fetch instantly, so the skeleton
+clears before you can screenshot it. Use chrome-devtools `emulate` with **`cpuThrottlingRate: 20`
++ `ignoreCache: true`** and a short navigate timeout to hold the skeleton visible long enough to
+capture and measure. Network throttling alone is not enough (cache serves fast).
 
 ---
 
