@@ -25,6 +25,27 @@ export function initNavCartBadge() {
 
   btn.addEventListener('click', toggleCart)
 
+  let prevQty = 0
+  const reduced = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  // Soft pulse when the count goes up — quiet feedback, nothing poppy.
+  const pulse = () => {
+    if (!badge || !window.gsap || reduced()) return
+    window.gsap.fromTo(
+      badge,
+      { scale: 1 },
+      {
+        scale: 1.35,
+        duration: 0.18,
+        ease: 'power2.out',
+        transformOrigin: '50% 50%',
+        yoyo: true,
+        repeat: 1,
+      }
+    )
+  }
+
   document.addEventListener('boldhouse:cart-update', (e) => {
     const qty = e.detail.cart?.totalQuantity ?? 0
     if (badge) {
@@ -32,5 +53,7 @@ export function initNavCartBadge() {
       badge.style.display = qty > 0 ? '' : 'none'
     }
     btn.setAttribute('aria-label', `Open cart (${qty} item${qty !== 1 ? 's' : ''})`)
+    if (qty > prevQty) pulse()
+    prevQty = qty
   })
 }

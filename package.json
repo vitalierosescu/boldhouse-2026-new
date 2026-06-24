@@ -6,9 +6,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint ./src --fix"
+    "lint": "eslint ./src --fix",
+    "site:dev": "eleventy --serve",
+    "site:build": "eleventy"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@sanity/client": "^7.23.0",
+    "dotenv": "^17.4.2",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^10.0.0",
     "globals": "^16.0.0",

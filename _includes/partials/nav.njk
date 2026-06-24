@@ -1,0 +1,298 @@
+    <div data-start="hidden" data-wf--navigation--variant="{{ navVariant or 'base' }}">
+      <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+        <style>
+[data-menu-wrap] {
+  --nav-height: 4rem;
+}
+.mega-nav__panel-col:last-of-type {
+  border: none;
+}
+/* Allow easier content editing when panel state is 'active' inside of the designer*/
+.wf-design-mode [data-nav-content][data-panel-state="active"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  position: relative;
+}
+.wf-design-mode [data-menu-open]:has( [data-nav-content][data-panel-state="active"]) [data-dropdown-bg] {
+  opacity: 1;
+  inset: 0;
+}
+.wf-design-mode [data-mobile-nav="active"] {
+  opacity: 1;
+  visibility: visible;
+}
+.mega-nav__bar-list:has(.mega-nav__bar-link.w--current) {
+  .mega-nav__bar-link {opacity: .5}
+  .mega-nav__bar-link.w--current {opacity: 1}
+}
+</style>
+      </div>
+      <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+        <style>
+  :root {
+    --nav-color-light: white;
+    --nav-color-dark: black;
+    --nav-ease: ease;
+    --nav-timing: 0.4s;
+  }
+  /* Nav theme — applied to whatever element has [data-theme-nav] */
+  [data-theme-nav],
+  [data-theme-nav] .button {
+    transition: color var(--nav-timing) var(--nav-ease);
+  }
+  .button_bg {
+    transition: background var(--nav-timing) var(--nav-ease), inset 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+  }
+  [data-theme-nav='dark'] {
+    color: var(--nav-color-light);
+  }
+  [data-theme-nav='dark'] {
+    .button {
+      color: var(--nav-color-dark);
+    }
+    .button_bg {
+      background: var(--nav-color-light);
+    }
+    .mega-nav__burger-line {
+      background: var(--nav-color-light);
+    }
+    .mega-nav__burger {
+      background: var(--nav-color-dark);
+    }
+  }
+  /*LIGHT theme*/
+  [data-theme-nav='light'] {
+    color: var(--nav-color-dark);
+  }
+  [data-theme-nav='light'] .button {
+    color: var(--nav-color-light);
+  }
+  [data-theme-nav='light'] .button_bg {
+    background: var(--nav-color-dark);
+  }
+</style>
+      </div>
+      <nav data-menu-open="false" data-menu-wrap="" class="mega-nav">
+        <div data-theme-nav="{{ navTheme or 'dark' }}" class="mega-nav__bar">
+          <div class="mega-nav__container">
+            <div class="mega-nav__bar-start">
+              <a data-menu-logo="" href="index.html"{% if navCurrent == 'home' %} aria-current="page"{% endif %} class="mega-nav__bar-logo{% if navCurrent == 'home' %} w-variant-04350d8b-a00f-3dde-94a8-f40a0cd103a8{% endif %} w-inline-block{% if navCurrent == 'home' %} w--current{% endif %}">
+                <div class="mega-nav_logo-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 1376 172" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                      <path d="M61.0684 168.863H0V2.77583H60.3745C108.72 2.77583 128.845 17.5803 128.845 44.876C128.845 60.6058 120.518 74.2536 103.4 80.9619V81.4245C121.443 86.7449 134.165 96.923 134.165 120.286C134.165 158.685 99.4675 168.863 61.0684 168.863ZM43.9508 67.5454H62.919C73.791 67.5454 83.5064 63.8442 83.5064 51.8156C83.5064 41.1749 74.2536 38.8617 61.531 38.8617H43.9508V67.5454ZM43.9508 133.009H62.4563C83.2751 133.009 89.0581 125.838 89.0581 115.891C89.0581 102.475 77.2608 99.6988 64.3069 99.6988H43.9508V133.009Z" fill="currentColor"></path>
+                      <path d="M222.065 171.639C172.331 171.639 147.349 135.785 147.349 85.8196C147.349 48.8085 163.541 0 222.065 0C280.589 0 296.781 48.8085 296.781 85.8196C296.781 135.785 271.799 171.639 222.065 171.639ZM222.065 136.247C243.578 136.247 251.674 117.51 251.674 85.8196C251.674 53.6662 243.115 34.4666 222.065 34.4666C201.015 34.4666 192.456 53.6662 192.456 85.8196C192.456 117.51 200.552 136.247 222.065 136.247Z" fill="currentColor"></path>
+                      <path d="M430.244 168.863H318.516V2.77583H363.624V132.084H430.244V168.863Z" fill="currentColor"></path>
+                      <path d="M504.646 168.863H447.278V2.77583H506.496C559.468 2.77583 588.615 28.915 588.615 82.8125C588.615 138.098 557.849 168.863 504.646 168.863ZM492.386 130.233H506.728C532.173 130.233 543.507 112.421 543.507 84.2004C543.507 56.6733 532.173 41.4062 508.347 41.4062H492.386V130.233Z" fill="currentColor"></path>
+                      <path d="M751.019 168.863H705.912V103.631H655.716V168.863H610.377V2.77583H655.716V64.0756H705.912V2.77583H751.019V168.863Z" fill="currentColor"></path>
+                      <path d="M847.577 171.639C797.843 171.639 772.861 135.785 772.861 85.8196C772.861 48.8085 789.053 0 847.577 0C906.101 0 922.293 48.8085 922.293 85.8196C922.293 135.785 897.311 171.639 847.577 171.639ZM847.577 136.247C869.09 136.247 877.186 117.51 877.186 85.8196C877.186 53.6662 868.627 34.4666 847.577 34.4666C826.527 34.4666 817.968 53.6662 817.968 85.8196C817.968 117.51 826.064 136.247 847.577 136.247Z" fill="currentColor"></path>
+                      <path d="M1038.87 107.564V2.77583H1083.98V98.7735C1083.98 145.269 1062.7 171.639 1011.57 171.639C960.452 171.639 942.641 145.269 942.641 98.7735V2.77583H987.979V107.564C987.979 125.375 996.075 135.091 1012.5 135.091C1028.69 135.091 1038.87 125.375 1038.87 107.564Z" fill="currentColor"></path>
+                      <path d="M1231.94 39.5557L1194.7 52.7409C1189.84 40.2496 1180.59 34.004 1168.79 34.004C1159.54 34.004 1151.67 39.093 1151.67 47.1892C1151.67 75.4102 1235.87 55.2854 1235.87 118.436C1235.87 153.134 1208.58 171.639 1169.49 171.639C1136.41 171.639 1113.04 159.611 1103.1 126.069L1144.5 113.347C1146.82 127.226 1156.53 136.71 1172.49 136.71C1184.52 136.71 1194.01 131.852 1194.01 121.906C1194.01 92.0653 1107.49 112.884 1107.49 47.4205C1107.49 19.6622 1132.94 0 1167.64 0C1199.33 0 1220.61 10.6407 1231.94 39.5557Z" fill="currentColor"></path>
+                      <path d="M1376 168.863H1258.03V2.77583H1374.61V39.5557H1303.13V66.1574H1353.79V101.781H1303.13V132.084H1376V168.863Z" fill="currentColor"></path>
+                    </g>
+                  </svg></div>
+              </a>
+              <link rel="prefetch" href="/">
+              <div data-nav-list="" data-mobile-nav="" class="mega-nav__bar-inner">
+                <ul class="mega-nav__bar-list">
+                  <li data-nav-list-item="">
+                    <a data-button-trigger="" data-barba-update href="club.html"{% if navCurrent == 'club' %} aria-current="page"{% endif %} class="mega-nav__bar-link w-inline-block{% if navCurrent == 'club' %} w--current{% endif %}"><span data-button-text="" class="mega-nav__bar-link-label">Club,</span></a>
+                    <link rel="prefetch" href="/club">
+                  </li>
+                  <li data-nav-list-item="">
+                    <a data-button-trigger="" data-barba-update href="spaces.html"{% if navCurrent == 'spaces' %} aria-current="page"{% endif %} class="mega-nav__bar-link w-inline-block{% if navCurrent == 'spaces' %} w--current{% endif %}"><span data-button-text="" class="mega-nav__bar-link-label">Spaces,</span></a>
+                    <link rel="prefetch" href="/spaces">
+                  </li>
+                  <li data-nav-list-item="">
+                    <a data-button-trigger="" data-barba-update href="manifesto.html"{% if navCurrent == 'manifesto' %} aria-current="page"{% endif %} class="mega-nav__bar-link w-inline-block{% if navCurrent == 'manifesto' %} w--current{% endif %}"><span data-button-text="" class="mega-nav__bar-link-label">Manifesto,</span></a>
+                  </li>
+                  <li data-nav-list-item="">
+                    <a data-button-trigger="" data-barba-update href="shop.html"{% if navCurrent == 'shop' %} aria-current="page"{% endif %} class="mega-nav__bar-link w-inline-block{% if navCurrent == 'shop' %} w--current{% endif %}"><span data-button-text="" class="mega-nav__bar-link-label">Shop,</span></a>
+                  </li>
+                  <li data-nav-list-item="">
+                    <a data-button-trigger="" data-barba-update href="memberships.html"{% if navCurrent == 'memberships' %} aria-current="page"{% endif %} class="mega-nav__bar-link w-inline-block{% if navCurrent == 'memberships' %} w--current{% endif %}"><span data-button-text="" class="mega-nav__bar-link-label">Memberships</span></a>
+                    <link rel="prefetch" href="/memberships">
+                  </li>
+                </ul>
+                <ul data-nav-list-item="" class="mega-nav__bar-list is--actions">
+                  <li class="mega-nav__bar-action">
+                    <div data-wf--button--variant="nav">
+                      <a aria-label="" href="apply.html"{% if navCurrent == 'apply' %} aria-current="page"{% endif %} class="button w-variant-b2c7e79d-b21b-e294-2fee-e0788be8a729 w-inline-block{% if navCurrent == 'apply' %} w--current{% endif %}">
+                        <div data-button-text="" class="button_text">Apply for membership</div>
+                        <div class="button_bg"></div>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-nav__bar-end"><button data-burger-toggle="" aria-label="toggle menu" aria-expanded="false" class="mega-nav__burger"><span data-burger-line="top" class="mega-nav__burger-line"></span><span data-burger-line="mid" class="mega-nav__burger-line"></span><span data-burger-line="bot" class="mega-nav__burger-line"></span></button></div>
+              <div data-mobile-back="" class="mega-nav__back"><button aria-label="back to menu" class="mega-nav__bar-link is--back"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 20 20" fill="none" class="mega-nav__bar-link-icon">
+                    <path d="M11.6665 6.6665L8.33317 9.99984L11.6665 13.3332" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg><span class="mega-nav__bar-link-label">Back</span></button></div>
+            </div>
+          </div>
+        </div>
+        <div data-dropdown-wrapper="" class="mega-nav__dropdown-wrapper">
+          <div data-dropdown-container="" class="mega-nav__dropdown-container">
+            <div data-dropdown-bg="" class="mega-nav__dropdown-bg"></div>
+            <div data-panel-state="" data-nav-content="products" role="region" aria-label="products menu" class="mega-nav__dropdown-panel">
+              <div class="mega-nav__dropdown-inner">
+                <div data-menu-fade="" class="mega-nav__panel-col"><span data-menu-fade="" class="mega-nav__panel-label">Platform</span>
+                  <ul class="mega-nav__panel-list">
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Overview</span><span class="mega-nav__panel-link-desc">See the full platform</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Analytics</span><span class="mega-nav__panel-link-desc">Track and measure</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Integrations</span><span class="mega-nav__panel-link-desc">Connect your tools</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div data-menu-fade="" class="mega-nav__panel-col"><span data-menu-fade="" class="mega-nav__panel-label">Features</span>
+                  <ul class="mega-nav__panel-list">
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Automation</span><span class="mega-nav__panel-link-desc">Streamline workflows</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Reporting</span><span class="mega-nav__panel-link-desc">Generate insights</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">AI</span><span class="mega-nav__panel-link-desc">Build custom integrations</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div data-menu-fade="" class="mega-nav__panel-col is--colored"><span data-menu-fade="" class="mega-nav__panel-label">Infrastructure</span>
+                  <ul class="mega-nav__panel-list">
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Cloud</span><span class="mega-nav__panel-link-desc">Managed hosting</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Security</span><span class="mega-nav__panel-link-desc">Enterprise grade</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div data-panel-state="" data-nav-content="solutions" role="region" aria-label="products menu" class="mega-nav__dropdown-panel">
+              <div class="mega-nav__dropdown-inner">
+                <div data-menu-fade="" class="mega-nav__panel-col"><span data-menu-fade="" class="mega-nav__panel-label">By use case</span>
+                  <ul class="mega-nav__panel-list">
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">SaaS</span><span class="mega-nav__panel-link-desc">Sell online at scale</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">E-commerce</span><span class="mega-nav__panel-link-desc">Subscription businesses</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Marketplaces</span><span class="mega-nav__panel-link-desc">Multi-vendor platforms</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Platforms</span><span class="mega-nav__panel-link-desc">Built on top of Osmo</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Creator economy</span><span class="mega-nav__panel-link-desc">Monetize your audience</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div data-menu-fade="" class="mega-nav__panel-col"><span data-menu-fade="" class="mega-nav__panel-label">By industries</span>
+                  <ul class="mega-nav__panel-list">
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Healthcare</span><span class="mega-nav__panel-link-desc">HIPAA compliant</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Finance</span><span class="mega-nav__panel-link-desc">Secure services</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Education</span><span class="mega-nav__panel-link-desc">Learning tools</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Retail</span><span class="mega-nav__panel-link-desc">Omnichannel commerce</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div data-menu-fade="" class="mega-nav__panel-col"><span data-menu-fade="" class="mega-nav__panel-label">By size</span>
+                  <ul class="mega-nav__panel-list">
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Startups</span><span class="mega-nav__panel-link-desc">Launch faster</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Enterprise</span><span class="mega-nav__panel-link-desc">Scale with confidence</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mega-nav__panel-col is--colored"><span data-menu-fade="" class="mega-nav__panel-label">Quick links</span>
+                  <ul class="mega-nav__panel-list">
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Customer stories</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Partners</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Professional services</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Migrations</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Compare plans</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div data-panel-state="not-active" data-nav-content="company" role="region" aria-label="products menu" class="mega-nav__dropdown-panel">
+              <div class="mega-nav__dropdown-inner">
+                <div data-menu-fade="" class="mega-nav__panel-col"><span data-menu-fade="" class="mega-nav__panel-label">
+                    <div>
+                      <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Company</span><span class="tagline_span"> ]</span></div>
+                      <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
+                    </div>
+                  </span>
+                  <ul class="mega-nav__panel-list">
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">About us</span><span class="mega-nav__panel-link-desc">Our mission and team</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Careers</span><span class="mega-nav__panel-link-desc">Join the team</span></a>
+                    </li>
+                    <li data-menu-fade="">
+                      <a href="#" class="mega-nav__panel-link w-inline-block"><span class="mega-nav__panel-link-text">Blog</span><span class="mega-nav__panel-link-desc">News and updates</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div data-menu-fade="" class="mega-nav__panel-col is--colored has--card">
+                  <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+                    <style>
+.mega-nav__card-img {transition: transform .4s cubic-bezier(.19,0,.21,1)}
+.mega-nav__card:hover .mega-nav__card-img {
+    transform: scale(1.04);
+}
+</style>
+                  </div>
+                  <a data-button-trigger="" href="https://www.boldhouse.events/" target="_blank" class="mega-nav__card w-inline-block">
+                    <div class="mega-nav__card-visual"><img sizes="(max-width: 692px) 100vw, 692px" srcset="images/event-ex-2-p-500.jpg 500w, images/event-ex-2.jpg 692w" alt="" src="images/event-ex-2.jpg" loading="lazy" class="mega-nav__card-img img-cover">
+                      <div class="mega-nav__card-overlay"></div>
+                      <div class="mega-nav__card-img-text h4">05/05/26&#x27;</div>
+                      <div class="mega-nav__card-img-text h4">Get your tickets</div>
+                    </div>
+                    <div class="mega-nav__card-content">
+                      <div class="mega-nav__card-text"><span class="mega-nav__panel-link-text">Creative Summit 26&#x27;</span><span class="mega-nav__panel-link-desc">A day packed with knawledge, AI-geniuses, and over the moon workshops for you to learn.</span></div>
+                      <div>
+                        <div aria-label="" class="button">
+                          <div data-button-text="" class="button_text">Learn more</div>
+                          <div class="button_bg"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-menu-backdrop="" class="mega-nav__backdrop"></div>
+      </nav>
+    </div>

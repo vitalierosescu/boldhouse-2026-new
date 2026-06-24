@@ -37,6 +37,36 @@ export const PRODUCT_FRAGMENT = /* GraphQL */ `
       name
       values
     }
+    metafields(
+      identifiers: [
+        { namespace: "custom", key: "materials" }
+        { namespace: "custom", key: "care" }
+        { namespace: "custom", key: "sizing" }
+      ]
+    ) {
+      key
+      namespace
+      value
+      type
+    }
+  }
+`
+
+// Lightweight fragment for product cards (listing grid + related row).
+export const PRODUCT_CARD_FRAGMENT = /* GraphQL */ `
+  fragment ProductCardFragment on Product {
+    id
+    handle
+    title
+    featuredImage {
+      url
+      altText
+      width
+      height
+    }
+    priceRange {
+      minVariantPrice { amount currencyCode }
+    }
   }
 `
 
@@ -47,6 +77,15 @@ export const GET_PRODUCTS = /* GraphQL */ `
       nodes {
         ...ProductFragment
       }
+    }
+  }
+`
+
+export const GET_PRODUCT_RECOMMENDATIONS = /* GraphQL */ `
+  ${PRODUCT_CARD_FRAGMENT}
+  query GetProductRecommendations($productId: ID!) {
+    productRecommendations(productId: $productId, intent: RELATED) {
+      ...ProductCardFragment
     }
   }
 `

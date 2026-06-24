@@ -3,6 +3,7 @@ import {
   GET_CART,
   GET_PRODUCTS,
   GET_PRODUCT_BY_HANDLE,
+  GET_PRODUCT_RECOMMENDATIONS,
   GET_ALL_PRODUCT_HANDLES,
   CART_CREATE,
   CART_LINES_ADD,
@@ -40,6 +41,16 @@ export async function getProducts(first = 20) {
 export async function getProductByHandle(handle) {
   const data = await shopifyFetch(GET_PRODUCT_BY_HANDLE, { handle })
   return data?.product ?? null
+}
+
+export async function getRelatedProducts(productId, limit = 4) {
+  try {
+    const data = await shopifyFetch(GET_PRODUCT_RECOMMENDATIONS, { productId })
+    return (data?.productRecommendations ?? []).slice(0, limit)
+  } catch (err) {
+    console.error('Shop: failed to load related products', err)
+    return []
+  }
 }
 
 export async function getAllProductHandles() {

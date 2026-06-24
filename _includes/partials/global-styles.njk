@@ -1,0 +1,516 @@
+    <div class="global-styles">
+      <div class="u-embed-css w-embed">
+        <style>
+  /* ------------------------- Default -------------------------------------------------- */
+  /*
+  body * {
+    color: inherit;
+  }
+  */
+  *,
+  *:after,
+  *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    text-size-adjust: none;
+  }
+  ::selection {
+    background-color: black;
+    color: white;
+    text-shadow: none;
+  }
+  *:focus-visible:not(input, textarea, select) {
+    outline: var(--color) auto 10px;
+    outline-offset: 5px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::after,
+    *::before {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+/*
+  svg {
+    max-width: none;
+    height: auto;
+    box-sizing: border-box;
+    vertical-align: middle;
+  }
+*/
+  a,
+  .w-input,
+  .w-select,
+  .w-tab-link,
+  .w-nav-link,
+  .w-slider-arrow-left,
+  .w-slider-arrow-right,
+  .w-dropdown-btn,
+  .w-dropdown-toggle,
+  .w-dropdown-link {
+    color: inherit;
+    text-decoration: inherit;
+    font-size: inherit;
+  }
+  /* Focus state style for keyboard navigation for the focusable elements */
+  *[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+    outline: 0.125rem solid #4d65ff;
+    outline-offset: 0.125rem;
+  }
+  /* Get rid of top margin on first element in any rich text element */
+  .w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+    margin-top: 0 !important;
+  }
+  /* Get rid of bottom margin on last element in any rich text element */
+  .w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+    margin-bottom: 0 !important;
+  }
+  /* Prevent all click and hover interaction with an element */
+  .pointer-events-off {
+    pointer-events: none;
+  }
+  /* Enables all click and hover interaction with an element */
+  .pointer-events-on {
+    pointer-events: auto;
+  }
+  /* Create a class of .div-square which maintains a 1:1 dimension of a div */
+  .div-square::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+  /* Make sure containers never lose their center alignment */
+  .container-medium,.container-small, .container-large {
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  /* Apply "..." after 3 lines of text */
+  .text-style-3lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  /* Apply "..." after 2 lines of text */
+  .text-style-2lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  /* Adds inline flex display */
+  .display-inlineflex {
+    display: inline-flex;
+  }
+  /* These classes are never overwritten */
+  .hide {
+    display: none !important;
+  }
+  @media screen and (max-width: 991px) {
+    .hide, .hide-m {
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .hide-s{
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 479px) {
+    .hide-xs{
+      display: none !important;
+    }
+  }
+  @media screen and (min-width: 991px) {
+    .show-m-block, .show-m-flex{
+      display: none !important;
+    }
+  }
+  @media screen and (min-width: 767px) {
+    .show-s-block, .show-s-flex{
+      display: none !important;
+    }
+  }
+  @media screen and (min-width: 479px) {
+    .show-xs-block, .show-xs-flex{
+      display: none !important;
+    }
+  }
+  .margin-0 {
+    margin: 0rem !important;
+  }
+  .padding-0 {
+    padding: 0rem !important;
+  }
+  .spacing-clean {
+    padding: 0rem !important;
+    margin: 0rem !important;
+  }
+  .margin-top {
+    margin-right: 0rem !important;
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .padding-top {
+    padding-right: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+  }
+  .margin-right {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .padding-right {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+  }
+  .margin-bottom {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .padding-bottom {
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+  .margin-left {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+  .padding-left {
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+  .margin-horizontal {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+  }
+  .padding-horizontal {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+  }
+  .margin-vertical {
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+  }
+  .padding-vertical {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+  }
+  .truncate-width { 
+    width: 100%; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none; 
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* To get this shitty padding-bottom/padding-right 75px bug removed */
+  .wf-design-mode .wf-empty,
+  .wf-editor-mode .wf-empty {
+    padding: 0 !important;
+  }
+  .wf-empty[class*="--"] {
+    padding: 0;
+  }
+  /* ------------------------- Hide Scrollbar -------------------------------------------------- */
+  body ::-webkit-scrollbar,
+  body::-webkit-scrollbar {display: none;} /* Chrome, Safari, Opera */
+  body {-ms-overflow-style: none;} /* IE & Edge */
+  html {scrollbar-width: none;} /* Firefox */
+  /* ------------------------- Reset CSS -------------------------------------------------- */
+  .seo-title {
+    position: absolute;
+    clip: rect(1px,1px,1px,1px);
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+  }
+  /* Hide */
+  .u-hide-if-empty:empty,
+  .u-hide-if-empty:not(:has(> :not(.w-condition-invisible))),
+  .u-hide-if-empty-cms:not(:has(.w-dyn-item)),
+  .u-embed-js,
+  .u-embed-css {
+    display: none !important;
+  }
+  .wf-design-mode .webflow-info {
+    display: flex;
+  }
+  .rich-text-inherit > * {
+    font-size: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    font-weight: inherit !important;
+    font-family: inherit !important;
+    margin: inherit !important;
+    padding: inherit !important;
+  }
+  .w-richtext:before, .w-richtext:after {
+    content: none;
+  }
+</style>
+      </div>
+      <div class="u-embed-css w-embed">
+        <style>
+  :root {
+    --font-from: 18;
+    --font-to: 20;
+    --vw-from: calc(1920 / 100);
+    --vw-to: calc(2400 / 100);
+    --coefficient: calc((var(--font-to) - var(--font-from)) / (var(--vw-to) - var(--vw-from)));
+    --base: calc((var(--font-from) - var(--vw-from) * var(--coefficient)) / 16);
+  }
+  html {
+    font-size: calc(var(--base) * 1rem + var(--coefficient) * 1vw);
+  }
+  @media screen and (max-width: 1920px) {
+    :root {
+      --font-from: 16;
+      --font-to: 18;
+      --vw-from: calc(1440 / 100);
+      --vw-to: calc(1920 / 100);
+    }
+  }
+  @media screen and (max-width: 1440px) {
+    :root {
+      --font-from: 14;
+      --font-to: 16;
+      --vw-from: calc(991 / 100);
+      --vw-to: calc(1440 / 100);
+    }
+  }
+  @media screen and (max-width: 991px) {
+    :root {
+      --font-from: 14;
+      --font-to: 16;
+      --vw-from: calc(767 / 100);
+      --vw-to: calc(991 / 100);
+    }
+  }
+  @media screen and (max-width: 767px) {
+    :root {
+      --font-from: 14;
+      --font-to: 16;
+      --vw-from: calc(479 / 100);
+      --vw-to: calc(767 / 100);
+    }
+  }
+  @media screen and (max-width: 479px) {
+    :root {
+      --font-from: 12;
+      --font-to: 16;
+      --vw-from: calc(1 / 100);
+      --vw-to: calc(479 / 100);
+    }
+  }
+  .link_line.is-highlight {
+    transition: transform 0.735s cubic-bezier(0.625, 0.05, 0, 1);
+  }
+  .link_text-wrap,
+  .link_text,
+  .link_dot {
+    transition: transform 0.35s cubic-bezier(0.625, 0.05, 0, 1);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .link:hover .link_line.is-highlight {
+      transform: scaleX(1);
+    }
+    .link:hover .link_text {
+      transform: translateY(-100%);
+    }
+    /* Show button on hover */
+    body:has([data-cursor]:hover) .cursor {
+      opacity: 1;
+    }
+    .button:hover .button-bg {
+      transform: scale(0.95);
+    }
+  }
+  /* FAQ */
+  .wf-design-mode .accordion_content_wrap {
+    display: block;
+  }
+  /* Underline Links - Contact page */
+  .link-underlined_wrap {
+    --on: 1;
+    --off: 0;
+  }
+  .link-underlined_wrap:focus-visible {
+    --on: 0;
+    --off: 1;
+  }
+  @media (hover: hover) {
+    .link-underlined_wrap:hover {
+      --on: 0;
+      --off: 1;
+    }
+  }
+  /* Form Input Autofull - Reset */
+  input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0px 9999px white;
+  }
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white inset;
+  }
+  .page-wrap:has([data-cursor-play]:hover) .cursor .button-default__svg {
+    display: flex;
+  }
+  /*
+------ Cursor
+  */
+  @media (hover: hover) and (pointer: fine) {
+    [data-cursor] .cursor-bubble {
+      transition:
+        transform 0.4s cubic-bezier(0.625, 0.05, 0, 1),
+        opacity 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+      transform: translateX(0%) scale(0.9) rotate(0.001deg);
+    }
+    [data-cursor='active'] .cursor-bubble {
+      opacity: 1;
+      transform: translateX(0%) scale(1) rotate(0.001deg);
+    }
+    [data-cursor='active-edge'] .cursor-bubble {
+      opacity: 1;
+      transform: translateX(-100%) scale(1) rotate(0.001deg);
+    }
+  }
+  @media (hover: none) and (pointer: coarse) {
+    .cursor {
+      display: none;
+    }
+  }
+</style>
+      </div>
+      <div class="u-embed-css w-embed">
+        <style>
+  .wf-design-mode {
+    & .seo-title {
+      position: static;
+      clip: unset;
+      clip-path: inset(0%);
+      overflow: hidden;
+      height: auto;
+      width: auto;
+    }
+    & .seo-title::after {
+      content: " (this title is only for SEO, not visible on live site)";
+      display: block;
+      font-size: 11px;
+    }
+    & .link-cover {
+      z-index: -1;
+    }
+    & .home--projects_item-content {
+      pointer-events: auto;
+    }
+    .form_label {
+      z-index: 4;
+    }
+    .page-transition_component {
+      display: none !important;
+    }
+    .img-swipe {
+      display: none;
+    }
+  }
+</style>
+      </div>
+      <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+        <style>
+  /* Characters */
+  .button [data-button-text],
+  [data-button-trigger] [data-button-text],
+  .link [data-button-text] {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+  }
+  .button [data-button-text] span,
+  .link [data-button-text] span,
+  [data-button-trigger] [data-button-text] span {
+    display: inline-block;
+    position: relative;
+    text-shadow: 0px 1.3em currentColor;
+    transform: translateY(0em) rotate(0.001deg);
+    transition: transform 0.6s cubic-bezier(0.625, 0.05, 0, 1);
+  }
+  .button:hover [data-button-text] span,
+  .link:hover [data-button-text] span,
+  [data-button-trigger]:hover [data-button-text] span {
+    transform: translateY(-1.3em) rotate(0.001deg);
+  }
+  /* Background */
+  .button_bg {
+    inset: 0;
+    /*transition: inset 0.6s cubic-bezier(0.625, 0.05, 0, 1);*/
+  }
+  .button:hover .button_bg,
+  [data-button-trigger]:hover .button_bg {
+    inset: 0.125em;
+  }
+</style>
+      </div>
+      <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+        <style>
+[data-highlight-marker-reveal]{
+  visibility: hidden;
+}
+.wf-design-mode [data-highlight-marker-reveal]{
+  visibility: visible;  
+}
+[data-highlight-marker-reveal] .highlight-marker-line{
+  width: auto;
+  display: inline-block !important;
+  margin: -0.055em 0px;
+}
+.highlight-marker-bar{
+  position: absolute;
+  inset: -0.055em 0px;
+  z-index: 1;
+  pointer-events: none;
+}
+</style>
+      </div>
+      <div class="u-embed-css w-embed"><!--  CSS Starter  -->
+        <style>
+[data-trail-item="hidden"] {
+  transform: translate(-50%, -50%) scale(0) rotate(-20deg);
+  position: absolute;
+}
+[data-trail-item="visible"] {
+  transform: translate(-50%, -50%) scale(1) rotate(0.001deg);
+  transition: transform 0.4s cubic-bezier(0.625, 0.05, 0, 1);
+  position: absolute;
+}
+[data-trail-item="transition-out"] {
+  transform: translate(-50%, -50%) scale(0) rotate(180deg);
+  transition: transform 0.8s cubic-bezier(0.625, 0, 0.875, 0);
+  position: absolute;
+}
+</style>
+      </div>
+    </div>

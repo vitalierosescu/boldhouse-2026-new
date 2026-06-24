@@ -5,6 +5,13 @@
 # Build
 node_modules
 dist
+_site
+# Stray root UMD bundle — Vercel builds to dist/, this is an unused artifact
+/main.js
+
+# Agent runtime state
+.ralph/
+.DS_Store
 
 # Env
 .env

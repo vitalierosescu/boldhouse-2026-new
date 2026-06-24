@@ -15,7 +15,9 @@
 - Cart drawer and nav badge are global (init once, survive Barba page transitions).
 - Shop listing page: `shop.html` (`data-barba-namespace="shop"`).
 - Product detail page: `shop-product.html?handle=<handle>` (`data-barba-namespace="product"`).
-- Styles for all shop UI live in `css/shop.css` (uses design system CSS tokens from `design.md`).
+- Styles for all shop UI live in `css/shop.css`. It drives every colour through the shared theme tokens (`--_theme---*`, `--swatch--dark-*`, `--brand--accent`) — **do not hardcode `rgba(13,14,14,X)`**; `rgba()` only as a `var()` fallback.
+- **The shop is light** — which matches the site's *default* theme (the site is light by default with dark sections layered in). The PDP (`shop-product.html`) is a No Art-style editorial 3-column layout: meta blocks (Materials/Care/Size & fit/Delivery, from `custom.*` metafields) · stacked gallery · buy column; plus "You might also like" (Shopify `productRecommendations`) and prev/next nav.
+- See `.claude/docs/shop-implementation.md` for the full implementation reference.
 
 <!-- BRAND-GUIDELINES-START -->
 ## Brand Guidelines

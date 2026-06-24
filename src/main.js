@@ -7,6 +7,7 @@ import { initCartDrawer } from './shop/cart-drawer.js'
 import { initNavCartBadge } from './shop/nav-cart-badge.js'
 import { initShopPage } from './shop/shop-page.js'
 import { initProductPage } from './shop/product-page.js'
+import { initApplyPage } from './apply.js'
 
 if (!window.gsap) window.gsap = gsap
 
@@ -96,6 +97,7 @@ function initAfterEnterFunctions(next) {
     initSpacesPage(nextPage)
   } else if (ns === 'shop') initShopPage(nextPage)
   else if (ns === 'product') initProductPage(nextPage)
+  else if (ns === 'apply') initApplyPage()
 
   if (hasLenis) window.lenis?.resize()
   if (hasScrollTrigger) ScrollTrigger.refresh()
@@ -132,8 +134,8 @@ function runPageLeaveAnimation(current, next) {
     current,
     {
       autoAlpha: 0,
-      ease: 'power1.in',
-      duration: 0.3,
+      ease: 'power2.inOut',
+      duration: 0.4,
     },
     0
   )
@@ -162,8 +164,8 @@ function runPageEnterAnimation(next) {
     },
     {
       autoAlpha: 1,
-      ease: 'power1.inOut',
-      duration: 0.4,
+      ease: 'power2.inOut',
+      duration: 0.5,
     },
     'startEnter'
   )
@@ -328,6 +330,8 @@ barba.init({
       // First load
       async once(data) {
         initOnceFunctions()
+        applyThemeFrom(data.next.container)
+        initAfterEnterFunctions(data.next.container)
 
         return runPageOnceAnimation(data.next.container)
       },
@@ -562,6 +566,9 @@ const pageCleanups = []
 function registerCleanup(fn) {
   pageCleanups.push(fn)
 }
+// Expose to feature modules (e.g. shop/motion.js) so their non-ScrollTrigger
+// teardown (matchMedia, Observer, Flip listeners) is drained on barba.afterLeave.
+window.__bhRegisterCleanup = registerCleanup
 function runPageCleanups() {
   while (pageCleanups.length) {
     const fn = pageCleanups.pop()
@@ -2610,7 +2617,7 @@ function initPriceCards(next = document) {
         cards.forEach((c) => c.classList.remove("is--active"));
         card.classList.add("is--active");
         gsap.to(card, {
-          scale: prefersReducedMotion() ? 1 : 1.1,
+          scale: reducedMotion ? 1 : 1.1,
           duration: 0.3,
           ease: "back.out(1.8)",
           overwrite: "auto",

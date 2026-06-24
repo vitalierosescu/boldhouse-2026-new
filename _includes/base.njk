@@ -1,0 +1,13 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Sat Jun 20 2026 13:32:13 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-site="69e0fdfc6da92a5c220bbe58" lang="en">
+{% include "partials/head.njk" %}
+<body data-barba="wrapper"{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+  <div class="page-wrap{% if pageWrapClass %} {{ pageWrapClass }}{% endif %}">
+{% include "partials/global-styles.njk" %}
+{% if not hideTransition %}{% include "partials/transition.njk" %}{% endif %}
+{% include "partials/nav.njk" %}
+{% if showCursor %}{% include "partials/cursor.njk" %}{% endif %}
+{{ content | safe }}
+{% include "partials/scripts.njk" %}
+</body>
+</html>
