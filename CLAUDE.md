@@ -19,6 +19,14 @@
 - **The shop is light** — which matches the site's *default* theme (the site is light by default with dark sections layered in). The PDP (`shop-product.html`) is a No Art-style editorial 3-column layout: meta blocks (Materials/Care/Size & fit/Delivery, from `custom.*` metafields) · stacked gallery · buy column; plus "You might also like" (Shopify `productRecommendations`) and prev/next nav.
 - See `.claude/docs/shop-implementation.md` for the full implementation reference.
 
+## Design & Collaboration Workflow
+
+- **The site is LIGHT by default**, with dark sections layered in via theme tokens (`.u-theme-dark`, `data-theme-page-to="dark"` on heroes/footer CTA). The auto-synced **Brand Guidelines block below is aspirational** — its "#000000 background / #ffffff text" does NOT describe the built site. For any theme/colour decision, read the real pages + `css/boldhouse-2026.webflow.css` (`--_theme---*` / `--swatch--*`), never the brand-guide summary.
+- **Favour restraint** for this brand (Soho House / The Hoxton / Gil Huybrechts): smooth scroll, whitespace, refined hovers, photography-led. Heavy per-item scroll reveals read cheap here. When a stated brief ("bold") conflicts with the brand references (restraint), weight the references and confirm.
+- **Show a concrete proof early.** For design/motion, get one element in front of the user (screenshot / single interaction) before building a whole direction — taste is calibrated on concrete output, not on abstract questionnaire answers.
+- **Build in verified checkpoints.** Ship a slice, prove it with a real browser screenshot + console check + (for motion) a perf trace, get a quick thumbs-up, then expand.
+- **Spec locations:** brainstorming specs → `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`; living reference docs → `.claude/docs/`.
+
 <!-- BRAND-GUIDELINES-START -->
 ## Brand Guidelines
 

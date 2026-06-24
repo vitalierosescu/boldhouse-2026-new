@@ -48,10 +48,6 @@ export function initApplyPage() {
 
     if (!next || current === next) return
 
-    const isForward = typeof currentScreen === 'number' && typeof n === 'number'
-      ? n > currentScreen
-      : true
-
     currentScreen = n
     updateProgress()
 
@@ -62,25 +58,21 @@ export function initApplyPage() {
       return
     }
 
-    const yOut = isForward ? -24 : 24
-    const yIn  = isForward ?  24 : -24
-
     window.gsap.to(current, {
       opacity: 0,
-      y: yOut,
       duration: 0.25,
-      ease: 'power2.in',
+      ease: 'power2.inOut',
       onComplete() {
         current.hidden = true
-        window.gsap.set(current, { clearProps: 'opacity,y' })
+        window.gsap.set(current, { clearProps: 'opacity' })
 
         next.hidden = false
         doScroll()
 
         window.gsap.fromTo(next,
-          { opacity: 0, y: yIn },
+          { opacity: 0 },
           {
-            opacity: 1, y: 0, duration: 0.35, ease: 'power2.out',
+            opacity: 1, duration: 0.35, ease: 'power2.inOut',
             onComplete() { if (manageFocus) focusScreen(next) },
           }
         )
