@@ -47,8 +47,20 @@ const easeDefault = 'boldhouse'
 CustomEase.create('boldhouse', '.5,0,.05,1.01')
 gsap.defaults({ ease: easeDefault, duration: durationDefault })
 
-const initialPageFade = () => {
-  const elements = document.querySelectorAll('[data-start="hidden"]')
+const initialPageFade = (container = document) => {
+  let elements
+  if (container === document) {
+    elements = Array.from(document.querySelectorAll('[data-start="hidden"]'))
+  } else {
+    // Entering container + global elements outside any Barba container (e.g. nav)
+    const inContainer = Array.from(container.querySelectorAll('[data-start="hidden"]'))
+    const global = Array.from(document.querySelectorAll('[data-start="hidden"]')).filter(
+      (el) => !el.closest('[data-barba="container"]')
+    )
+    elements = [...new Set([...inContainer, ...global])]
+  }
+
+  if (!elements.length) return
 
   if (reducedMotion || isOnceFunctionsInitialized) {
     gsap.set(elements, { autoAlpha: 1 })
@@ -89,13 +101,9 @@ function initAfterEnterFunctions(next) {
   // Page-specific code, dispatched by data-barba-namespace.
   const ns = nextPage?.dataset?.barbaNamespace
   if (ns === 'home') initHomePage(nextPage)
-  else if (ns === 'club') {
-    console.log('club page')
-    initClubPage(nextPage)
-  } else if (ns === 'spaces') {
-    console.log('spaces page')
-    initSpacesPage(nextPage)
-  } else if (ns === 'shop') initShopPage(nextPage)
+  else if (ns === 'club') initClubPage(nextPage)
+  else if (ns === 'spaces') initSpacesPage(nextPage)
+  else if (ns === 'shop') initShopPage(nextPage)
   else if (ns === 'product') initProductPage(nextPage)
   else if (ns === 'apply') initApplyPage()
 
@@ -166,100 +174,6 @@ function runPageEnterAnimation(next) {
     tl.call(resolve, null, 'pageReady')
   })
 }
-
-
-
-// -----------------------------------------
-// PAGE TRANSITIONS
-// -----------------------------------------
-
-// function runPageOnceAnimation(next) {
-//   const tl = gsap.timeline();
-
-//   tl.call(() => {
-//     resetPage(next);
-//   }, null, 0);
-
-//   return tl;
-// }
-
-// function runPageLeaveAnimation(current, next) {
-//   const transitionWrap = document.querySelector("[data-transition-wrap]");
-//   const transitionDark = transitionWrap.querySelector("[data-transition-dark]");
-
-//   const tl = gsap.timeline({
-//     onComplete: () => {
-//       current.remove();
-//     }
-//   })
-
-//   CustomEase.create("parallax", "0.7, 0.05, 0.13, 1");
-
-//   if (reducedMotion) {
-//     // Immediate swap behavior if user prefers reduced motion
-//     return tl.set(current, { autoAlpha: 0 });
-//   }
-
-//   tl.set(transitionWrap, {
-//     zIndex: 2
-//   });
-
-//   tl.fromTo(transitionDark, {
-//     autoAlpha: 0
-//   }, {
-//     autoAlpha: 0.8,
-//     duration: 1.2,
-//     ease: "boldhouse"
-//   }, 0);
-
-//   tl.fromTo(current, {
-//     y: "0vh"
-//   }, {
-//     y: "-25vh",
-//     duration: 1.2,
-//     ease: "boldhouse",
-//   }, 0);
-
-//   tl.set(transitionDark, {
-//     autoAlpha: 0,
-//   });
-
-//   return tl;
-// }
-
-// function runPageEnterAnimation(next) {
-//   const tl = gsap.timeline();
-
-//   if (reducedMotion) {
-//     // Immediate swap behavior if user prefers reduced motion
-//     tl.set(next, { autoAlpha: 1 });
-//     tl.add("pageReady")
-//     tl.call(resetPage, [next], "pageReady");
-//     return new Promise(resolve => tl.call(resolve, null, "pageReady"));
-//   }
-
-//   tl.add("startEnter", 0);
-
-//   tl.set(next, {
-//     zIndex: 3
-//   });
-
-//   tl.fromTo(next, {
-//     y: "100vh"
-//   }, {
-//     y: "0vh",
-//     duration: 1.2,
-//     clearProps: "all",
-//     ease: "boldhouse"
-//   }, "startEnter");
-
-//   tl.add("pageReady");
-//   tl.call(resetPage, [next], "pageReady");
-
-//   return new Promise(resolve => {
-//     tl.call(resolve, null, "pageReady");
-//   });
-// }
 
 
 // ======================= BARBA HOOKS + INIT
@@ -2688,10 +2602,22 @@ function initPriceCards(next = document) {
 const initHeroEnter = (container = document) => {
   const heroHeadings = container.querySelectorAll('[data-hero-heading]')
   heroHeadings.forEach((heading) => {
-    splitReveal(heading, {
-      delay: 0,
-      duration: 1.2,
-      stagger: 0.12,
+    SplitText.create(heading, {
+      type: 'lines',
+      mask: 'lines',
+      autoSplit: false,
+      linesClass: 'line',
+      onSplit(self) {
+        if (!self.lines?.length) return
+        gsap.set(self.lines, { yPercent: 110 })
+        gsap.to(self.lines, {
+          yPercent: 0,
+          stagger: 0.12,
+          duration: 1.2,
+          ease: 'expo.out',
+          force3D: true,
+        })
+      },
     })
   })
 }
@@ -2714,7 +2640,9 @@ initNav(container)
   initMomentumBasedHover(container)
   if (has('[data-nav-theme-to]')) initNavThemeTriggers(container)
   if (has('[data-theme-page-to]')) initSectionThemeTriggers(container)
-  document.fonts.ready.then(() => initTextAnimations(container))
+  document.fonts.ready.then(() => {
+    initTextAnimations(container)
+  })
 
   initEventSlider(container)
   initDynamicTextCursor()

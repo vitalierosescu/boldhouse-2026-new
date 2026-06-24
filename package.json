@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "lint": "eslint ./src --fix",
     "site:dev": "eleventy --serve --port 8383",
-    "site:build": "eleventy"
+    "site:build": "eleventy",
+    "build:deploy": "yarn build && yarn site:build && cp dist/main.js _site/main.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",

@@ -124,7 +124,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   <!--  JS  -->
   <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js">
@@ -142,7 +142,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       'http://localhost:4747/@vite/client',
       'http://localhost:4747/src/main.js',
     ]
-    var PROD_URL = ['https://boldhouse.vercel.app/main.js']
+    var PROD_URL = ['/main.js']
     function createScripts(arr, isDevMode) {
       return arr.map(function (url) {
         var s = document.createElement('script')

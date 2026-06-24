@@ -1,5 +1,5 @@
 {
-  "buildCommand": "yarn build",
-  "outputDirectory": "dist",
+  "buildCommand": "yarn build:deploy",
+  "outputDirectory": "_site",
   "installCommand": "yarn install"
 }
