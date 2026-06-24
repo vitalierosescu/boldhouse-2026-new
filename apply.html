@@ -1,0 +1,922 @@
+---
+layout: base.njk
+title: "Apply | Boldhouse"
+description: "Apply for a Boldhouse membership. Creative coworking in Ghent."
+navTheme: dark
+---
+  <div data-barba-namespace="apply" data-barba="container" data-nav-start="dark" class="barba-container u-theme-dark">
+    <main class="main-wrap">
+
+      <!-- Apply-page styles -->
+      <div class="u-embed-css w-embed">
+        <style>
+          /* ---- WIZARD CONTAINER ---- */
+          .apply-wizard {
+            background: #000;
+            color: #fff;
+          }
+
+          /* ---- SCREENS ---- */
+          .apply-screen[hidden] {
+            display: none !important;
+          }
+
+          .apply-screen {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .apply-screen > .padding-global {
+            width: 100%;
+          }
+
+          .apply-step-title:focus,
+          .apply-hero-headline:focus,
+          .apply-success-heading:focus {
+            outline: none;
+          }
+
+          /* ---- HERO ---- */
+          .apply-hero-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+          }
+
+          .apply-hero-tagline {
+            color: #fff;
+            opacity: 0.6;
+            font-family: "Fraunces Variable", "Times New Roman", serif;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 353;
+            line-height: 80%;
+            letter-spacing: -0.0375rem;
+            text-align: center;
+          }
+
+          .apply-hero-headline {
+            font-family: var(--_typography---font--font-title);
+            font-weight: 400;
+            font-size: clamp(2.5rem, 4.75vw, 4.25rem);
+            text-transform: uppercase;
+            line-height: 85%;
+            letter-spacing: -0.0425rem;
+            text-align: center;
+            margin: 0;
+          }
+
+          /* ---- STEP SCREENS ---- */
+          .apply-screen--step {
+            justify-content: flex-start;
+            padding-top: 9rem;
+            padding-bottom: 6rem;
+          }
+
+          .apply-screen--step > .padding-global {
+            width: 100%;
+          }
+
+          /* ---- PROGRESS BAR ---- */
+          .apply-progress {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 2.5rem;
+          }
+
+          .apply-progress-segment {
+            flex: 1;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            transition: background 0.3s ease;
+          }
+
+          .apply-progress-segment.is--active {
+            background: #fff;
+          }
+
+          /* ---- STEP TITLE ---- */
+          .apply-step-title {
+            font-family: "Fraunces Variable", "Times New Roman", serif;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 400;
+            text-align: center;
+            text-transform: none;
+            margin-bottom: 1.25rem;
+            color: #fff;
+          }
+
+          /* ---- TIER CARDS ---- */
+          .apply-tiers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+          }
+
+          .apply-tier-card {
+            display: block;
+            background: #222222;
+            border-radius: 0;
+            padding: 2rem;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: border-color 0.2s ease;
+            position: relative;
+          }
+
+          .apply-tier-card:hover {
+            border-color: rgba(130, 238, 255, 0.35);
+          }
+
+          /* Native radio drives the selection — invisible but focusable for
+             keyboard + screen-reader users. :has() powers the visual state. */
+          .apply-tier-radio {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+          }
+
+          .apply-tier-card.is--selected,
+          .apply-tier-card:has(.apply-tier-radio:checked) {
+            border-color: var(--brand--accent, #82eeff);
+          }
+
+          .apply-tier-card:has(.apply-tier-radio:focus-visible) {
+            outline: 2px solid var(--brand--accent, #82eeff);
+            outline-offset: 3px;
+          }
+
+          /* Checkbox indicator top-right */
+          .apply-tier-check {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 16px;
+            height: 16px;
+            border: 1.5px solid rgba(255,255,255,0.4);
+            border-radius: 2px;
+            transition: background 0.2s ease, border-color 0.2s ease;
+            pointer-events: none;
+          }
+
+          .apply-tier-card.is--selected .apply-tier-check,
+          .apply-tier-card:has(.apply-tier-radio:checked) .apply-tier-check {
+            background: var(--brand--accent, #82eeff);
+            border-color: var(--brand--accent, #82eeff);
+          }
+
+          .apply-tier-name {
+            font-family: "Fraunces Variable", "Times New Roman", serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.25rem;
+          }
+
+          .apply-tier-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.2em;
+            margin-bottom: 1.25rem;
+          }
+
+          .apply-tier-amount {
+            font-family: var(--_typography---font--font-title);
+            font-size: 2.75rem;
+            font-weight: 400;
+            line-height: 1;
+            color: #fff;
+          }
+
+          .apply-tier-period {
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.6);
+          }
+
+          .apply-tier-tagline {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.45;
+            margin-bottom: 1.25rem;
+          }
+
+          .apply-tier-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.15);
+            margin-bottom: 1.25rem;
+          }
+
+          .apply-tier-includes {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 0.75rem;
+          }
+
+          .apply-tier-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+          }
+
+          .apply-tier-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.4;
+          }
+
+          .apply-tier-benefit-icon {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+            margin-top: 2px;
+            color: rgba(255,255,255,0.5);
+          }
+
+          /* ---- NAV BUTTONS ---- */
+          .apply-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+          }
+
+          .apply-nav .button[disabled],
+          .apply-nav .button:disabled {
+            opacity: 0.35;
+            cursor: default;
+            pointer-events: none;
+          }
+
+          /* ---- FORM (Step 2) ---- */
+          .apply-form {
+            width: 100%;
+          }
+
+          .apply-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 3rem;
+            row-gap: 2.5rem;
+            margin-bottom: 3rem;
+          }
+
+          .apply-field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+          }
+
+          .apply-field-group--full {
+            grid-column: 1 / -1;
+          }
+
+          .apply-field-label {
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.5);
+          }
+
+          .apply-field-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.25);
+            color: #fff;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            outline: none;
+            width: 100%;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+          }
+
+          .apply-field-input:focus {
+            border-bottom-color: rgba(255,255,255,0.7);
+          }
+
+          .apply-field-input[aria-invalid="true"] {
+            border-bottom-color: #ff6b6b;
+          }
+
+          .apply-field-textarea {
+            resize: none;
+            min-height: 7rem;
+          }
+
+          /* Per-field validation message */
+          .apply-field-error {
+            color: #ff6b6b;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0;
+          }
+
+          /* Generic submission failure (used once the Archie endpoint is live) */
+          .apply-form-error {
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+          }
+
+          /* ---- SUCCESS ---- */
+          .apply-screen--success {
+            text-align: center;
+          }
+
+          .apply-success-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 560px;
+            text-align: center;
+          }
+
+          .apply-success-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--brand--accent, #82eeff);
+          }
+
+          .apply-success-heading {
+            font-family: var(--_typography---font--font-title);
+            font-weight: 400;
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -0.0425rem;
+            margin: 0;
+          }
+
+          .apply-success-body {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+          }
+
+          /* ---- "HELP ME CHOOSE" TRIGGER ---- */
+          .apply-quiz-trigger {
+            display: block;
+            margin: 0 auto 3rem;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.55);
+            font-family: inherit;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+          }
+
+          .apply-quiz-trigger span {
+            color: var(--brand--accent, #82eeff);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+          }
+
+          .apply-quiz-trigger:hover { color: #fff; }
+
+          /* ---- QUIZ MODAL ---- */
+          .apply-quiz[hidden] { display: none !important; }
+
+          .apply-quiz {
+            position: fixed;
+            inset: 0;
+            z-index: 60;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+          }
+
+          .apply-quiz-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.72);
+          }
+
+          .apply-quiz-dialog {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            background: #161616;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 2px;
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+          }
+
+          .apply-quiz-close {
+            position: absolute;
+            top: 0.6rem;
+            right: 0.9rem;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.2s ease;
+          }
+
+          .apply-quiz-close:hover { color: #fff; }
+
+          .apply-quiz-indicator {
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 1.5rem;
+          }
+
+          .apply-quiz-step[hidden] { display: none !important; }
+
+          .apply-quiz-question {
+            font-family: "Fraunces Variable", "Times New Roman", serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #fff;
+            margin: 0 0 1.5rem;
+            text-transform: none;
+          }
+
+          .apply-quiz-choices {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+          }
+
+          .apply-quiz-choice {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 2px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            padding: 0.9rem 1rem;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+          }
+
+          .apply-quiz-choice:hover,
+          .apply-quiz-choice:focus-visible {
+            border-color: var(--brand--accent, #82eeff);
+            background: rgba(130,238,255,0.08);
+            outline: none;
+          }
+
+          .apply-quiz-back {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.45);
+            font-family: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: color 0.2s ease;
+          }
+
+          .apply-quiz-back:hover { color: #fff; }
+          .apply-quiz-back[hidden] { display: none !important; }
+
+          /* Quiz result */
+          .apply-quiz-result-label {
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--brand--accent, #82eeff);
+            margin-bottom: 0.75rem;
+          }
+
+          .apply-quiz-result-heading {
+            font-family: var(--_typography---font--font-title);
+            font-weight: 400;
+            font-size: 1.75rem;
+            text-transform: uppercase;
+            line-height: 1;
+            letter-spacing: -0.0425rem;
+            color: #fff;
+            margin: 0 0 1rem;
+          }
+
+          .apply-quiz-result-body {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0 0 1.75rem;
+          }
+
+          .apply-quiz-result-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+          }
+
+          .apply-quiz-choose {
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 100px;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.7rem 1.75rem;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+          }
+
+          .apply-quiz-choose:hover { opacity: 0.85; }
+
+          .apply-quiz-seeall {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-family: inherit;
+            font-size: 0.8rem;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+          }
+
+          .apply-quiz-seeall:hover { color: #fff; }
+
+          /* ---- RESPONSIVE ---- */
+          @media (max-width: 991px) {
+            .apply-screen--step {
+              padding-top: 7rem;
+            }
+
+            .apply-tiers {
+              gap: 0.75rem;
+            }
+
+            .apply-tier-card {
+              padding: 1.5rem;
+            }
+
+            .apply-form-grid {
+              column-gap: 2rem;
+            }
+          }
+
+          @media (max-width: 767px) {
+            .apply-screen--step {
+              padding-top: 6rem;
+              padding-bottom: 4rem;
+            }
+
+            .apply-tiers {
+              grid-template-columns: 1fr;
+              gap: 1rem;
+            }
+
+            .apply-tier-card {
+              padding: 1.75rem;
+            }
+
+            .apply-form-grid {
+              grid-template-columns: 1fr;
+              column-gap: 0;
+              row-gap: 2rem;
+            }
+
+            .apply-field-group--full {
+              grid-column: 1;
+            }
+          }
+
+          @media (max-width: 479px) {
+            .apply-screen--step {
+              padding-top: 5.5rem;
+            }
+          }
+        </style>
+      </div>
+
+      <div class="apply-wizard">
+
+        <!-- ======================== SCREEN 0: HERO ======================== -->
+        <section class="apply-screen apply-screen--hero" data-apply-screen="0">
+          <div class="apply-hero-content">
+            <div class="apply-hero-tagline">[ Takes about 3 minutes ]</div>
+            <h1 class="apply-hero-headline">Your Boldhouse<br>Application<br>Starts Here.</h1>
+            <div data-wf--button--variant="base">
+              <a href="#" class="button w-inline-block" data-apply-start>
+                <div data-button-text="" class="button_text">Start</div>
+                <div class="button_bg"></div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================== SCREEN 1: CHOOSE MEMBERSHIP ======================== -->
+        <section class="apply-screen apply-screen--step" data-apply-screen="1" hidden>
+          <div class="padding-global" style="width:100%">
+            <div class="container-large">
+              <h2 class="apply-step-title">1. Choose your membership</h2>
+              <div class="apply-progress">
+                <div class="apply-progress-segment is--active"></div>
+                <div class="apply-progress-segment"></div>
+              </div>
+
+              <div class="apply-tiers" role="radiogroup" aria-label="Choose your membership">
+
+                <!-- MEMBER -->
+                <label class="apply-tier-card">
+                  <input class="apply-tier-radio" type="radio" name="tier-choice" value="member" aria-label="Member, €90 per month">
+                  <div class="apply-tier-check" aria-hidden="true"></div>
+                  <div class="apply-tier-name">Member</div>
+                  <div class="apply-tier-price">
+                    <span class="apply-tier-amount">€90</span>
+                    <span class="apply-tier-period">/month</span>
+                  </div>
+                  <div class="apply-tier-tagline">A foot in the door. A community on your side.</div>
+                  <div class="apply-tier-divider"></div>
+                  <div class="apply-tier-includes">Includes</div>
+                  <div class="apply-tier-benefits">
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Community membership access
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Member event invitations
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Barista coffee and all common areas
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Meeting room access (credits-based)
+                    </div>
+                  </div>
+                </label>
+
+                <!-- FLEXI -->
+                <label class="apply-tier-card">
+                  <input class="apply-tier-radio" type="radio" name="tier-choice" value="flexi" aria-label="Flexi, €275 per month">
+                  <div class="apply-tier-check" aria-hidden="true"></div>
+                  <div class="apply-tier-name">Flexi</div>
+                  <div class="apply-tier-price">
+                    <span class="apply-tier-amount">€275</span>
+                    <span class="apply-tier-period">/month</span>
+                  </div>
+                  <div class="apply-tier-tagline">Show up when it suits you.</div>
+                  <div class="apply-tier-divider"></div>
+                  <div class="apply-tier-includes">Includes</div>
+                  <div class="apply-tier-benefits">
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Drop-in desk, first-come basis
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      High-speed wifi
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Barista-grade coffee
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Access to all common areas
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Member event invitations
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Print, scan, phone booths
+                    </div>
+                  </div>
+                </label>
+
+                <!-- FIXED -->
+                <label class="apply-tier-card">
+                  <input class="apply-tier-radio" type="radio" name="tier-choice" value="fixed" aria-label="Fixed, €375 per month">
+                  <div class="apply-tier-check" aria-hidden="true"></div>
+                  <div class="apply-tier-name">Fixed</div>
+                  <div class="apply-tier-price">
+                    <span class="apply-tier-amount">€375</span>
+                    <span class="apply-tier-period">/month</span>
+                  </div>
+                  <div class="apply-tier-tagline">Your desk. Every day.</div>
+                  <div class="apply-tier-divider"></div>
+                  <div class="apply-tier-includes">Includes</div>
+                  <div class="apply-tier-benefits">
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Dedicated desk — yours, every day
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      High-speed wifi
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Barista-grade coffee
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Access to all common areas
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Monthly meeting room credits
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Member events + priority booking
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Bold Basement member rates
+                    </div>
+                    <div class="apply-tier-benefit">
+                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Community profile in member directory
+                    </div>
+                  </div>
+                </label>
+
+              </div>
+
+              <button type="button" class="apply-quiz-trigger" data-quiz-open>Not sure which fits? <span>Help me choose</span></button>
+
+              <div class="apply-nav">
+                <div data-wf--button--variant="base">
+                  <button type="button" class="button w-inline-block" data-apply-prev disabled>
+                    <div data-button-text="" class="button_text">Previous</div>
+                    <div class="button_bg"></div>
+                  </button>
+                </div>
+                <div data-wf--button--variant="base">
+                  <button type="button" class="button w-inline-block" data-apply-next disabled>
+                    <div data-button-text="" class="button_text">Next</div>
+                    <div class="button_bg"></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================== SCREEN 2: ABOUT YOU ======================== -->
+        <section class="apply-screen apply-screen--step" data-apply-screen="2" hidden>
+          <div class="padding-global" style="width:100%">
+            <div class="container-large">
+              <h2 class="apply-step-title">2. About you</h2>
+              <div class="apply-progress">
+                <div class="apply-progress-segment is--active"></div>
+                <div class="apply-progress-segment is--active"></div>
+              </div>
+
+              <form class="apply-form" novalidate>
+                <input type="hidden" name="tier" id="apply-tier-value">
+                <input type="hidden" name="quiz_work" id="apply-quiz-work">
+                <input type="hidden" name="quiz_frequency" id="apply-quiz-frequency">
+
+                <div class="apply-form-grid">
+                  <div class="apply-field-group">
+                    <label class="apply-field-label" for="apply-name">Name &amp; last name</label>
+                    <input class="apply-field-input" type="text" id="apply-name" name="name" autocomplete="name" aria-describedby="apply-name-error" required>
+                    <p class="apply-field-error" id="apply-name-error" hidden>Please enter your name.</p>
+                  </div>
+                  <div class="apply-field-group">
+                    <label class="apply-field-label" for="apply-company">Company</label>
+                    <input class="apply-field-input" type="text" id="apply-company" name="company" autocomplete="organization">
+                  </div>
+                  <div class="apply-field-group">
+                    <label class="apply-field-label" for="apply-email">E-mail</label>
+                    <input class="apply-field-input" type="email" id="apply-email" name="email" autocomplete="email" aria-describedby="apply-email-error" required>
+                    <p class="apply-field-error" id="apply-email-error" hidden>Please enter a valid email address.</p>
+                  </div>
+                  <div class="apply-field-group">
+                    <label class="apply-field-label" for="apply-discipline">What do you do?</label>
+                    <input class="apply-field-input" type="text" id="apply-discipline" name="discipline" placeholder="e.g. Brand Designer, Architect" aria-describedby="apply-discipline-error" required>
+                    <p class="apply-field-error" id="apply-discipline-error" hidden>Tell us what you do.</p>
+                  </div>
+                  <div class="apply-field-group apply-field-group--full">
+                    <label class="apply-field-label" for="apply-message">Message</label>
+                    <textarea class="apply-field-input apply-field-textarea" id="apply-message" name="message"></textarea>
+                  </div>
+                </div>
+
+                <div class="apply-nav">
+                  <div data-wf--button--variant="base">
+                    <button type="button" class="button w-inline-block" data-apply-prev>
+                      <div data-button-text="" class="button_text">Previous</div>
+                      <div class="button_bg"></div>
+                    </button>
+                  </div>
+                  <div data-wf--button--variant="base">
+                    <button type="submit" class="button w-inline-block">
+                      <div data-button-text="" class="button_text">Send my application</div>
+                      <div class="button_bg"></div>
+                    </button>
+                  </div>
+                </div>
+
+                <p class="apply-form-error" role="alert" hidden>Something went wrong. Please try again.</p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================== SUCCESS ======================== -->
+        <section class="apply-screen apply-screen--success" data-apply-screen="success" hidden>
+          <div class="apply-success-content">
+            <p class="apply-success-label">Application received</p>
+            <h2 class="apply-success-heading">We'll be in touch<br>within 48 hours.</h2>
+            <p class="apply-success-body">Got it. We'll review your application and follow up shortly.</p>
+            <div data-wf--button--variant="base">
+              <a href="index.html" class="button w-inline-block">
+                <div data-button-text="" class="button_text">Back to home</div>
+                <div class="button_bg"></div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================== "HELP ME CHOOSE" QUIZ MODAL ======================== -->
+        <div class="apply-quiz" data-quiz hidden>
+          <div class="apply-quiz-backdrop" data-quiz-close></div>
+          <div class="apply-quiz-dialog" role="dialog" aria-modal="true" aria-label="Help me choose your membership">
+            <button type="button" class="apply-quiz-close" data-quiz-close aria-label="Close">&times;</button>
+            <div class="apply-quiz-indicator" aria-live="polite" data-quiz-indicator>1 / 3</div>
+
+            <!-- Q1 -->
+            <div class="apply-quiz-step" data-quiz-step="0">
+              <h3 class="apply-quiz-question">How do you work?</h3>
+              <div class="apply-quiz-choices">
+                <button type="button" class="apply-quiz-choice" data-quiz-answer="work" data-value="hybrid">Hybrid</button>
+                <button type="button" class="apply-quiz-choice" data-quiz-answer="work" data-value="remote">Remote</button>
+                <button type="button" class="apply-quiz-choice" data-quiz-answer="work" data-value="freelancer">Freelancer</button>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="apply-quiz-step" data-quiz-step="1" hidden>
+              <h3 class="apply-quiz-question">How often will you come in?</h3>
+              <div class="apply-quiz-choices">
+                <button type="button" class="apply-quiz-choice" data-quiz-answer="frequency" data-value="occasionally">Occasionally</button>
+                <button type="button" class="apply-quiz-choice" data-quiz-answer="frequency" data-value="couple">A couple days a week</button>
+                <button type="button" class="apply-quiz-choice" data-quiz-answer="frequency" data-value="most">Most days</button>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="apply-quiz-step" data-quiz-step="2" hidden>
+              <h3 class="apply-quiz-question">Want a desk that's always yours?</h3>
+              <div class="apply-quiz-choices">
+                <button type="button" class="apply-quiz-choice" data-quiz-answer="desk" data-value="yes">Yes</button>
+                <button type="button" class="apply-quiz-choice" data-quiz-answer="desk" data-value="no">No</button>
+              </div>
+            </div>
+
+            <!-- Result -->
+            <div class="apply-quiz-step apply-quiz-result" data-quiz-step="result" hidden>
+              <div class="apply-quiz-result-label">Your match</div>
+              <h3 class="apply-quiz-result-heading" data-quiz-result-heading>We think Flexi is your fit.</h3>
+              <p class="apply-quiz-result-body" data-quiz-result-body></p>
+              <div class="apply-quiz-result-actions">
+                <button type="button" class="apply-quiz-choose" data-quiz-choose>Choose Flexi</button>
+                <button type="button" class="apply-quiz-seeall" data-quiz-close>See all options</button>
+              </div>
+            </div>
+
+            <button type="button" class="apply-quiz-back" data-quiz-back hidden>&larr; Back</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
