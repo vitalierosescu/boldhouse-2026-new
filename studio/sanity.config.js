@@ -20,7 +20,7 @@ export default defineConfig({
       previewUrl: {
         // Points at the Eleventy dev server locally. Set SANITY_STUDIO_PREVIEW_URL
         // in studio/.env to override when the site is deployed to a real host.
-        origin: process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:8080',
+        origin: process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:8383',
       },
     }),
     visionTool(),

@@ -8,7 +8,7 @@ Vite dev server for local Webflow JavaScript development with HMR.
 # Install dependencies
 yarn install
 
-# Start dev server (localhost:4000)
+# Start dev server (localhost:4747)
 yarn dev
 ```
 
@@ -20,8 +20,8 @@ Paste this in **Project Settings > Custom Code > Before </body>**:
 <script>
   (function () {
     var LOCALHOST_URL = [
-      'http://localhost:4000/@vite/client',
-      'http://localhost:4000/src/main.js',
+      'http://localhost:4747/@vite/client',
+      'http://localhost:4747/src/main.js',
     ]
     var PROD_URL = ['https://MY-PROJECT.vercel.app/main.js']
 

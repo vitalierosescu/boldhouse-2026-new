@@ -43,7 +43,7 @@ module.exports = function (eleventyConfig) {
 
   // Static assets are served verbatim — the Webflow CSS, images, fonts and the
   // js/ folder. The Vite-built main.js is loaded at runtime via the smart
-  // script loader (localhost:4000 or Vercel), so it is NOT part of this build.
+  // script loader (localhost:4747 or Vercel), so it is NOT part of this build.
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("fonts");

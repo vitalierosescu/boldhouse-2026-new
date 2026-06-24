@@ -15,7 +15,7 @@ export default defineConfig(({ command }) => {
       : [],
     server: {
       host: 'localhost',
-      port: 4000,
+      port: 4747,
       cors: '*',
       hmr: {
         host: 'localhost',

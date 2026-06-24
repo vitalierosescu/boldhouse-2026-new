@@ -1,17 +1,17 @@
 ## Dev Setup
 
 - This folder (`boldhouse-2026.webflow`) is the primary development project — it is both the Webflow export AND the Vite source.
-- **Build**: `yarn dev` (Vite at `:4000`, HMR), `yarn build` (UMD → `dist/main.js`).
-- HTML pages use a smart script loader: tries `localhost:4000` first, falls back to `https://boldhouse.vercel.app/main.js` (production).
-- If something is running on port 4000 and returning errors, kill it so the loader falls back to Vercel.
+- **Build**: `yarn dev` (Vite at `:4747`, HMR), `yarn build` (UMD → `dist/main.js`).
+- HTML pages use a smart script loader: tries `localhost:4747` first, falls back to `https://boldhouse.vercel.app/main.js` (production).
+- If something is running on port 4747 and returning errors, kill it so the loader falls back to Vercel.
 - `src/main.js` is the Vite entry point (UMD, externalises gsap/three/barba/lenis/jquery).
 - `src/shop/` contains the Shopify headless integration (client, cart state, drawer, nav badge, shop/product pages).
 - `dev-webflow/` is the OLD source project — it is now superseded by this one.
 
 ### Local dev & verification gotchas
 
-- **Viewing pages locally needs BOTH servers**: `yarn dev` (Vite `:4000`, serves `src/main.js`) **and** `yarn site:dev` (Eleventy, serves the built HTML at `:8080`). Vite alone isn't enough — it only serves the JS bundle.
-- **Vite MUST be on `:4000`.** The page loader only checks `localhost:4000`; if `:4000` is taken, Vite silently uses `:4001` and pages load the **stale production `main.js` from Vercel** instead of your local changes. If a page seems to ignore your edits, free `:4000` and restart `yarn dev` (`lsof -ti :4000 | xargs kill -9`).
+- **Viewing pages locally needs BOTH servers**: `yarn dev` (Vite `:4747`, serves `src/main.js`) **and** `yarn site:dev` (Eleventy, serves the built HTML at `:8383`). Vite alone isn't enough — it only serves the JS bundle.
+- **Vite MUST be on `:4747`.** The page loader only checks `localhost:4747`; if `:4747` is taken, Vite silently uses `:4001` and pages load the **stale production `main.js` from Vercel** instead of your local changes. If a page seems to ignore your edits, free `:4747` and restart `yarn dev` (`lsof -ti :4747 | xargs kill -9`).
 - **Don't run `yarn site:build` while `yarn site:dev` is running** — it can SIGTERM the serve. Eleventy `--serve` also occasionally misses root `.html` edits; restart it or do a one-off `yarn site:build` (after stopping the serve) to force a rebuild.
 - **Vercel deploys only `dist/main.js`** (`vercel.json` → `yarn build`, output `dist`). Pushing to `main` updates the production JS bundle; the Eleventy HTML / CMS templates are NOT deployed by Vercel.
 - **To screenshot a loading/skeleton state**, localhost serves the fetch instantly. Throttle with chrome-devtools `emulate` `cpuThrottlingRate: 20` + navigate `ignoreCache: true` + short timeout. Network throttling alone won't hold it (cache serves fast).
@@ -33,7 +33,7 @@ All 9 site pages are wired to Sanity (project `szr2k18n`, dataset `production`) 
 
 - **`_data/cms.js`** — one combined GROQ query, returns `{home, club, spaces, manifesto, memberships, apply, contact, shop, terms}`. Templates use `{{ cms.home.hero.headline }}` etc.
 - **`_data/site.js`** — fetches `siteSettings` singleton (footer, CTA block, memberCount). Falls back to static object if no token.
-- **`studio/`** — Sanity Studio. Run `npm run dev` from inside `studio/` to start on `:3333`. Open in Chrome/Safari (Arc has auth issues).
+- **`studio/`** — Sanity Studio. Run `npm run dev` from inside `studio/` to start on `:3939`. Open in Chrome/Safari (Arc has auth issues).
 - **`scripts/seed-sanity.mjs`** — idempotent seed script. Populates all singletons + shared docs from current HTML copy. Re-run to reset to baseline: `node scripts/seed-sanity.mjs`.
 - **Shared document types**: `membershipTier`, `testimonial`, `partnerLogo` — edited once, referenced from multiple pages.
 - **Events are NOT in Sanity** — they come from Archie. No `event` schema, no `_data/events.js`.

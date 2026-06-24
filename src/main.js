@@ -134,7 +134,7 @@ function runPageLeaveAnimation(current, next) {
 
   const heroLines = current.querySelectorAll('[data-hero-heading] .line')
   if (heroLines.length) {
-    tl.to(heroLines, { yPercent: -110, stagger: 0.06, duration: 0.4, ease: 'power2.in' }, 0)
+    tl.to(heroLines, { yPercent: -110, stagger: 0.05, duration: 0.35, ease: 'power2.in' }, 0)
   }
 
   return tl
@@ -154,14 +154,8 @@ function runPageEnterAnimation(next) {
 
   tl.fromTo(
     next,
-    {
-      autoAlpha: 0,
-    },
-    {
-      autoAlpha: 1,
-      ease: 'power2.inOut',
-      duration: 0.5,
-    },
+    { autoAlpha: 0 },
+    { autoAlpha: 1, ease: 'power2.inOut', duration: 0.5 },
     'startEnter'
   )
 

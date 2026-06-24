@@ -7,7 +7,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint ./src --fix",
-    "site:dev": "eleventy --serve",
+    "site:dev": "eleventy --serve --port 8383",
     "site:build": "eleventy"
   },
   "devDependencies": {
