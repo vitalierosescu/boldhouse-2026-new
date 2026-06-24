@@ -16,3 +16,6 @@ _site
 # Env
 .env
 .env.local
+
+# Vite dev cache
+.vite/
