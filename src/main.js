@@ -113,16 +113,10 @@ function initAfterEnterFunctions(next) {
 
 
 // ================== PAGE TRANSITIONS
-function runPageOnceAnimation(next) {
+function runPageOnceAnimation() {
   const tl = gsap.timeline()
 
-  tl.call(
-    () => {
-      resetPage(next)
-    },
-    null,
-    0
-  )
+  tl.call(resetPage, null, 0)
 
   return tl
 }
@@ -154,7 +148,7 @@ function runPageEnterAnimation(next) {
   if (reducedMotion) {
     tl.set(next, { autoAlpha: 1 })
     tl.add('pageReady')
-    tl.call(resetPage, [next], 'pageReady')
+    tl.call(resetPage, null, 'pageReady')
     return new Promise((resolve) => tl.call(resolve, null, 'pageReady'))
   }
 
@@ -178,6 +172,16 @@ function runPageEnterAnimation(next) {
 
 // ======================= BARBA HOOKS + INIT
 
+// Snapshot of the LEAVING page's cleanup functions.
+// With sync: true, afterEnter fires before afterLeave, so by the time afterLeave
+// runs, pageCleanups already contains NEW page entries too. We snapshot before
+// the transition starts so afterLeave only drains the old page's cleanups.
+let _leavingPageCleanups = []
+
+barba.hooks.beforeLeave(() => {
+  _leavingPageCleanups = pageCleanups.splice(0)
+})
+
 barba.hooks.beforeEnter((data) => {
   // Position new container on top
   gsap.set(data.next.container, {
@@ -196,10 +200,22 @@ barba.hooks.beforeEnter((data) => {
 })
 
 barba.hooks.afterLeave(() => {
+  // Run only the leaving page's cleanups (new page's are in pageCleanups).
+  runPageCleanups(_leavingPageCleanups)
+})
+
+// afterLeave fires BEFORE Barba removes the old container, so ScrollTrigger
+// triggers from the leaving page are still in the DOM at that point and
+// won't be caught by a document.contains() check. The `after` hook fires
+// once both containers are settled and the old one is removed — safe to kill.
+barba.hooks.after(() => {
   if (hasScrollTrigger) {
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    ScrollTrigger.getAll().forEach((trigger) => {
+      if (!trigger.trigger || !document.contains(trigger.trigger)) {
+        trigger.kill()
+      }
+    })
   }
-  runPageCleanups()
 })
 
 barba.hooks.enter((data) => {
@@ -207,10 +223,19 @@ barba.hooks.enter((data) => {
 })
 
 barba.hooks.afterEnter((data) => {
+  // The old container may still be in the DOM (leave animation outlasts enter).
+  // Remove it now so clearing position:fixed doesn't push the new container
+  // below it in document flow.
+  if (data.current?.container?.isConnected) {
+    data.current.container.remove()
+  }
+
+  // Safe to unfix now — old container is gone, new container returns to normal flow.
+  gsap.set(data.next.container, { clearProps: 'position,top,left,right' })
+
   // Run page functions
   initAfterEnterFunctions(data.next.container)
 
-  // Settle
   if (window.lenis) {
     window.lenis.resize()
     window.lenis.start()
@@ -236,7 +261,7 @@ barba.init({
         applyThemeFrom(data.next.container)
         initAfterEnterFunctions(data.next.container)
 
-        return runPageOnceAnimation(data.next.container)
+        return runPageOnceAnimation()
       },
 
       // Current page leaves
@@ -472,9 +497,9 @@ function registerCleanup(fn) {
 // Expose to feature modules (e.g. shop/motion.js) so their non-ScrollTrigger
 // teardown (matchMedia, Observer, Flip listeners) is drained on barba.afterLeave.
 window.__bhRegisterCleanup = registerCleanup
-function runPageCleanups() {
-  while (pageCleanups.length) {
-    const fn = pageCleanups.pop()
+function runPageCleanups(list) {
+  while (list.length) {
+    const fn = list.pop()
     try {
       fn()
     } catch (e) {
@@ -483,14 +508,12 @@ function runPageCleanups() {
   }
 }
 
-function resetPage(container) {
+function resetPage() {
   window.scrollTo(0, 0)
-  gsap.set(container, { clearProps: 'position,top,left,right' })
-
-  if (window.lenis) {
-    window.lenis.resize()
-    window.lenis.start()
-  }
+  // Do NOT clear position:fixed here — the leaving page may still be in the DOM.
+  // Removing fixed puts the entering container below the leaving one in document flow
+  // → blank screen until the leaving container is removed (~175ms gap).
+  // clearProps is handled in afterEnter, after the old container is removed.
 }
 
 function debounceOnWidthChange(fn, ms) {

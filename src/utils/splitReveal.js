@@ -35,6 +35,15 @@ export function splitReveal(element, options = {}) {
     wordsClass: 'word',
     charsClass: splitType === 'heading' ? 'letter' : undefined,
     onSplit(self) {
+      // Kill the previous tween (and its ScrollTrigger) from any prior split.
+      element._srTween?.scrollTrigger?.kill()
+      element._srTween?.kill()
+
+      // autoSplit's ResizeObserver can fire asynchronously after the element
+      // is removed from the DOM (e.g. during a Barba transition). Bail out to
+      // avoid creating orphaned ScrollTriggers on detached elements.
+      if (!document.contains(element)) return
+
       const targets = self[type]
       if (!targets?.length) return
 
@@ -52,7 +61,9 @@ export function splitReveal(element, options = {}) {
         tweenVars.scrollTrigger = options.scrollTrigger
       }
 
-      return gsap.to(targets, tweenVars)
+      const tween = gsap.to(targets, tweenVars)
+      element._srTween = tween
+      return tween
     },
   })
 }
