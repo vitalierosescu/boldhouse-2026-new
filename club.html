@@ -50,64 +50,32 @@ navTheme: light
                           </a>
                         </div>
                       </div>
-                      <h1 data-hero-heading="" data-split="" class="club-hero_title">A community for the likeminded, right nextdoor</h1>
+                      <h1 data-hero-heading="" data-split="" class="club-hero_title">{{ cms.club.hero.title }}</h1>
                     </div>
                   </div>
                 </div>
                 <div class="club-hero_content_bot u-grid">
                   <div class="club-hero_content_left">
-                    <p data-hero-heading="" data-split="" class="club-hero_p">Boldhouse is home to designers, architects, filmmakers, strategists, and builders. We don&#x27;t take just.</p>
+                    <p data-hero-heading="" data-split="" class="club-hero_p">{{ cms.club.hero.body }}</p>
                   </div>
                   <div id="w-node-_4b12cdcf-fd28-40b5-91e6-4db4b559fa02-b559f9f9" class="club-hero_empty u-grid-empty"></div>
                   <div class="club-hero_link-list">
-                    <a href="spaces.html" class="club-hero_link w-inline-block">
+                    {% for link in cms.club.heroLinks %}<a href="{{ link.href }}" class="club-hero_link w-inline-block">
                       <div class="club-hero_link-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M6.09375 6.09375L8.90625 8.90625L6.09375 11.7187" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
                           <path d="M0.46875 0.46875L0.46875 8.90625L8.90625 8.90625" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                       </div>
                       <div class="club-hero_link-inner">
-                        <div>Perks of joining</div>
-                        <div class="h-hero-2_link-number font-serif">(01)</div>
+                        <div>{{ link.label }}</div>
+                        <div class="h-hero-2_link-number font-serif">{{ link.number }}</div>
                       </div>
                     </a>
-                    <a href="spaces.html" class="club-hero_link w-inline-block">
-                      <div class="club-hero_link-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.09375 6.09375L8.90625 8.90625L6.09375 11.7187" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                          <path d="M0.46875 0.46875L0.46875 8.90625L8.90625 8.90625" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                      </div>
-                      <div class="club-hero_link-inner">
-                        <div>The three pillars</div>
-                        <div class="h-hero-2_link-number font-serif">(02)</div>
-                      </div>
-                    </a>
-                    <a href="spaces.html" class="club-hero_link w-inline-block">
-                      <div class="club-hero_link-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.09375 6.09375L8.90625 8.90625L6.09375 11.7187" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                          <path d="M0.46875 0.46875L0.46875 8.90625L8.90625 8.90625" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                      </div>
-                      <div class="club-hero_link-inner">
-                        <div>Bold members</div>
-                        <div class="h-hero-2_link-number font-serif">(03)</div>
-                      </div>
-                    </a>
-                    <a href="spaces.html" class="club-hero_link w-inline-block">
-                      <div class="club-hero_link-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.09375 6.09375L8.90625 8.90625L6.09375 11.7187" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                          <path d="M0.46875 0.46875L0.46875 8.90625L8.90625 8.90625" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                      </div>
-                      <div class="club-hero_link-inner">
-                        <div>Community</div>
-                        <div class="h-hero-2_link-number font-serif">(04)</div>
-                      </div>
-                    </a>
-                  </div>
+                    {% endfor %}
+</div>
                   <div id="w-node-_53d8eb8c-97ce-9a33-9e41-16e02e078b04-b559f9f9" class="club-hero_img-container">
                     <div data-parallax="" class="club-hero_img-parent parallax-parent">
-                      <div class="club-hero_img-wrap parallax"><img loading="eager" src="images/Frame-1430105787.jpg" alt="" sizes="(max-width: 2290px) 100vw, 2290px" srcset="images/Frame-1430105787-p-500.jpg 500w, images/Frame-1430105787-p-800.jpg 800w, images/Frame-1430105787-p-1080.jpg 1080w, images/Frame-1430105787.jpg 1185w" class="club-hero_img img-cover">
+                      <div class="club-hero_img-wrap parallax"><img loading="eager" src="{{ cms.club.hero.image | sanityImage(1600) }}" alt="" class="club-hero_img img-cover">
                         <div class="club-hero_overlay"></div>
                       </div>
                     </div>
@@ -134,132 +102,23 @@ navTheme: light
               <div class="padding-section-large">
                 <div data-typo-scroll-infinite="" data-typo-scroll-init="" class="typo-scroll">
                   <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">What everyone gets</span><span class="tagline_span"> ]</span></div>
+                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">{{ cms.club.perksEyebrow }}</span><span class="tagline_span"> ]</span></div>
                     <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
                   </div>
                   <div class="typo-scroll__collection">
                     <div data-typo-scroll-list="" class="typo-scroll__list">
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
+                      {% for perk in cms.club.perks %}<div data-typo-scroll-item="" class="typo-scroll__item">
                         <div class="typo-scroll__link">
                           <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">High-speed wifi</h3>
+                            <h3 class="typo-scroll__h">{{ perk.title }}</h3>
                           </div>
-                          <div class="typo-scroll__media"><img src="images/image-26_1image-26.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-26_1-p-500.avif 500w, images/image-26_1-p-800.avif 800w, images/image-26_1image-26.avif 960w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
+                          <div class="typo-scroll__media"><img src="{{ perk.image | sanityImage(960) }}" loading="lazy" alt="" class="typo-scroll__img is--bw">
+                            <p class="typo-scroll__p">{{ perk.label }}</p>
                           </div>
                         </div>
                       </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Barista-grade coffee</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-26_1image-26.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-26_1-p-500.avif 500w, images/image-26_1-p-800.avif 800w, images/image-26_1image-26.avif 960w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Stocked drinks fridge</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-26_1image-26.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-26_1-p-500.avif 500w, images/image-26_1-p-800.avif 800w, images/image-26_1image-26.avif 960w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Member events access</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-26_1image-26.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-26_1-p-500.avif 500w, images/image-26_1-p-800.avif 800w, images/image-26_1image-26.avif 960w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">The Bold Basement</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-3.avif" loading="lazy" alt="" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Phone booths</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-4.avif" loading="lazy" alt="" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Focus areas</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/Rectangle-2.avif" loading="lazy" alt="" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Community member</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-28_1image-28.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-28_1-p-500.avif 500w, images/image-28_1-p-800.avif 800w, images/image-28_1image-28.avif 960w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Partner perks</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-26_1image-26.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-26_1-p-500.avif 500w, images/image-26_1-p-800.avif 800w, images/image-26_1image-26.avif 960w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Printing + scanning</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-20_1image-20.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-20_1-p-500.avif 500w, images/image-20_1image-20.avif 800w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Bike storage</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-30_1image-30.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-30_1-p-500.avif 500w, images/image-30_1-p-800.avif 800w, images/image-30_1-p-1080.avif 1080w, images/image-30_1image-30.avif 1200w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div data-typo-scroll-item="" class="typo-scroll__item">
-                        <div class="typo-scroll__link">
-                          <div class="typo-scroll_h-wrap">
-                            <h3 class="typo-scroll__h">Located in the center</h3>
-                          </div>
-                          <div class="typo-scroll__media"><img src="images/image-41_1image-41.avif" loading="lazy" alt="" sizes="(max-width: 960px) 100vw, 960px" srcset="images/image-41_1-p-500.avif 500w, images/image-41_1-p-800.avif 800w, images/image-41_1-p-1080.avif 1080w, images/image-41_1image-41.avif 1200w" class="typo-scroll__img is--bw">
-                            <p class="typo-scroll__p">[ OPEN CASE ]</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                      {% endfor %}
+</div>
                   </div>
                 </div>
               </div>
@@ -297,207 +156,37 @@ navTheme: light
               <div class="padding-global">
                 <div class="container-large">
                   <div class="stacking-cards__component">
-                    <div data-stacking-cards-item="" class="stacking-cards__item">
+                    {% for pillar in cms.club.pillars %}{% set pidx = loop.index %}<div data-stacking-cards-item="" class="stacking-cards__item">
                       <div class="stacking-cards__item-content">
                         <div class="stacking-cards__top">
                           <div class="stacking-cards_overview-list">
-                            <a href="#item-1" class="stacking-cards_overview-item is-active">Network</a>
-                            <a href="#item-2" class="stacking-cards_overview-item">Events</a>
-                            <a href="#item-3" class="stacking-cards_overview-item">Workstation</a>
+                            {% for p in cms.club.pillars %}<a href="#item-{{ loop.index }}" class="stacking-cards_overview-item{% if loop.index == pidx %} is-active{% endif %}">{{ p.title }}</a>{% endfor %}
                           </div>
-                          <h1 class="stacking-cards__item-h-wrap"><span class="stacking-cards__item-h">Network</span><span class="stacking-card_h-small">that gains you an unfair advantage on moving your business</span></h1>
+                          <h1 class="stacking-cards__item-h-wrap"><span class="stacking-cards__item-h">{{ pillar.title }}</span><span class="stacking-card_h-small">{{ pillar.subtitle }}</span></h1>
                           <div class="stacking-cards__list-wrap">
                             <div class="stacking-cards__list">
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
+                              {% for item in pillar.items %}{% if loop.index0 < 5 %}<div class="stacking-cards__i">
+                                <div class="stacking-cards__number">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
+                                <div class="stacking-cards__i-p font-serif">{{ item }}</div>
                                 <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">02</div>
-                                <div class="stacking-cards__i-p font-serif">Massage Tuesday</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">03</div>
-                                <div class="stacking-cards__i-p font-serif">Wine-downs in the evening</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">04</div>
-                                <div class="stacking-cards__i-p font-serif">Event type 4</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">05</div>
-                                <div class="stacking-cards__i-p font-serif">Event type 5</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
+                              </div>{% endif %}{% endfor %}
                             </div>
                             <div class="stacking-cards__list">
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">06</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
+                              {% for item in pillar.items %}{% if loop.index0 >= 5 %}<div class="stacking-cards__i">
+                                <div class="stacking-cards__number">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</div>
+                                <div class="stacking-cards__i-p font-serif">{{ item }}</div>
                                 <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">07</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">08</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">09</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">10</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
+                              </div>{% endif %}{% endfor %}
                             </div>
                           </div>
                         </div>
-                        <div class="stacking-cards__item-bot font-serif"><span class="stacking-card__bot-span"><span class="stacking-card__bot-span">01</span><span class="stacking-card__bot-span-small">/03</span></span></div>
+                        <div class="stacking-cards__item-bot font-serif"><span class="stacking-card__bot-span"><span class="stacking-card__bot-span">{% if pidx < 10 %}0{% endif %}{{ pidx }}</span><span class="stacking-card__bot-span-small">/03</span></span></div>
                       </div>
-                      <div class="stacking-cards__img-wrap"><img data-stacking-cards-img="" loading="lazy" alt="" src="images/Club---2.avif" sizes="100vw" srcset="images/Club---2-p-500.avif 500w, images/Club---2-p-800.avif 800w, images/Club---2-p-1080.avif 1080w, images/Club---2.avif 1122w" class="stacking-cards__item-img"></div>
+                      <div class="stacking-cards__img-wrap"><img data-stacking-cards-img="" loading="lazy" alt="" src="{{ pillar.image | sanityImage(1200) }}" class="stacking-cards__item-img"></div>
                       <div class="stacking-cards__fade"></div>
-                      <div id="item-1" class="stacking-cards__id w-node-f0ef14e4-3e22-aab5-4a3c-d9f6097697f4-72588d91"></div>
+                      <div id="item-{{ pidx }}" class="stacking-cards__id w-node-f0ef14e4-3e22-aab5-4a3c-d9f6097697f4-72588d91"></div>
                     </div>
-                    <div data-stacking-cards-item="" class="stacking-cards__item">
-                      <div class="stacking-cards__item-content">
-                        <div class="stacking-cards__top">
-                          <div class="stacking-cards_overview-list">
-                            <a href="#item-1" class="stacking-cards_overview-item">Network</a>
-                            <a href="#item-2" class="stacking-cards_overview-item is-active">Events</a>
-                            <a href="#item-3" class="stacking-cards_overview-item">Workstation</a>
-                          </div>
-                          <h1 class="stacking-cards__item-h-wrap"><span class="stacking-cards__item-h">Events</span><span class="stacking-card_h-small">On a regular basis that keep you engaged</span></h1>
-                          <div class="stacking-cards__list-wrap">
-                            <div class="stacking-cards__list">
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                            </div>
-                            <div class="stacking-cards__list">
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="stacking-cards__item-bot font-serif"><span class="stacking-card__bot-span"><span class="stacking-card__bot-span">02</span><span class="stacking-card__bot-span-small">/03</span></span></div>
-                      </div>
-                      <div class="stacking-cards__img-wrap"><img data-stacking-cards-img="" loading="lazy" alt="" src="images/Club---1.avif" sizes="100vw" srcset="images/Club---1-p-500.avif 500w, images/Club---1-p-800.avif 800w, images/Club---1-p-1080.avif 1080w, images/Club---1.avif 1122w" class="stacking-cards__item-img"></div>
-                      <div class="stacking-cards__fade"></div>
-                      <div id="item-2" class="stacking-cards__id w-node-f0ef14e4-3e22-aab5-4a3c-d9f6097697f4-72588d91"></div>
-                    </div>
-                    <div data-stacking-cards-item="" class="stacking-cards__item">
-                      <div class="stacking-cards__item-content">
-                        <div class="stacking-cards__top">
-                          <div class="stacking-cards_overview-list">
-                            <a href="#item-1" class="stacking-cards_overview-item">Network</a>
-                            <a href="#item-2" class="stacking-cards_overview-item">Events</a>
-                            <a href="#item-3" class="stacking-cards_overview-item is-active">Workstation</a>
-                          </div>
-                          <h1 class="stacking-cards__item-h-wrap"><span class="stacking-cards__item-h">Workstation</span><span class="stacking-card_h-small">that you’ll actually enjoy coming to</span></h1>
-                          <div class="stacking-cards__list-wrap">
-                            <div class="stacking-cards__list">
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                            </div>
-                            <div class="stacking-cards__list">
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                              <div class="stacking-cards__i">
-                                <div class="stacking-cards__number">01</div>
-                                <div class="stacking-cards__i-p font-serif">Monthly lunch by Balls &amp; Glory</div>
-                                <div class="stacking-cards__i-line"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="stacking-cards__item-bot font-serif"><span class="stacking-card__bot-span"><span class="stacking-card__bot-span">03</span><span class="stacking-card__bot-span-small">/03</span></span></div>
-                      </div>
-                      <div class="stacking-cards__img-wrap"><img data-stacking-cards-img="" loading="lazy" alt="" src="images/Club---3.avif" sizes="100vw" srcset="images/Club---3-p-500.avif 500w, images/Club---3-p-800.avif 800w, images/Club---3-p-1080.avif 1080w, images/Club---3.avif 1122w" class="stacking-cards__item-img"></div>
-                      <div class="stacking-cards__fade"></div>
-                      <div id="item-3" class="stacking-cards__id w-node-f0ef14e4-3e22-aab5-4a3c-d9f6097697f4-72588d91"></div>
-                    </div>
+                    {% endfor %}
                   </div>
                 </div>
               </div>
@@ -510,11 +199,11 @@ navTheme: light
               <div class="container-large">
                 <div class="heading_component">
                   <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Words from our members</span><span class="tagline_span"> ]</span></div>
+                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">{{ cms.club.reviews.eyebrow }}</span><span class="tagline_span"> ]</span></div>
                     <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
                   </div>
                   <div class="margin-bottom margin-large">
-                    <h2>A growing community</h2>
+                    <h2>{{ cms.club.reviews.heading }}</h2>
                   </div>
                 </div>
               </div>
@@ -524,12 +213,12 @@ navTheme: light
                 <div data-reviews-item="" class="review_item">
                   <div class="review_content">
                     <div class="review_top">
-                      <h3 class="review_quote h5">“An inspiring co-working space with great people help me think inside the box and out of the box. I was becoming drained at home, but having a community driven coworking like this has really improved my overall mental.&quot;</h3>
+                      <h3 class="review_quote h5">“{{ cms.club.reviews.testimonials[0].quote }}&quot;</h3>
                     </div>
                     <div class="review_bot">
                       <div class="m-slider_item_person">
-                        <div class="m-slider_item_person-name">Jana V.</div>
-                        <div class="m-slider_item_person-job">Brand Designer</div>
+                        <div class="m-slider_item_person-name">{{ cms.club.reviews.testimonials[0].authorName }}</div>
+                        <div class="m-slider_item_person-job">{{ cms.club.reviews.testimonials[0].authorRole }}</div>
                       </div>
                     </div>
                   </div>
@@ -548,22 +237,22 @@ navTheme: light
                 <div data-reviews-item="" class="review_item is--highlight">
                   <div class="review_content is--stat">
                     <div class="review_top">
-                      <h3 class="review_stat h2">124</h3>
+                      <h3 class="review_stat h2">{{ site.memberCount }}</h3>
                     </div>
                     <div class="review_bot">
-                      <div class="review_p">active members. Designers, architects, founders, makers. People who choose who they work next to.</div>
+                      <div class="review_p">{{ cms.club.reviews.memberCountDesc }}</div>
                     </div>
                   </div>
                 </div>
                 <div data-reviews-item="" class="review_item">
                   <div class="review_content">
                     <div class="review_top">
-                      <h3 class="review_quote h5">“An inspiring co-working space with great people help me think inside the box and out of the box. I was becoming drained at home.&quot;</h3>
+                      <h3 class="review_quote h5">“{{ cms.club.reviews.testimonials[1].quote }}&quot;</h3>
                     </div>
                     <div class="review_bot">
                       <div class="m-slider_item_person">
-                        <div class="m-slider_item_person-name">Liam D.</div>
-                        <div class="m-slider_item_person-job">Architect</div>
+                        <div class="m-slider_item_person-name">{{ cms.club.reviews.testimonials[1].authorName }}</div>
+                        <div class="m-slider_item_person-job">{{ cms.club.reviews.testimonials[1].authorRole }}</div>
                       </div>
                     </div>
                   </div>
@@ -592,19 +281,19 @@ navTheme: light
                     <div class="steps_heading">
                       <div>
                         <div>
-                          <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">How it works</span><span class="tagline_span"> ]</span></div>
+                          <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">{{ cms.club.stepsSection.eyebrow }}</span><span class="tagline_span"> ]</span></div>
                           <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
                         </div>
                         <div class="margin-bottom margin-small">
-                          <h2 data-split="heading" class="h2">Tons of benefits</h2>
+                          <h2 data-split="heading" class="h2">{{ cms.club.stepsSection.heading }}</h2>
                         </div>
-                        <p>Boldhouse is home to designers, architects, filmmakers, strategists, and builders. We don&#x27;t take just anyone - not because we&#x27;re precious, but because we know who&#x27;s around you shapes what you make. This is the club.</p>
+                        <p>{{ cms.club.stepsSection.body }}</p>
                       </div>
                       <div data-wf--button-group--variant="base" class="u-rel-z-3">
                         <div data-wf--spacer--variant="medium-2rem" class="spacer w-variant-6fd0da79-0c0e-5c2c-c295-0c99c73355b4"></div>
                         <div class="button-group">
                           <div data-wf--button--variant="base">
-                            <a aria-label="" href="#" class="button w-inline-block">
+                            <a aria-label="" href="apply.html" class="button w-inline-block">
                               <div data-button-text="" class="button_text">Apply for membership</div>
                               <div class="button_bg"></div>
                             </a>
@@ -634,9 +323,9 @@ navTheme: light
                             </div>
                             <div class="network_card_content">
                               <div class="network_card_title-wrap">
-                                <h2 class="h4">Benefit 1</h2>
+                                <h2 class="h4">{{ cms.club.stepsSection.benefitCards[0].title }}</h2>
                               </div>
-                              <p>Boldhouse is home to designers, architects, filmmakers, strategists, and builders. We don&#x27;t take just anyone - not because we&#x27;re preciou.</p>
+                              <p>{{ cms.club.stepsSection.benefitCards[0].description }}</p>
                             </div>
                           </div>
                         </div>
@@ -658,9 +347,9 @@ navTheme: light
                             </div>
                             <div class="network_card_content">
                               <div class="network_card_title-wrap">
-                                <h2 class="h4">Benefit 2</h2>
+                                <h2 class="h4">{{ cms.club.stepsSection.benefitCards[1].title }}</h2>
                               </div>
-                              <p>Boldhouse is home to designers, architects, filmmakers, strategists, and builders. We don&#x27;t take just anyone - not because we&#x27;re preciou.</p>
+                              <p>{{ cms.club.stepsSection.benefitCards[1].description }}</p>
                             </div>
                           </div>
                         </div>
@@ -683,9 +372,9 @@ navTheme: light
                             </div>
                             <div class="network_card_content">
                               <div class="network_card_title-wrap">
-                                <h2 class="h4">Benefit 3</h2>
+                                <h2 class="h4">{{ cms.club.stepsSection.benefitCards[2].title }}</h2>
                               </div>
-                              <p>Boldhouse is home to designers, architects, filmmakers, strategists, and builders. We don&#x27;t take just anyone - not because we&#x27;re preciou.</p>
+                              <p>{{ cms.club.stepsSection.benefitCards[2].description }}</p>
                             </div>
                           </div>
                         </div>
@@ -702,12 +391,9 @@ navTheme: light
             <div class="container-large">
               <div class="padding-section-small">
                 <div class="gallery_component">
-                  <div class="gallery_item"><img src="images/gallery-1.avif" loading="lazy" alt="" class="gallery_img"></div>
-                  <div class="gallery_item"><img src="images/gallery-2.jpg" loading="lazy" sizes="(max-width: 573px) 100vw, 573px" srcset="images/gallery-2-p-500.jpg 500w, images/gallery-2.jpg 573w" alt="" class="gallery_img"></div>
-                  <div class="gallery_item"><img src="images/gallery-3.jpg" loading="lazy" sizes="100vw" srcset="images/gallery-3-p-500.jpg 500w, images/gallery-3.jpg 573w" alt="" class="gallery_img"></div>
-                  <div class="gallery_item"><img src="images/gallery-1.avif" loading="lazy" alt="" class="gallery_img"></div>
-                  <div class="gallery_item"><img src="images/gallery-1.avif" loading="lazy" alt="" class="gallery_img"></div>
-                </div>
+                  {% for g in cms.club.gallery %}<div class="gallery_item"><img src="{{ g.image | sanityImage(800) }}" loading="lazy" alt="" class="gallery_img"></div>
+                  {% endfor %}
+</div>
               </div>
             </div>
           </div>
@@ -718,74 +404,19 @@ navTheme: light
               <div class="padding-section-large">
                 <div class="faq12_component">
                   <div class="margin-bottom margin-xxlarge">
-                    <h2 class="h2">FAQs</h2>
+                    <h2 class="h2">{{ cms.club.faqHeading }}</h2>
                   </div>
                   <div class="w-layout-grid faq12_grid-list">
-                    <div class="faq12_item">
+                    {% for faq in cms.club.faqs %}<div class="faq12_item">
                       <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">How do I become a member?</div>
+                        <div class="faq12_question h5">{{ faq.question }}</div>
                       </div>
                       <div class="w-richtext">
-                        <p>Browse our membership tiers, pick one that fits, and apply directly. We&#x27;ll be in touch within 48 hours.</p>
+                        <p>{{ faq.answer }}</p>
                       </div>
                     </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Can I visit before committing?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Yes. Book a tour and we&#x27;ll show you around.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Who are the members at Boldhouse?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Designers, architects, filmmakers, strategists, copywriters, developers. People who take their craft seriously. We curate the community — that&#x27;s the point.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">What&#x27;s the difference between Flexi and Fixed?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Flexi is drop-in — come when you want, no commitment. Fixed gives you a dedicated desk, yours to keep.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Is the Resident membership open?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>We keep Resident capacity small on purpose. Inquire and we&#x27;ll let you know what&#x27;s available.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Can I host an event at Boldhouse?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Yes. The Bold Basement is available for seminars, screenings, shoots, workshops, and more. Email us at hello@boldhouse.space.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Where are you located?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Sint Baafsplein 10, in the heart of Ghent. Hard to miss.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Is Boldhouse only for freelancers?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>No. We have freelancers, founders, agencies, and small teams. If you make things worth talking about, you belong here.</p>
-                      </div>
-                    </div>
-                  </div>
+                    {% endfor %}
+</div>
                 </div>
               </div>
             </div>
@@ -793,50 +424,7 @@ navTheme: light
         </section>
       </main>
       <div data-theme-page-to="dark" class="footer_container">
-        <section class="section_cta">
-          <div class="padding-global">
-            <div class="container-large">
-              <div class="cta_component">
-                <div class="cta_heading">
-                  <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Join the creative club and let’s make it real</span><span class="tagline_span"> ]</span></div>
-                    <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
-                  </div>
-                  <h2 data-split="heading" class="h0">You&#x27;re in the<br>right place.</h2>
-                </div>
-                <div data-wf--button-group--variant="base" class="u-rel-z-3">
-                  <div data-wf--spacer--variant="large-3rem" class="spacer w-variant-0b9907b0-2817-9a8a-5ef4-2bb04007c79d"></div>
-                  <div class="button-group">
-                    <div data-wf--button--variant="base">
-                      <a aria-label="" href="#" class="button w-inline-block">
-                        <div data-button-text="" class="button_text">Apply for membership</div>
-                        <div class="button_bg"></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div data-trail-area="" class="rotating-image-trail">
-                  <div data-trail-collection="" class="rotating-image-trail__collection">
-                    <div class="rotating-image-trail__list">
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-4.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-3.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/Rectangle-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+{% include "partials/cta.njk" %}
         {% include "partials/footer.njk" %}
       </div>
     </div>

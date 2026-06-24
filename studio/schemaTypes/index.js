@@ -1,3 +1,5 @@
-import event from './event'
+import objects from './objects'
+import documents from './documents'
+import pages from './pages'
 
-export const schemaTypes = [event]
+export const schemaTypes = [...objects, ...documents, ...pages]

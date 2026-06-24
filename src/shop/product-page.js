@@ -84,7 +84,7 @@ export async function initProductPage(container = document) {
     return
   }
 
-  root.innerHTML = '<p class="shop-loading">Loading...</p>'
+  // The static skeleton (in shop-product.html) stays visible while we fetch -> zero shift.
 
   let product
   try {
@@ -143,6 +143,16 @@ export async function initProductPage(container = document) {
       <nav class="product-pager" data-pager hidden></nav>
     </div>
   `
+
+  // Whisper cross-fade the real product in over the skeleton.
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (window.gsap && !reduced && root.firstElementChild) {
+    window.gsap.fromTo(
+      root.firstElementChild,
+      { autoAlpha: 0 },
+      { autoAlpha: 1, duration: 0.4, ease: 'power2.out' }
+    )
+  }
 
   const buyEl = root.querySelector('[data-buy]')
 

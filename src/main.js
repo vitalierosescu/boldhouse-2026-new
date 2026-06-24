@@ -130,17 +130,12 @@ function runPageLeaveAnimation(current, next) {
     return tl.set(current, { autoAlpha: 0 })
   }
 
-  tl.to(
-    current,
-    {
-      autoAlpha: 0,
-      ease: 'power2.inOut',
-      duration: 0.4,
-    },
-    0
-  )
+  tl.to(current, { autoAlpha: 0, ease: 'power2.inOut', duration: 0.4 }, 0)
 
-  initHeroExit(current)
+  const heroLines = current.querySelectorAll('[data-hero-heading] .line')
+  if (heroLines.length) {
+    tl.to(heroLines, { yPercent: -110, stagger: 0.06, duration: 0.4, ease: 'power2.in' }, 0)
+  }
 
   return tl
 }
@@ -2703,19 +2698,6 @@ const initHeroEnter = (container = document) => {
       delay: 0,
       duration: 1.2,
       stagger: 0.12,
-    })
-  })
-}
-
-const initHeroExit = (container = document) => {
-  const heroHeadings = container.querySelectorAll('[data-hero-heading]')
-  heroHeadings.forEach((heading) => {
-    // move to top instead of from bottom
-    gsap.to(heading.querySelectorAll('.line'), {
-      yPercent: -110,
-      stagger: 0.08,
-      duration: 1.2,
-      ease: 'expo.out',
     })
   })
 }

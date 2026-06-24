@@ -41,9 +41,9 @@ schema: |
                 <div class="contact_heading">
                   <div>
                     <div class="margin-bottom margin-xsmall">
-                      <div class="tagline">See what fits you</div>
+                      <div class="tagline">{{ cms.contact.hero.tagline }}</div>
                     </div>
-                    <h2>Apply now</h2>
+                    <h2>{{ cms.contact.hero.heading }}</h2>
                   </div>
                   <div class="contact_button-group">
                     <div data-wf--button-group--variant="centered" class="u-rel-z-3">
@@ -51,7 +51,7 @@ schema: |
                       <div class="button-group w-variant-f3af87cb-eac0-9aa7-ad62-bdc5595620bf">
                         <div data-wf--button--variant="base">
                           <a aria-label="" href="index.html" class="button w-inline-block">
-                            <div data-button-text="" class="button_text">Go back to home</div>
+                            <div data-button-text="" class="button_text">{{ cms.contact.hero.buttonLabel }}</div>
                             <div class="button_bg"></div>
                           </a>
                         </div>
@@ -69,13 +69,13 @@ schema: |
               <div class="padding-section-large padding-bottom">
                 <div id="form" class="contact--form_component">
                   <div class="text-style-nowrap">
-                    <h1 class="h2">Get in touch</h1>
+                    <h1 class="h2">{{ cms.contact.formHeading }}</h1>
                   </div>
                   <div data-form-validate="" class="form-group w-form">
                     <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="get" class="form" data-wf-page-id="69e0fdfc6da92a5c220bbe32" data-wf-element-id="a9f9c649-8df0-e3a1-bd33-c32e300bf4eb">
                       <div class="form_field-wrapp-2col">
                         <div data-validate="" class="form-field-group">
-                          <div class="form-field"><label for="first-name" class="form_label is-large">name &amp; last name</label><input class="form_input w-input" maxlength="256" name="Voornaam" data-name="Voornaam" min="2" placeholder="" type="text" id="Voornaam" required="">
+                          <div class="form-field"><label for="first-name" class="form_label is-large">{{ cms.contact.formLabels.name }}</label><input class="form_input w-input" maxlength="256" name="Voornaam" data-name="Voornaam" min="2" placeholder="" type="text" id="Voornaam" required="">
                             <div class="u-display-contents">
                               <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none">
                                   <path d="M11.25 14.25L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -91,7 +91,7 @@ schema: |
                             </div>
                           </div>
                         </div>
-                        <div data-validate="" class="form-field-group"><label for="last-name" class="form_label is-large">company</label>
+                        <div data-validate="" class="form-field-group"><label for="last-name" class="form_label is-large">{{ cms.contact.formLabels.company }}</label>
                           <div class="form-field"><input class="form_input w-input" maxlength="256" name="Last-Name" data-name="Last Name" min="2" placeholder="" type="text" id="last-name" required="">
                             <div class="u-display-contents">
                               <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none">
@@ -110,7 +110,7 @@ schema: |
                         </div>
                       </div>
                       <div class="form_field-wrapp-2col">
-                        <div data-validate="" class="form-field-group"><label for="company-name" class="form_label is-large">e-mail</label>
+                        <div data-validate="" class="form-field-group"><label for="company-name" class="form_label is-large">{{ cms.contact.formLabels.email }}</label>
                           <div class="form-field"><input class="form_input w-input" maxlength="256" name="Company" data-name="Company" placeholder="" type="text" id="Company" required="">
                             <div class="u-display-contents">
                               <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none">
@@ -127,7 +127,7 @@ schema: |
                             </div>
                           </div>
                         </div>
-                        <div data-validate="" class="form-field-group"><label for="phone" class="form_label is-large">Phone</label>
+                        <div data-validate="" class="form-field-group"><label for="phone" class="form_label is-large">{{ cms.contact.formLabels.phone }}</label>
                           <div class="form-field"><input class="form_input w-input" maxlength="256" name="Phone" data-name="Phone" min="2" placeholder="" type="tel" id="Phone">
                             <div class="u-display-contents">
                               <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none">
@@ -145,7 +145,7 @@ schema: |
                           </div>
                         </div>
                       </div>
-                      <div for="message" data-validate="" class="form-field-group"><label for="message" class="form_label is-large">Message</label>
+                      <div for="message" data-validate="" class="form-field-group"><label for="message" class="form_label is-large">{{ cms.contact.formLabels.message }}</label>
                         <div class="form-field"><textarea class="form_input is-text-area w-input" maxlength="5000" name="message" data-name="Message" min="3" placeholder="" id="message" required=""></textarea>
                           <div class="u-display-contents">
                             <div class="form-field-icon is--success"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none">
@@ -163,12 +163,12 @@ schema: |
                         </div>
                       </div>
                       <div class="margin-top margin-large">
-                        <div data-submit="" class="button-group"><input type="submit" data-wait="Sending..." class="btn is-form w-button" value="Send"></div>
+                        <div data-submit="" class="button-group"><input type="submit" data-wait="Sending..." class="btn is-form w-button" value="{{ cms.contact.formLabels.submit }}"></div>
                       </div>
                     </form>
                     <div class="form-notifcation w-form-done">
                       <div class="form-notification-bg"></div>
-                      <div class="form-notification-p">Success! We’ll be in touch soon.</div>
+                      <div class="form-notification-p">{{ cms.contact.successMessage }}</div>
                       <div class="form-notification-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none">
                           <path d="M11.25 14.25L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                           <path d="M15 10.5L11.25 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -177,7 +177,7 @@ schema: |
                     </div>
                     <div class="form-notifcation is--error w-form-fail">
                       <div class="form-notification-bg"></div>
-                      <div class="form-notification-p">Something went wrong while submitting.</div>
+                      <div class="form-notification-p">{{ cms.contact.errorMessage }}</div>
                       <div class="form-notification-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 24 24" fill="none">
                           <path opacity="0.1" d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                           <path d="M12 3C16.971 3 21 7.029 21 12C21 16.971 16.971 21 12 21C7.029 21 3 16.971 3 12C3 7.029 7.029 3 12 3Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>

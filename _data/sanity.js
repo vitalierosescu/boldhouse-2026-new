@@ -7,7 +7,9 @@ const client = projectId
       projectId,
       dataset: process.env.SANITY_DATASET || 'production',
       apiVersion: '2024-06-01',
-      useCdn: process.env.NODE_ENV === 'production',
+      // Token (read access) covers private datasets at build time; harmless for public ones.
+      token: process.env.SANITY_API_TOKEN || undefined,
+      useCdn: false,
       perspective: 'published',
     })
   : null

@@ -33,11 +33,32 @@ export function buildProductCardHTML(product, index) {
   `
 }
 
+// Number of placeholder cards shown while products load. Reserves the grid's
+// full height immediately so there's no layout shift when the real cards arrive.
+const SKELETON_COUNT = 9
+
+function buildSkeletonCardHTML() {
+  return `
+    <div class="shop-card shop-card--skeleton" aria-hidden="true">
+      <div class="shop-card__media"></div>
+      <div class="shop-card__info">
+        <span class="shop-card__sk-line shop-card__sk-line--title"></span>
+        <span class="shop-card__sk-line shop-card__sk-line--price"></span>
+      </div>
+    </div>
+  `
+}
+
 export async function initShopPage(container = document) {
   const grid = container.querySelector('[data-shop-grid]')
   if (!grid) return
 
-  grid.innerHTML = '<p class="shop-loading">Loading products...</p>'
+  // Skeletons reserve the grid's full height -> zero layout shift on load.
+  // They ship in the static HTML (and survive Barba fetches); only inject as a
+  // fallback if the grid arrives empty.
+  if (!grid.children.length) {
+    grid.innerHTML = Array.from({ length: SKELETON_COUNT }, buildSkeletonCardHTML).join('')
+  }
 
   try {
     const products = await getProducts(20)
@@ -48,6 +69,18 @@ export async function initShopPage(container = document) {
     }
 
     grid.innerHTML = products.map((p, i) => buildProductCardHTML(p, i)).join('')
+
+    // Whisper cross-fade the real cards in over where the skeletons were.
+    const cards = grid.querySelectorAll('.shop-card')
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (window.gsap && !reduced) {
+      window.gsap.fromTo(
+        cards,
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.4, ease: 'power2.out' }
+      )
+    }
+
     initShopMotion(container)
   } catch (err) {
     console.error('Shop: failed to load products', err)

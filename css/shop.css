@@ -460,6 +460,130 @@
   margin: 0;
 }
 
+/* Skeleton loading cards — reserve full card dimensions, soft pulse */
+
+.shop-card--skeleton {
+  pointer-events: none;
+}
+
+.shop-card__sk-line {
+  display: block;
+  height: 0.8rem;
+  background: var(--brand--light-secondary, #d8d8d8);
+}
+
+.shop-card__sk-line--title {
+  width: 62%;
+  margin-top: 2px;
+}
+
+.shop-card__sk-line--price {
+  width: 34%;
+}
+
+.shop-card--skeleton .shop-card__media,
+.shop-card--skeleton .shop-card__sk-line {
+  animation: bh-skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes bh-skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shop-card--skeleton .shop-card__media,
+  .shop-card--skeleton .shop-card__sk-line {
+    animation: none;
+  }
+}
+
+/* PDP skeleton — mirrors the 2-column layout, gallery block matches real dims */
+
+.product-layout--skeleton {
+  pointer-events: none;
+}
+
+.pdp-skel {
+  display: block;
+  background: var(--brand--light-secondary, #d8d8d8);
+  animation: bh-skeleton-pulse 1.6s ease-in-out infinite;
+}
+
+.pdp-skel--crumb {
+  width: 12rem;
+  height: 0.7rem;
+  margin-bottom: var(--spacing--large, 3rem);
+}
+
+/* gallery block reuses .product-gallery__media dims (aspect 3/4); only needs the pulse */
+
+.pdp-skel--brand {
+  width: 5rem;
+  height: 0.7rem;
+}
+
+.pdp-skel--title {
+  width: 78%;
+  height: 2.1rem;
+}
+
+.pdp-skel--title-narrow {
+  width: 52%;
+}
+
+.pdp-skel--price {
+  width: 6rem;
+  height: 1.1rem;
+  margin-top: 0.25rem;
+}
+
+.pdp-skel-boxes {
+  display: flex;
+  gap: var(--spacing--xxsmall, 0.5rem);
+  margin-top: 0.5rem;
+}
+
+.pdp-skel--box {
+  width: 3.25rem;
+  height: 2.25rem;
+}
+
+.pdp-skel--btn {
+  width: 100%;
+  height: 3rem;
+  margin-top: var(--spacing--xsmall, 1rem);
+}
+
+.pdp-skel-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing--xxsmall, 0.5rem);
+  margin-top: var(--spacing--medium, 2rem);
+  padding-top: var(--spacing--medium, 2rem);
+  border-top: 1px solid var(--swatch--dark-05, rgba(13, 14, 14, 0.08));
+}
+
+.pdp-skel--line {
+  width: 100%;
+  height: 0.7rem;
+}
+
+.pdp-skel--line-narrow {
+  width: 60%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdp-skel {
+    animation: none;
+  }
+}
+
 /* Loading / error states */
 
 .shop-loading,

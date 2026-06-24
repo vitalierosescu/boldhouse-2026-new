@@ -6,7 +6,7 @@
                   <div class="footer_left">
                     <div class="footer_img-wrap"><img src="images/gallery-1.avif" loading="lazy" alt="" class="footer_img"></div>
                     <div class="footer_left_heading">
-                      <div class="h4">Come as you are,<br>leave bolder.</div>
+                      <div class="h4">{{ site.footerHeading | breaks | safe }}</div>
                       <div class="footer_left_planet w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 1066 447" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clip-path="url(#clip0_10715_641)">
                             <path d="M325.953 189.247C325.953 183.141 320.986 178.172 314.878 178.172C308.773 178.172 303.804 183.141 303.804 189.247C303.804 195.347 308.773 200.316 314.878 200.316C320.986 200.316 325.953 195.347 325.953 189.247Z" fill="currentColor"></path>
@@ -71,7 +71,7 @@
                         <a aria-label="" href="memberships.html"{% if navCurrent == 'memberships' %} aria-current="page"{% endif %} class="footer_link w-inline-block{% if navCurrent == 'memberships' %} w--current{% endif %}">
                           <div>Memberships</div>
                         </a>
-                        <a aria-label="" href="#" class="footer_link w-inline-block">
+                        <a aria-label="" href="https://www.boldhouse.events/" target="_blank" rel="noopener noreferrer" class="footer_link w-inline-block">
                           <div>Events</div>
                         </a>
                         <a aria-label="" href="manifesto.html"{% if navCurrent == 'manifesto' %} aria-current="page"{% endif %} class="footer_link w-inline-block{% if navCurrent == 'manifesto' %} w--current{% endif %}">
@@ -82,15 +82,15 @@
                     <div class="footer_col">
                       <div class="footer_col-title">Contact</div>
                       <div class="footer_link-list">
-                        <a href="#" class="footer_link w-inline-block">
-                          <div>Sint-baafsplein 10,<br>Gent 9000,<br>Belgium<br></div>
+                        <a href="https://www.google.com/maps/place/Sint-Baafsplein+10,+9000+Gent,+Belgium" target="_blank" rel="noopener noreferrer" class="footer_link w-inline-block">
+                          <div>{{ site.address | breaks | safe }}<br></div>
                         </a>
-                        <a aria-label="" href="mailto:info@bold.house" class="footer_link w-inline-block">
-                          <div>info@bold.house</div>
+                        <a aria-label="" href="mailto:{{ site.email }}" class="footer_link w-inline-block">
+                          <div>{{ site.email }}</div>
                         </a>
-                        <a aria-label="" href="#" class="footer_link w-inline-block">
-                          <div>BE0438.558.081</div>
-                        </a>
+                        <div class="footer_link w-inline-block">
+                          <div>{{ site.vatNumber }}</div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -127,15 +127,14 @@
                     </svg></div>
                   <div class="footer-content-foot">
                     <div class="legal-links ts-small">
-                      <p>© 2026 Boldhouse. All rights reserved.</p>
+                      <p>{{ site.copyright }}</p>
                     </div>
                     <div class="legal-links ts-small">
-                      <a href="terms-and-conditions.html"{% if navCurrent == 'terms' %} aria-current="page"{% endif %} class="text-style-link w-inline-block{% if navCurrent == 'terms' %} w--current{% endif %}">
-                        <p>Cookie Policy</p>
+                      {% for l in site.legalLinks %}
+                      <a href="{{ l.href }}"{% if navCurrent == 'terms' and l.href == 'terms-and-conditions.html' %} aria-current="page"{% endif %} class="text-style-link w-inline-block{% if navCurrent == 'terms' and l.href == 'terms-and-conditions.html' %} w--current{% endif %}">
+                        <p>{{ l.label }}</p>
                       </a>
-                      <a href="#" class="text-style-link w-inline-block">
-                        <p>Privacy Policy</p>
-                      </a>
+                      {% endfor %}
                     </div>
                   </div>
                 </div>

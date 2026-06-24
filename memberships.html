@@ -33,7 +33,7 @@ navTheme: light
 </style>
                   </div>
                   <div class="margin-bottom margin-large">
-                    <h2>Memberships</h2>
+                    <h2>{{ cms.memberships.heading }}</h2>
                   </div>
                   <div class="margin-bottom margin-medium">
                     <div class="margin-bottom margin-xxsmall">
@@ -52,21 +52,22 @@ navTheme: light
                         </div>
                       </div>
                     </div>
-                    <p class="ts-tiny o--60">Credits are used to schedule the meeting rooms.</p>
+                    <p class="ts-tiny o--60">{{ cms.memberships.toggleDescription }}</p>
                   </div>
                   <div class="pricing_list">
-                    <div class="pricing_item_c">
+                    {% for tier in cms.memberships.tiers %}
+                    <div class="pricing_item_c{% if tier.highlight %} is--highlight{% endif %}">
                       <div class="pricing_item_top">
-                        <div class="pricing_item_number font-serif">Member</div>
+                        <div class="pricing_item_number font-serif">{{ tier.name }}</div>
                         <div class="pricing_item_price-wrap">
-                          <h4 class="pricing_item_price-h"><span>€148</span><span class="price-card_month">/month</span></h4>
-                          <h4 class="pricing_item_price-h"><span>€90</span><span class="price-card_month">/month</span></h4>
-                          <h4 class="pricing_item_price-h"><span>€70</span><span class="price-card_month">/month</span></h4>
+                          <h4 class="pricing_item_price-h"><span>{{ tier.priceMonthly }}</span><span class="price-card_month">/month</span></h4>
+                          <h4 class="pricing_item_price-h"><span>{{ tier.priceQuarterly }}</span><span class="price-card_month">/month</span></h4>
+                          <h4 class="pricing_item_price-h"><span>{{ tier.priceYearly }}</span><span class="price-card_month">/month</span></h4>
                         </div>
-                        <p>A foot in the door. A community on your side.</p>
+                        <p>{{ tier.tagline }}</p>
                         <div class="pricing_item_btn-group button-group">
                           <div data-wf--button--variant="base">
-                            <a aria-label="" href="apply.html?tier=member" class="button w-inline-block">
+                            <a aria-label="" href="apply.html?tier={{ tier.slug }}" class="button w-inline-block">
                               <div data-button-text="" class="button_text">Apply for membership</div>
                               <div class="button_bg"></div>
                             </a>
@@ -77,7 +78,8 @@ navTheme: light
                       <div class="pricing_item_bottom">
                         <div class="bullet_list-wrap">
                           <p>Includes</p>
-                                                    <div class="bullet_list o--60">
+                          <div class="bullet_list o--60">
+                            {% for b in tier.benefits %}
                             <div class="bullet_item">
                               <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <g clip-path="url(#clip0_10492_127)">
@@ -89,289 +91,15 @@ navTheme: light
                                     </clippath>
                                   </defs>
                                 </svg></div>
-                              <div>Community membership access</div>
-                              <div class="o--60">Full member network and directory listing</div>
+                              <div>{{ b.title }}</div>
+                              {% if b.detail %}<div class="o--60">{{ b.detail }}</div>{% endif %}
                             </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Member event invitations</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Barista coffee and all common areas</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Meeting room access (credits-based)</div>
-                            </div>
+                            {% endfor %}
                           </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                    <div class="pricing_item_c">
-                      <div class="pricing_item_top">
-                        <div class="pricing_item_number font-serif">Flexi</div>
-                        <div class="pricing_item_price-wrap">
-                          <h4 class="pricing_item_price-h"><span>€295</span><span class="price-card_month">/month</span></h4>
-                          <h4 class="pricing_item_price-h"><span>€275</span><span class="price-card_month">/month</span></h4>
-                          <h4 class="pricing_item_price-h"><span>€220</span><span class="price-card_month">/month</span></h4>
-                        </div>
-                        <p>Show up when it suits you.</p>
-                        <div class="pricing_item_btn-group button-group">
-                          <div data-wf--button--variant="base">
-                            <a aria-label="" href="apply.html?tier=flexi" class="button w-inline-block">
-                              <div data-button-text="" class="button_text">Apply for membership</div>
-                              <div class="button_bg"></div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="pricing_item_line"></div>
-                      <div class="pricing_item_bottom">
-                        <div class="bullet_list-wrap">
-                          <p>Includes</p>
-                                                    <div class="bullet_list o--60">
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Drop-in desk, first-come basis</div>
-                              <div class="o--60">No lock-in, no minimum commitment</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>High-speed wifi</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Barista-grade coffee</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Access to all common areas</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Member event invitations</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Print, scan, phone booths</div>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                    <div class="pricing_item_c is--highlight">
-                      <div class="pricing_item_top">
-                        <div class="pricing_item_number font-serif">Fixed</div>
-                        <div class="pricing_item_price-wrap">
-                          <h4 class="pricing_item_price-h"><span>€395</span><span class="price-card_month">/month</span></h4>
-                          <h4 class="pricing_item_price-h"><span>€375</span><span class="price-card_month">/month</span></h4>
-                          <h4 class="pricing_item_price-h"><span>€335</span><span class="price-card_month">/month</span></h4>
-                        </div>
-                        <p>Your desk. Every day.</p>
-                        <div class="pricing_item_btn-group button-group">
-                          <div data-wf--button--variant="base">
-                            <a aria-label="" href="apply.html?tier=fixed" class="button w-inline-block">
-                              <div data-button-text="" class="button_text">Apply for membership</div>
-                              <div class="button_bg"></div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="pricing_item_line"></div>
-                      <div class="pricing_item_bottom">
-                        <div class="bullet_list-wrap">
-                          <p>Includes</p>
-                                                    <div class="bullet_list o--60">
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Dedicated desk — yours, every day</div>
-                              <div class="o--60">24/7 building access</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>High-speed wifi</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Barista-grade coffee</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Access to all common areas</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Monthly meeting room credits</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Member events + priority booking</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Bold Basement member rates</div>
-                            </div>
-                            <div class="bullet_item">
-                              <div class="bullet_icon w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g clip-path="url(#clip0_10492_127)">
-                                    <path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-                                  </g>
-                                  <defs>
-                                    <clippath id="clip0_10492_127">
-                                      <rect width="20" height="20" fill="currentColor"></rect>
-                                    </clippath>
-                                  </defs>
-                                </svg></div>
-                              <div>Community profile in member directory</div>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
+                    {% endfor %}
                   </div>
                 </div>
               </div>
@@ -384,73 +112,19 @@ navTheme: light
               <div class="padding-section-large">
                 <div class="faq12_component">
                   <div class="margin-bottom margin-xxlarge">
-                    <h2 class="h2">FAQs</h2>
+                    <h2 class="h2">{{ cms.memberships.faqHeading }}</h2>
                   </div>
                   <div class="w-layout-grid faq12_grid-list">
+                    {% for faq in cms.memberships.faqs %}
                     <div class="faq12_item">
                       <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">How do I become a member?</div>
+                        <div class="faq12_question h5">{{ faq.question }}</div>
                       </div>
                       <div class="w-richtext">
-                        <p>Browse our membership tiers, pick one that fits, and apply directly. We&#x27;ll be in touch within 48 hours.</p>
+                        <p>{{ faq.answer }}</p>
                       </div>
                     </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">What&#x27;s the difference between Flexi and Fixed?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Flexi is drop-in — come when you want, no commitment. Fixed gives you a dedicated desk, yours to keep.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Is the Resident membership open?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>We keep Resident capacity small on purpose. Inquire and we&#x27;ll let you know what&#x27;s available.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Can I visit before committing?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Yes. Book a tour and we&#x27;ll show you around.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Can I upgrade my membership tier?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Yes. Upgrades are always possible, subject to availability. Get in touch and we&#x27;ll sort it.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Is there a minimum commitment?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Flexi has none — pay per visit. Fixed and Resident are monthly commitments. Minimum contract periods apply.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Do you offer team memberships?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>For small teams, we can arrange multiple Fixed desks. Reach out at hello@boldhouse.space.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">What happens if I want to cancel?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Fixed and Resident memberships require notice as stated in your membership agreement. Flexi has no cancellation — just stop coming.</p>
-                      </div>
-                    </div>
+                    {% endfor %}
                   </div>
                 </div>
               </div>
@@ -459,50 +133,7 @@ navTheme: light
         </section>
       </main>
       <div data-theme-page-to="dark" class="footer_container">
-        <section class="section_cta">
-          <div class="padding-global">
-            <div class="container-large">
-              <div class="cta_component">
-                <div class="cta_heading">
-                  <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Join the creative club and let’s make it real</span><span class="tagline_span"> ]</span></div>
-                    <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
-                  </div>
-                  <h2 data-split="heading" class="h0">You&#x27;re in the<br>right place.</h2>
-                </div>
-                <div data-wf--button-group--variant="base" class="u-rel-z-3">
-                  <div data-wf--spacer--variant="large-3rem" class="spacer w-variant-0b9907b0-2817-9a8a-5ef4-2bb04007c79d"></div>
-                  <div class="button-group">
-                    <div data-wf--button--variant="base">
-                      <a aria-label="" href="apply.html" class="button w-inline-block">
-                        <div data-button-text="" class="button_text">Apply for membership</div>
-                        <div class="button_bg"></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div data-trail-area="" class="rotating-image-trail">
-                  <div data-trail-collection="" class="rotating-image-trail__collection">
-                    <div class="rotating-image-trail__list">
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-4.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-3.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/Rectangle-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+{% include "partials/cta.njk" %}
         {% include "partials/footer.njk" %}
       </div>
     </div>

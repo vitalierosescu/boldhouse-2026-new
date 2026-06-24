@@ -19,67 +19,34 @@ navTheme: light
                   <div>Shop</div>
                 </a>
               </div>
-              <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Goods for people who make things</span><span class="tagline_span"> ]</span></div>
-              <h1 data-hero-heading="" data-split="" class="shop-hero__heading h1">Shop</h1>
-              <p class="shop-hero__sub">Coffee, caps, hoodies and limited drops.</p>
+              <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">{{ cms.shop.hero.eyebrow }}</span><span class="tagline_span"> ]</span></div>
+              <h1 data-hero-heading="" data-split="" class="shop-hero__heading h1">{{ cms.shop.hero.heading }}</h1>
+              <p class="shop-hero__sub">{{ cms.shop.hero.subhead }}</p>
             </div>
           </div>
         </section>
         <section class="section_shop-grid padding-global">
           <div class="container-large">
             <div class="shop-grid__head">
-              <p class="shop-grid__label">All goods</p>
+              <p class="shop-grid__label">{{ cms.shop.gridLabel }}</p>
               <p class="shop-grid__count"><span data-shop-count>00</span></p>
             </div>
-            <div data-shop-grid class="shop-grid"></div>
+            <div data-shop-grid class="shop-grid">
+              {% for i in range(0, 9) %}
+              <div class="shop-card shop-card--skeleton" aria-hidden="true">
+                <div class="shop-card__media"></div>
+                <div class="shop-card__info">
+                  <span class="shop-card__sk-line shop-card__sk-line--title"></span>
+                  <span class="shop-card__sk-line shop-card__sk-line--price"></span>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
           </div>
         </section>
       </main>
       <div data-theme-page-to="dark" class="footer_container">
-        <section class="section_cta">
-          <div class="padding-global">
-            <div class="container-large">
-              <div class="cta_component">
-                <div class="cta_heading">
-                  <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Join the creative club and let's make it real</span><span class="tagline_span"> ]</span></div>
-                    <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
-                  </div>
-                  <h2 data-split="heading" class="h0">You&#x27;re in the<br>right place.</h2>
-                </div>
-                <div data-wf--button-group--variant="base" class="u-rel-z-3">
-                  <div data-wf--spacer--variant="large-3rem" class="spacer w-variant-0b9907b0-2817-9a8a-5ef4-2bb04007c79d"></div>
-                  <div class="button-group">
-                    <div data-wf--button--variant="base">
-                      <a aria-label="" href="#" class="button w-inline-block">
-                        <div data-button-text="" class="button_text">Apply for membership</div>
-                        <div class="button_bg"></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div data-trail-area="" class="rotating-image-trail">
-                  <div data-trail-collection="" class="rotating-image-trail__collection">
-                    <div class="rotating-image-trail__list">
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-4.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-3.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/Rectangle-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+{% include "partials/cta.njk" %}
         {% include "partials/footer.njk" %}
       </div>
     </div>

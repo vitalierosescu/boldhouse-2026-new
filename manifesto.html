@@ -11,57 +11,14 @@ navTheme: light
           <div class="padding-global">
             <div class="container-medium">
               <div class="padding-section-hero">
-                <p data-hero-heading="" data-split="" class="h3">We are <strong>creators, entrepreneurs, and visionaries.</strong> We challenge the status quo, break the mold, and build without permission. <br><br>At Boldhouse, we believe in the power of <strong>creative entrepreneurship</strong>. <br>where ideas are free to grow, risks are meant to be taken, and failure is just another step forward.<br><br>We stand for <strong>diversity, inclusion, and equal opportunity.</strong> Gay rights, human rights, and the right to be unapologetically yourself, here, identity is celebrated, not tolerated.<br><br>We are <strong>a global community.</strong> <br>From local dreamers to worldwide changemakers, we connect bold minds across borders. <strong>Ideas have no boundaries. Neither do we.<br><br>‍</strong>We thrive on <strong>collaboration over competition.</strong> Success isn’t a solo journey; it’s a shared experience.<br><br>We reject the ordinary. We embrace the messy, the disruptive, and the unknown. <strong>Innovation happens in discomfort. Growth happens when we dare.<br><br>‍</strong>This is not just a workspace. <br><br>This is a movement.<strong>Create. Connect. Be Bold.</strong></p>
+                <p data-hero-heading="" data-split="" class="h3">{{ cms.manifesto.body | richInline | safe }}</p>
               </div>
             </div>
           </div>
         </section>
       </main>
       <div data-theme-page-to="dark" class="footer_container">
-        <section class="section_cta">
-          <div class="padding-global">
-            <div class="container-large">
-              <div class="cta_component">
-                <div class="cta_heading">
-                  <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Join the creative club and let’s make it real</span><span class="tagline_span"> ]</span></div>
-                    <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
-                  </div>
-                  <h2 data-split="heading" class="h0">You&#x27;re in the<br>right place.</h2>
-                </div>
-                <div data-wf--button-group--variant="base" class="u-rel-z-3">
-                  <div data-wf--spacer--variant="large-3rem" class="spacer w-variant-0b9907b0-2817-9a8a-5ef4-2bb04007c79d"></div>
-                  <div class="button-group">
-                    <div data-wf--button--variant="base">
-                      <a aria-label="" href="#" class="button w-inline-block">
-                        <div data-button-text="" class="button_text">Apply for membership</div>
-                        <div class="button_bg"></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div data-trail-area="" class="rotating-image-trail">
-                  <div data-trail-collection="" class="rotating-image-trail__collection">
-                    <div class="rotating-image-trail__list">
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-4.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-3.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/Rectangle-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+{% include "partials/cta.njk" %}
         {% include "partials/footer.njk" %}
       </div>
     </div>

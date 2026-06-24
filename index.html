@@ -30,22 +30,12 @@ showCursor: true
             <div class="container-large">
               <div class="h-hero-2_component">
                 <div class="h-hero-2_link-list">
-                  <a href="club.html" class="h-hero-2_link w-inline-block">
-                    <div>Club</div>
-                    <div class="h-hero-2_link-number font-serif">(01)</div>
+                  {% for link in cms.home.heroLinks %}
+                  <a href="{{ link.href }}" class="h-hero-2_link w-inline-block">
+                    <div>{{ link.label }}</div>
+                    <div class="h-hero-2_link-number font-serif">{{ link.number }}</div>
                   </a>
-                  <a href="spaces.html" class="h-hero-2_link w-inline-block">
-                    <div>Spaces</div>
-                    <div class="h-hero-2_link-number font-serif">(02)</div>
-                  </a>
-                  <a href="manifesto.html" class="h-hero-2_link w-inline-block">
-                    <div>Manifesto</div>
-                    <div class="h-hero-2_link-number font-serif">(03)</div>
-                  </a>
-                  <a href="contact.html" class="h-hero-2_link w-inline-block">
-                    <div>Apply</div>
-                    <div class="h-hero-2_link-number font-serif">(04)</div>
-                  </a>
+                  {% endfor %}
                 </div>
                 <div class="h-hero_svg-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 1323 165" fill="none" data-hero-svg="" class="h-hero-2_svg">
                     <path d="M58.6738 162.242H0V2.66699H58.0071C104.457 2.66699 123.793 16.891 123.793 43.1164C123.793 58.2294 115.792 71.3421 99.3455 77.7873V78.2318C116.681 83.3435 128.905 93.1225 128.905 115.57C128.905 152.463 95.5673 162.242 58.6738 162.242ZM42.2274 64.8968H60.4518C70.8976 64.8968 80.232 61.3408 80.232 49.7839C80.232 39.5604 71.3421 37.3379 59.1183 37.3379H42.2274V64.8968ZM42.2274 127.793H60.0073C80.0098 127.793 85.566 120.904 85.566 111.347C85.566 98.4565 74.2313 95.7895 61.7853 95.7895H42.2274V127.793Z" fill="currentColor"></path>
@@ -60,11 +50,11 @@ showCursor: true
                   </svg></div>
                 <div class="h-hero_bottom u-grid">
                   <div id="w-node-_0444b767-6b10-d2ca-453f-cc91177e7cce-220bbe28" class="h-hero-2_left">
-                    <p data-hero-heading="" data-split="">Come as you are,<br>leave bolder.</p>
+                    <p data-hero-heading="" data-split="">{{ cms.home.hero.headline | breaks | safe }}</p>
                     <div class="button-group">
                       <div data-wf--button--variant="base">
-                        <a aria-label="" href="apply.html" class="button w-inline-block">
-                          <div data-button-text="" class="button_text">Apply for membership</div>
+                        <a aria-label="" href="{{ cms.home.hero.ctaLink }}" class="button w-inline-block">
+                          <div data-button-text="" class="button_text">{{ cms.home.hero.ctaLabel }}</div>
                           <div class="button_bg"></div>
                         </a>
                       </div>
@@ -72,13 +62,13 @@ showCursor: true
                   </div>
                   <div id="w-node-fc0ade8b-f316-02ad-e4dd-1a080e8d1768-220bbe28"></div>
                   <div id="w-node-_2a3e1ee7-b985-aeb9-8860-0bfc41b82511-220bbe28" class="h-hero-2_right">
-                    <p data-hero-heading="" data-split="" class="h-hero-2_p">A building in the centre of Ghent, where talented entrepreneurs do their thing. From freelance videographers over copywriters to IT geniuses.</p>
+                    <p data-hero-heading="" data-split="" class="h-hero-2_p">{{ cms.home.hero.subhead }}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div data-hero-target="" class="h-hero_bg"><img class="h-hero_img is--default" src="images/home-hero.avif" alt="" sizes="(max-width: 2880px) 100vw, 2880px" data-hero-img="" loading="eager" fetchpriority="high" srcset="images/home-hero-p-500.avif 500w, images/home-hero-p-800.avif 800w, images/home-hero-p-1080.avif 1080w, images/home-hero.avif 2880w">
+          <div data-hero-target="" class="h-hero_bg"><img class="h-hero_img is--default" src="{{ cms.home.hero.image | sanityImage(2400) }}" alt="" data-hero-img="" loading="eager" fetchpriority="high">
             <div class="h-hero_bg-overlay"></div>
           </div>
         </div>
@@ -90,11 +80,11 @@ showCursor: true
                   <div class="highlight_grid u-grid">
                     <div id="w-node-be22b89b-e000-9a57-9ab2-28027eafbc6c-220bbe28" class="highlight_heading">
                       <div>
-                        <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">A coworking club for Bold entrepreneurs.</span><span class="tagline_span"> ]</span></div>
+                        <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">{{ cms.home.tagline }}</span><span class="tagline_span"> ]</span></div>
                         <div data-wf--spacer--variant="xsmall-1rem" class="spacer w-variant-1c804c5e-1948-3884-7b37-6c8b801010b4"></div>
                       </div>
                       <div class="highlight-title_list">
-                        <h2 data-split="heading" class="highlight-title">BOLDHOUSE EXISTS TO BRING TOGETHER PEOPLE WHO ARE BUILDING THINGS WORTH TALKING ABOUT. THROUGH SPACES, EVENTS, EXPERIENCES AND A COMMUNITY DESIGNED TO MAKE THINGS HAPPEN.</h2>
+                        <h2 data-split="heading" class="highlight-title">{{ cms.home.missionStatement }}</h2>
                         <h2 data-split="heading" class="highlight-title"></h2>
                       </div>
                     </div>
@@ -110,13 +100,13 @@ showCursor: true
               <div class="padding-section-large">
                 <div class="intro_layout">
                   <div class="intro_left">
-                    <h2 data-split="heading" class="h3">A building in the centre of Ghent, where talented entrepreneurs do their thing.</h2>
+                    <h2 data-split="heading" class="h3">{{ cms.home.intro.heading }}</h2>
                   </div>
                   <div data-parallax="" class="intro_right">
                     <div class="intro_img-wrap is-2 parallax-parent">
-                      <div data-wf--visual--variant="base" data-video-src="" class="visual_wrap"><img loading="True" src="images/Club---1.avif" alt="" sizes="(max-width: 1919px) 100vw, 1668px, 100vw" srcset="images/Club---1-p-500.avif 500w, images/Club---1-p-800.avif 800w, images/Club---1-p-1080.avif 1080w, images/Club---1.avif 1122w" class="visual_img"></div>
+                      <div data-wf--visual--variant="base" data-video-src="" class="visual_wrap"><img loading="True" src="{{ cms.home.intro.image | sanityImage(1200) }}" alt="" class="visual_img"></div>
                     </div>
-                    <p data-split="" class="ts-medium">We keep the community intentionally small. Not because we&#x27;re precious about it — but because we know that who&#x27;s around you shapes what you make.<br><br>When you share space with the right people, something happens. Collaboration. Referrals. Friendships. Ideas that wouldn&#x27;t have existed anywhere else. That&#x27;s what this building is for.</p>
+                    <p data-split="" class="ts-medium">{{ cms.home.intro.body | breaks | safe }}</p>
                   </div>
                 </div>
               </div>
@@ -128,16 +118,17 @@ showCursor: true
             <div class="container-large">
               <div class="h-categories_component">
                 <div class="h-categories_list">
+                  {% for card in cms.home.categoryCards %}
                   <div class="h-categories_item parallax-parent">
                     <div class="h-categories_content">
-                      <p class="h0">Club</p>
-                      <p class="font-body">Discover what’s in store for you.</p>
+                      <p class="h0">{{ card.title }}</p>
+                      <p class="font-body">{{ card.description }}</p>
                       <div data-wf--button-group--variant="base" class="u-rel-z-3">
                         <div data-wf--spacer--variant="xsmall-1rem" class="spacer w-variant-1c804c5e-1948-3884-7b37-6c8b801010b4"></div>
                         <div class="button-group">
                           <div data-wf--button--variant="base">
-                            <a aria-label="" href="club.html" class="button w-inline-block">
-                              <div data-button-text="" class="button_text">Apply for membership</div>
+                            <a aria-label="" href="{{ card.buttonLink }}" class="button w-inline-block">
+                              <div data-button-text="" class="button_text">{{ card.buttonLabel }}</div>
                               <div class="button_bg"></div>
                             </a>
                           </div>
@@ -145,29 +136,10 @@ showCursor: true
                       </div>
                     </div>
                     <div class="h-categories_img-wrap parallax">
-                      <div data-wf--visual--variant="base" data-video-src="" class="visual_wrap"><img loading="True" src="images/gallery-1.avif" alt="" sizes="(max-width: 1919px) 100vw, 1668px, 100vw" srcset="images/gallery-1-p-500.avif 500w, images/gallery-1.avif 573w" class="visual_img"></div>
+                      <div data-wf--visual--variant="base" data-video-src="" class="visual_wrap"><img loading="True" src="{{ card.image | sanityImage(1200) }}" alt="" class="visual_img"></div>
                     </div>
                   </div>
-                  <div class="h-categories_item parallax-parent">
-                    <div class="h-categories_content">
-                      <p class="h0">Spaces</p>
-                      <p class="font-body">Discover what’s in store for you.</p>
-                      <div data-wf--button-group--variant="base" class="u-rel-z-3">
-                        <div data-wf--spacer--variant="xsmall-1rem" class="spacer w-variant-1c804c5e-1948-3884-7b37-6c8b801010b4"></div>
-                        <div class="button-group">
-                          <div data-wf--button--variant="base">
-                            <a aria-label="" href="spaces.html" class="button w-inline-block">
-                              <div data-button-text="" class="button_text">Explore spaces</div>
-                              <div class="button_bg"></div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="h-categories_img-wrap parallax">
-                      <div data-wf--visual--variant="base" data-video-src="" class="visual_wrap"><img loading="True" src="images/space-vibe.avif" alt="" sizes="(max-width: 1919px) 100vw, 1668px, 100vw" srcset="images/space-vibe-p-500.avif 500w, images/space-vibe-p-800.avif 800w, images/space-vibe-p-1080.avif 1080w, images/space-vibe.avif 1503w" class="visual_img"></div>
-                    </div>
-                  </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>
@@ -179,8 +151,8 @@ showCursor: true
               <div class="padding-section-large">
                 <div class="location_component u-grid">
                   <div id="w-node-_77283a1d-b74a-6ed6-30d6-33f86d313c18-220bbe28" class="location_title-container">
-                    <div data-split="" class="location_title-p tagline font-serif">[ Locations ]</div>
-                    <div id="" class="location_title-wrap"><span class="location_title_img-wrap"><img src="images/image-4.avif" loading="lazy" alt="" class="location_title_img"></span><span class="location_title h4 font-body">Sint Baafsplein 10, in the heart of Ghent. A building with edges, in the centre of everything. More locations coming — 2027–2028.</span></div>
+                    <div data-split="" class="location_title-p tagline font-serif">{{ cms.home.location.label }}</div>
+                    <div id="" class="location_title-wrap"><span class="location_title_img-wrap"><img src="images/image-4.avif" loading="lazy" alt="" class="location_title_img"></span><span class="location_title h4 font-body">{{ cms.home.location.text }}</span></div>
                   </div>
                 </div>
               </div>
@@ -193,11 +165,11 @@ showCursor: true
               <div class="container-large">
                 <div class="heading_component">
                   <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Words from our members</span><span class="tagline_span"> ]</span></div>
+                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">{{ cms.home.reviews.eyebrow }}</span><span class="tagline_span"> ]</span></div>
                     <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
                   </div>
                   <div class="margin-bottom margin-large">
-                    <h2>A growing community</h2>
+                    <h2>{{ cms.home.reviews.heading }}</h2>
                   </div>
                 </div>
               </div>
@@ -207,12 +179,12 @@ showCursor: true
                 <div data-reviews-item="" class="review_item">
                   <div class="review_content">
                     <div class="review_top">
-                      <h3 class=”review_quote h5”>&ldquo;I joined for the desk. I stayed for the people.&rdquo;</h3>
+                      <h3 class=”review_quote h5”>&ldquo;{{ cms.home.reviews.testimonials[0].quote }}&rdquo;</h3>
                     </div>
                     <div class=”review_bot”>
                       <div class=”m-slider_item_person”>
-                        <div class=”m-slider_item_person-name”>Jana V.</div>
-                        <div class=”m-slider_item_person-job”>Brand Designer</div>
+                        <div class=”m-slider_item_person-name”>{{ cms.home.reviews.testimonials[0].authorName }}</div>
+                        <div class=”m-slider_item_person-job”>{{ cms.home.reviews.testimonials[0].authorRole }}</div>
                       </div>
                     </div>
                   </div>
@@ -231,22 +203,22 @@ showCursor: true
                 <div data-reviews-item="" class="review_item is--highlight">
                   <div class="review_content is--stat">
                     <div class="review_top">
-                      <h3 class="review_stat h2">124</h3>
+                      <h3 class="review_stat h2">{{ site.memberCount }}</h3>
                     </div>
                     <div class="review_bot">
-                      <div class="review_p">active members. Designers, architects, founders, makers. People who choose who they work next to.</div>
+                      <div class="review_p">{{ cms.home.reviews.memberCountDesc }}</div>
                     </div>
                   </div>
                 </div>
                 <div data-reviews-item="" class="review_item">
                   <div class="review_content">
                     <div class="review_top">
-                      <h3 class=”review_quote h5”>&ldquo;It&rsquo;s the only place I&rsquo;ve ever been genuinely excited to go to work.&rdquo;</h3>
+                      <h3 class=”review_quote h5”>&ldquo;{{ cms.home.reviews.testimonials[1].quote }}&rdquo;</h3>
                     </div>
                     <div class=”review_bot”>
                       <div class=”m-slider_item_person”>
-                        <div class=”m-slider_item_person-name”>Liam D.</div>
-                        <div class=”m-slider_item_person-job”>Architect</div>
+                        <div class=”m-slider_item_person-name”>{{ cms.home.reviews.testimonials[1].authorName }}</div>
+                        <div class=”m-slider_item_person-job”>{{ cms.home.reviews.testimonials[1].authorRole }}</div>
                       </div>
                     </div>
                   </div>
@@ -271,20 +243,12 @@ showCursor: true
             <div class="padding-global">
               <div class="container-large">
                 <div class="h-rooms_component">
-                  <div class="h-rooms_list"><button class="h-rooms_item">
-                      <div class="h-rooms_item-p">The Open Floor</div><span class="h-rooms_number font-serif"><span>(</span><span>0</span><span>1</span><span>)</span></span>
-                    </button><button class="h-rooms_item">
-                      <div class="h-rooms_item-p">Private Desks</div><span class="h-rooms_number font-serif"><span>(</span><span>0</span><span>2</span><span>)</span></span>
-                    </button><button class="h-rooms_item">
-                      <div class="h-rooms_item-p">Meeting Room</div><span class="h-rooms_number font-serif"><span>(</span><span>0</span><span>3</span><span>)</span></span>
-                    </button><button class="h-rooms_item">
-                      <div class="h-rooms_item-p">The Kitchen</div><span class="h-rooms_number font-serif"><span>(</span><span>0</span><span>4</span><span>)</span></span>
-                    </button><button class="h-rooms_item">
-                      <div class="h-rooms_item-p">Bold Basement</div><span class="h-rooms_number font-serif"><span>(</span><span>0</span><span>5</span><span>)</span></span>
-                    </button></div>
+                  <div class="h-rooms_list">{% for room in cms.home.rooms.roomItems %}<button class="h-rooms_item">
+                      <div class="h-rooms_item-p">{{ room.name }}</div><span class="h-rooms_number font-serif"><span>(</span><span>{{ room.number[0] }}</span><span>{{ room.number[1] }}</span><span>)</span></span>
+                    </button>{% endfor %}</div>
                   <div class="h-rooms_bottom">
                     <div data-chrome-c-init="" class="chrome-c_wrap"></div>
-                    <h2 class="h-rooms_title h1">In the center of everything, plenty of room.</h2>
+                    <h2 class="h-rooms_title h1">{{ cms.home.rooms.heading }}</h2>
                   </div>
                   <div class="h-rooms_bg-parent parallax-parent">
                     <div class="h-rooms_bg parallax"><img src="images/image-3.avif" loading="lazy" alt="" class="h-rooms_img"><img src="images/home-hero.avif" loading="lazy" sizes="(max-width: 2880px) 100vw, 2880px" srcset="images/home-hero-p-500.avif 500w, images/home-hero-p-800.avif 800w, images/home-hero-p-1080.avif 1080w, images/home-hero.avif 2880w" alt="" class="h-rooms_img"><img src="images/home-outro_1home-outro.avif" loading="lazy" sizes="100vw" srcset="images/home-outro_1-p-500.avif 500w, images/home-outro_1-p-800.avif 800w, images/home-outro_1-p-1080.avif 1080w, images/home-outro_1home-outro.avif 2348w" alt="" class="h-rooms_img"><img src="images/QmdGkQSqqBC5iYSaebPsFoaSWtjhaMQNWpVnWoGJeATp2h-3_1QmdGkQSqqBC5iYSaebPsFoaSWtjhaMQNWpVnWoGJeATp2h-3.avif" loading="lazy" alt="" class="h-rooms_img"><img src="images/image-4.avif" loading="lazy" alt="" class="h-rooms_img"><img src="images/h-room-1-new.avif" loading="lazy" sizes="100vw" srcset="images/h-room-1-new-p-500.avif 500w, images/h-room-1-new-p-800.avif 800w, images/h-room-1-new-p-1080.avif 1080w, images/h-room-1-new.avif 2116w" alt="" class="h-rooms_img is--default">
@@ -327,9 +291,9 @@ showCursor: true
                   <div class="h-all_heading">
                     <div class="heading_component">
                       <div class="margin-bottom margin-small">
-                        <h2 class="h-all_title h3 font-body">More than a coworking.<br>Discover what&#x27;s going on.</h2>
+                        <h2 class="h-all_title h3 font-body">{{ cms.home.allSection.heading | breaks | safe }}</h2>
                       </div>
-                      <p>Club, shop, studio, events — all of it in one building.</p>
+                      <p>{{ cms.home.allSection.subtext }}</p>
                     </div>
                   </div>
                   <div data-tabs-autoplay-duration="5000" data-tabs="wrapper" data-tabs-autoplay="true" class="tab-layout__wrap">
@@ -356,12 +320,12 @@ showCursor: true
                             <div data-tabs="content-item" role="tab" class="tab-content__item active">
                               <div class="tab-content__item-main">
                                 <div class="content-item_square"></div>
-                                <h2 class="content-item__heading font-serif">What’s planned</h2>
+                                <h2 class="content-item__heading font-serif">{{ cms.home.allSection.tabs[0].title }}</h2>
                               </div>
                               <div data-tabs="item-details" class="tab-content__item-detail">
                                 <div class="tab-description__spacer"></div>
                                 <div class="margin-bottom margin-medium">
-                                  <p class="tab-description">Member events, basement rentals, workshops, and open sessions. Check what&#x27;s on — and what&#x27;s coming up.</p>
+                                  <p class="tab-description">{{ cms.home.allSection.tabs[0].description }}</p>
                                 </div>
                                 <div data-section-cms="" class="slider_component">
                                   <div class="slider_trim is--smaller">
@@ -376,7 +340,7 @@ showCursor: true
                                               <div class="slider_item_date">
                                                 <div class="tagline font-serif w-dyn-bind-empty"></div>
                                               </div>
-                                              <h3 class="slider_item_title h6">Skincare Soiree by Nourist</h3>
+                                              <h3 class="slider_item_title h6">{{ cms.home.allSection.tabs[0].exampleLabel }}</h3>
                                               <p class="slider_item_p w-dyn-bind-empty"></p>
                                             </div>
                                           </div>
@@ -397,11 +361,11 @@ showCursor: true
                             <div data-tabs="content-item" role="tab" class="tab-content__item">
                               <div class="tab-content__item-main">
                                 <div class="content-item_square"></div>
-                                <h2 class="content-item__heading font-serif">Bold Lab</h2>
+                                <h2 class="content-item__heading font-serif">{{ cms.home.allSection.tabs[1].title }}</h2>
                               </div>
                               <div data-tabs="item-details" class="tab-content__item-detail">
                                 <div class="tab-description__spacer"></div>
-                                <p class="tab-description">The creative agency behind Boldhouse. Video, content, social, and brand — for companies that take craft seriously.</p>
+                                <p class="tab-description">{{ cms.home.allSection.tabs[1].description }}</p>
                                 <div class="tab-description__spacer"></div>
                               </div>
                               <div class="tab-content__item-bottom">
@@ -411,11 +375,11 @@ showCursor: true
                             <div data-tabs="content-item" role="tab" class="tab-content__item">
                               <div class="tab-content__item-main">
                                 <div class="content-item_square"></div>
-                                <h2 class="content-item__heading font-serif">Shop</h2>
+                                <h2 class="content-item__heading font-serif">{{ cms.home.allSection.tabs[2].title }}</h2>
                               </div>
                               <div data-tabs="item-details" class="tab-content__item-detail">
                                 <div class="tab-description__spacer"></div>
-                                <p class="tab-description">Bold objects for bold people. The same coffee we drink every morning at Sint Baafsplein, plus caps, hoodies, and limited drops.</p>
+                                <p class="tab-description">{{ cms.home.allSection.tabs[2].description }}</p>
                                 <div class="tab-description__spacer"></div>
                               </div>
                               <div class="tab-content__item-bottom">
@@ -425,11 +389,11 @@ showCursor: true
                             <div data-tabs="content-item" role="tab" class="tab-content__item">
                               <div class="tab-content__item-main">
                                 <div class="content-item_square"></div>
-                                <h2 class="content-item__heading font-serif">Network benefits</h2>
+                                <h2 class="content-item__heading font-serif">{{ cms.home.allSection.tabs[3].title }}</h2>
                               </div>
                               <div data-tabs="item-details" class="tab-content__item-detail">
                                 <div class="tab-description__spacer"></div>
-                                <p class="tab-description">A curated community of designers, architects, filmmakers, and strategists. Collaboration happens because of proximity — this is the proximity.</p>
+                                <p class="tab-description">{{ cms.home.allSection.tabs[3].description }}</p>
                                 <div class="tab-description__spacer"></div>
                               </div>
                               <div class="tab-content__item-bottom">
@@ -448,50 +412,7 @@ showCursor: true
         </section>
       </main>
       <div data-theme-page-to="dark" class="footer_container">
-        <section class="section_cta">
-          <div class="padding-global">
-            <div class="container-large">
-              <div class="cta_component">
-                <div class="cta_heading">
-                  <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Join the creative club and let’s make it real</span><span class="tagline_span"> ]</span></div>
-                    <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
-                  </div>
-                  <h2 data-split="heading" class="h0">You&#x27;re in the<br>right place.</h2>
-                </div>
-                <div data-wf--button-group--variant="base" class="u-rel-z-3">
-                  <div data-wf--spacer--variant="large-3rem" class="spacer w-variant-0b9907b0-2817-9a8a-5ef4-2bb04007c79d"></div>
-                  <div class="button-group">
-                    <div data-wf--button--variant="base">
-                      <a aria-label="" href="apply.html" class="button w-inline-block">
-                        <div data-button-text="" class="button_text">Apply for membership</div>
-                        <div class="button_bg"></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div data-trail-area="" class="rotating-image-trail">
-                  <div data-trail-collection="" class="rotating-image-trail__collection">
-                    <div class="rotating-image-trail__list">
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-4.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-3.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/Rectangle-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+{% include "partials/cta.njk" %}
         {% include "partials/footer.njk" %}
       </div>
     </div>

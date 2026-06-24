@@ -624,11 +624,11 @@ navTheme: dark
         <!-- ======================== SCREEN 0: HERO ======================== -->
         <section class="apply-screen apply-screen--hero" data-apply-screen="0">
           <div class="apply-hero-content">
-            <div class="apply-hero-tagline">[ Takes about 3 minutes ]</div>
-            <h1 class="apply-hero-headline">Your Boldhouse<br>Application<br>Starts Here.</h1>
+            <div class="apply-hero-tagline">[ {{ cms.apply.hero.tagline }} ]</div>
+            <h1 class="apply-hero-headline">{{ cms.apply.hero.headline | breaks | safe }}</h1>
             <div data-wf--button--variant="base">
               <a href="#" class="button w-inline-block" data-apply-start>
-                <div data-button-text="" class="button_text">Start</div>
+                <div data-button-text="" class="button_text">{{ cms.apply.hero.startLabel }}</div>
                 <div class="button_bg"></div>
               </a>
             </div>
@@ -639,7 +639,7 @@ navTheme: dark
         <section class="apply-screen apply-screen--step" data-apply-screen="1" hidden>
           <div class="padding-global" style="width:100%">
             <div class="container-large">
-              <h2 class="apply-step-title">1. Choose your membership</h2>
+              <h2 class="apply-step-title">{{ cms.apply.tierStepTitle }}</h2>
               <div class="apply-progress">
                 <div class="apply-progress-segment is--active"></div>
                 <div class="apply-progress-segment"></div>
@@ -647,125 +647,28 @@ navTheme: dark
 
               <div class="apply-tiers" role="radiogroup" aria-label="Choose your membership">
 
-                <!-- MEMBER -->
+                {% for tier in cms.apply.tiers %}
                 <label class="apply-tier-card">
-                  <input class="apply-tier-radio" type="radio" name="tier-choice" value="member" aria-label="Member, €90 per month">
+                  <input class="apply-tier-radio" type="radio" name="tier-choice" value="{{ tier.slug }}" aria-label="{{ tier.name }}, {{ tier.priceQuarterly }} per month">
                   <div class="apply-tier-check" aria-hidden="true"></div>
-                  <div class="apply-tier-name">Member</div>
+                  <div class="apply-tier-name">{{ tier.name }}</div>
                   <div class="apply-tier-price">
-                    <span class="apply-tier-amount">€90</span>
+                    <span class="apply-tier-amount">{{ tier.priceQuarterly }}</span>
                     <span class="apply-tier-period">/month</span>
                   </div>
-                  <div class="apply-tier-tagline">A foot in the door. A community on your side.</div>
+                  <div class="apply-tier-tagline">{{ tier.tagline }}</div>
                   <div class="apply-tier-divider"></div>
                   <div class="apply-tier-includes">Includes</div>
                   <div class="apply-tier-benefits">
+                    {% for b in tier.benefits %}
                     <div class="apply-tier-benefit">
                       <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Community membership access
+                      {{ b.title }}
                     </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Member event invitations
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Barista coffee and all common areas
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Meeting room access (credits-based)
-                    </div>
+                    {% endfor %}
                   </div>
                 </label>
-
-                <!-- FLEXI -->
-                <label class="apply-tier-card">
-                  <input class="apply-tier-radio" type="radio" name="tier-choice" value="flexi" aria-label="Flexi, €275 per month">
-                  <div class="apply-tier-check" aria-hidden="true"></div>
-                  <div class="apply-tier-name">Flexi</div>
-                  <div class="apply-tier-price">
-                    <span class="apply-tier-amount">€275</span>
-                    <span class="apply-tier-period">/month</span>
-                  </div>
-                  <div class="apply-tier-tagline">Show up when it suits you.</div>
-                  <div class="apply-tier-divider"></div>
-                  <div class="apply-tier-includes">Includes</div>
-                  <div class="apply-tier-benefits">
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Drop-in desk, first-come basis
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      High-speed wifi
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Barista-grade coffee
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Access to all common areas
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Member event invitations
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Print, scan, phone booths
-                    </div>
-                  </div>
-                </label>
-
-                <!-- FIXED -->
-                <label class="apply-tier-card">
-                  <input class="apply-tier-radio" type="radio" name="tier-choice" value="fixed" aria-label="Fixed, €375 per month">
-                  <div class="apply-tier-check" aria-hidden="true"></div>
-                  <div class="apply-tier-name">Fixed</div>
-                  <div class="apply-tier-price">
-                    <span class="apply-tier-amount">€375</span>
-                    <span class="apply-tier-period">/month</span>
-                  </div>
-                  <div class="apply-tier-tagline">Your desk. Every day.</div>
-                  <div class="apply-tier-divider"></div>
-                  <div class="apply-tier-includes">Includes</div>
-                  <div class="apply-tier-benefits">
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Dedicated desk — yours, every day
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      High-speed wifi
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Barista-grade coffee
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Access to all common areas
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Monthly meeting room credits
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Member events + priority booking
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Bold Basement member rates
-                    </div>
-                    <div class="apply-tier-benefit">
-                      <svg class="apply-tier-benefit-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.125 11.25L7.5 15.625L17.5 5.625" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      Community profile in member directory
-                    </div>
-                  </div>
-                </label>
+                {% endfor %}
 
               </div>
 
@@ -793,7 +696,7 @@ navTheme: dark
         <section class="apply-screen apply-screen--step" data-apply-screen="2" hidden>
           <div class="padding-global" style="width:100%">
             <div class="container-large">
-              <h2 class="apply-step-title">2. About you</h2>
+              <h2 class="apply-step-title">{{ cms.apply.formStepTitle }}</h2>
               <div class="apply-progress">
                 <div class="apply-progress-segment is--active"></div>
                 <div class="apply-progress-segment is--active"></div>
@@ -806,26 +709,26 @@ navTheme: dark
 
                 <div class="apply-form-grid">
                   <div class="apply-field-group">
-                    <label class="apply-field-label" for="apply-name">Name &amp; last name</label>
+                    <label class="apply-field-label" for="apply-name">{{ cms.apply.formLabels.name }}</label>
                     <input class="apply-field-input" type="text" id="apply-name" name="name" autocomplete="name" aria-describedby="apply-name-error" required>
-                    <p class="apply-field-error" id="apply-name-error" hidden>Please enter your name.</p>
+                    <p class="apply-field-error" id="apply-name-error" hidden>{{ cms.apply.formLabels.nameError }}</p>
                   </div>
                   <div class="apply-field-group">
-                    <label class="apply-field-label" for="apply-company">Company</label>
+                    <label class="apply-field-label" for="apply-company">{{ cms.apply.formLabels.company }}</label>
                     <input class="apply-field-input" type="text" id="apply-company" name="company" autocomplete="organization">
                   </div>
                   <div class="apply-field-group">
-                    <label class="apply-field-label" for="apply-email">E-mail</label>
+                    <label class="apply-field-label" for="apply-email">{{ cms.apply.formLabels.email }}</label>
                     <input class="apply-field-input" type="email" id="apply-email" name="email" autocomplete="email" aria-describedby="apply-email-error" required>
-                    <p class="apply-field-error" id="apply-email-error" hidden>Please enter a valid email address.</p>
+                    <p class="apply-field-error" id="apply-email-error" hidden>{{ cms.apply.formLabels.emailError }}</p>
                   </div>
                   <div class="apply-field-group">
-                    <label class="apply-field-label" for="apply-discipline">What do you do?</label>
-                    <input class="apply-field-input" type="text" id="apply-discipline" name="discipline" placeholder="e.g. Brand Designer, Architect" aria-describedby="apply-discipline-error" required>
-                    <p class="apply-field-error" id="apply-discipline-error" hidden>Tell us what you do.</p>
+                    <label class="apply-field-label" for="apply-discipline">{{ cms.apply.formLabels.discipline }}</label>
+                    <input class="apply-field-input" type="text" id="apply-discipline" name="discipline" placeholder="{{ cms.apply.formLabels.disciplinePlaceholder }}" aria-describedby="apply-discipline-error" required>
+                    <p class="apply-field-error" id="apply-discipline-error" hidden>{{ cms.apply.formLabels.disciplineError }}</p>
                   </div>
                   <div class="apply-field-group apply-field-group--full">
-                    <label class="apply-field-label" for="apply-message">Message</label>
+                    <label class="apply-field-label" for="apply-message">{{ cms.apply.formLabels.message }}</label>
                     <textarea class="apply-field-input apply-field-textarea" id="apply-message" name="message"></textarea>
                   </div>
                 </div>
@@ -854,12 +757,12 @@ navTheme: dark
         <!-- ======================== SUCCESS ======================== -->
         <section class="apply-screen apply-screen--success" data-apply-screen="success" hidden>
           <div class="apply-success-content">
-            <p class="apply-success-label">Application received</p>
-            <h2 class="apply-success-heading">We'll be in touch<br>within 48 hours.</h2>
-            <p class="apply-success-body">Got it. We'll review your application and follow up shortly.</p>
+            <p class="apply-success-label">{{ cms.apply.successScreen.label }}</p>
+            <h2 class="apply-success-heading">{{ cms.apply.successScreen.heading | breaks | safe }}</h2>
+            <p class="apply-success-body">{{ cms.apply.successScreen.body }}</p>
             <div data-wf--button--variant="base">
               <a href="index.html" class="button w-inline-block">
-                <div data-button-text="" class="button_text">Back to home</div>
+                <div data-button-text="" class="button_text">{{ cms.apply.successScreen.buttonLabel }}</div>
                 <div class="button_bg"></div>
               </a>
             </div>
@@ -875,7 +778,7 @@ navTheme: dark
 
             <!-- Q1 -->
             <div class="apply-quiz-step" data-quiz-step="0">
-              <h3 class="apply-quiz-question">How do you work?</h3>
+              <h3 class="apply-quiz-question">{{ cms.apply.quiz.questions[0].question }}</h3>
               <div class="apply-quiz-choices">
                 <button type="button" class="apply-quiz-choice" data-quiz-answer="work" data-value="hybrid">Hybrid</button>
                 <button type="button" class="apply-quiz-choice" data-quiz-answer="work" data-value="remote">Remote</button>
@@ -885,7 +788,7 @@ navTheme: dark
 
             <!-- Q2 -->
             <div class="apply-quiz-step" data-quiz-step="1" hidden>
-              <h3 class="apply-quiz-question">How often will you come in?</h3>
+              <h3 class="apply-quiz-question">{{ cms.apply.quiz.questions[1].question }}</h3>
               <div class="apply-quiz-choices">
                 <button type="button" class="apply-quiz-choice" data-quiz-answer="frequency" data-value="occasionally">Occasionally</button>
                 <button type="button" class="apply-quiz-choice" data-quiz-answer="frequency" data-value="couple">A couple days a week</button>
@@ -895,7 +798,7 @@ navTheme: dark
 
             <!-- Q3 -->
             <div class="apply-quiz-step" data-quiz-step="2" hidden>
-              <h3 class="apply-quiz-question">Want a desk that's always yours?</h3>
+              <h3 class="apply-quiz-question">{{ cms.apply.quiz.questions[2].question }}</h3>
               <div class="apply-quiz-choices">
                 <button type="button" class="apply-quiz-choice" data-quiz-answer="desk" data-value="yes">Yes</button>
                 <button type="button" class="apply-quiz-choice" data-quiz-answer="desk" data-value="no">No</button>

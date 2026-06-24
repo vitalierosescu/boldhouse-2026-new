@@ -25,64 +25,32 @@ navTheme: light
                           </a>
                         </div>
                       </div>
-                      <h1 data-hero-heading="" data-split="" class="club-hero_title">the space to launch your next idea</h1>
+                      <h1 data-hero-heading="" data-split="" class="club-hero_title">{{ cms.spaces.hero.title }}</h1>
                     </div>
                   </div>
                 </div>
                 <div class="club-hero_content_bot u-grid">
                   <div class="club-hero_content_left">
-                    <p data-hero-heading="" data-split="" class="club-hero_p">A restored townhouse on Sint Baafsplein. Rooms shaped for deep work, conversations that matter, and the “occasional” long lunch.</p>
+                    <p data-hero-heading="" data-split="" class="club-hero_p">{{ cms.spaces.hero.body }}</p>
                   </div>
                   <div id="w-node-_4b12cdcf-fd28-40b5-91e6-4db4b559fa02-b559f9f9" class="club-hero_empty u-grid-empty"></div>
                   <div class="club-hero_link-list">
-                    <a href="spaces.html" aria-current="page" class="club-hero_link w-inline-block w--current">
+                    {% for link in cms.spaces.heroLinks %}<a href="{{ link.href }}" aria-current="page" class="club-hero_link w-inline-block w--current">
                       <div class="club-hero_link-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M6.09375 6.09375L8.90625 8.90625L6.09375 11.7187" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
                           <path d="M0.46875 0.46875L0.46875 8.90625L8.90625 8.90625" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                       </div>
                       <div class="club-hero_link-inner">
-                        <div>Room</div>
-                        <div class="h-hero-2_link-number font-serif">(01)</div>
+                        <div>{{ link.label }}</div>
+                        <div class="h-hero-2_link-number font-serif">{{ link.number }}</div>
                       </div>
                     </a>
-                    <a href="spaces.html" aria-current="page" class="club-hero_link w-inline-block w--current">
-                      <div class="club-hero_link-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.09375 6.09375L8.90625 8.90625L6.09375 11.7187" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                          <path d="M0.46875 0.46875L0.46875 8.90625L8.90625 8.90625" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                      </div>
-                      <div class="club-hero_link-inner">
-                        <div>Link 2</div>
-                        <div class="h-hero-2_link-number font-serif">(02)</div>
-                      </div>
-                    </a>
-                    <a href="spaces.html" aria-current="page" class="club-hero_link w-inline-block w--current">
-                      <div class="club-hero_link-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.09375 6.09375L8.90625 8.90625L6.09375 11.7187" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                          <path d="M0.46875 0.46875L0.46875 8.90625L8.90625 8.90625" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                      </div>
-                      <div class="club-hero_link-inner">
-                        <div>Link 3</div>
-                        <div class="h-hero-2_link-number font-serif">(03)</div>
-                      </div>
-                    </a>
-                    <a href="spaces.html" aria-current="page" class="club-hero_link w-inline-block w--current">
-                      <div class="club-hero_link-svg w-embed"><svg width=" 100%" height=" 100%" viewbox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6.09375 6.09375L8.90625 8.90625L6.09375 11.7187" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                          <path d="M0.46875 0.46875L0.46875 8.90625L8.90625 8.90625" stroke="currentColor" stroke-width="0.9375" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                      </div>
-                      <div class="club-hero_link-inner">
-                        <div>Another one</div>
-                        <div class="h-hero-2_link-number font-serif">(04)</div>
-                      </div>
-                    </a>
-                  </div>
+                    {% endfor %}
+</div>
                   <div id="w-node-_53d8eb8c-97ce-9a33-9e41-16e02e078b04-b559f9f9" class="club-hero_img-container">
                     <div data-parallax="" class="club-hero_img-parent parallax-parent">
-                      <div class="club-hero_img-wrap parallax"><img loading="eager" src="images/hero.jpg" alt="" sizes="(max-width: 2290px) 100vw, 2290px" srcset="images/hero-p-500.jpg 500w, images/hero-p-800.jpg 800w, images/hero-p-1080.jpg 1080w, images/hero-p-1600.jpg 1600w, images/hero.jpg 1800w" class="club-hero_img img-cover">
+                      <div class="club-hero_img-wrap parallax"><img loading="eager" src="{{ cms.spaces.hero.image | sanityImage(1600) }}" alt="" class="club-hero_img img-cover">
                         <div class="club-hero_overlay"></div>
                       </div>
                     </div>
@@ -109,67 +77,19 @@ navTheme: light
               <div class="padding-section-large padding-bottom">
                 <div class="spaces_component">
                   <div class="spaces_grid u-grid">
-                    <div data-wf--space-item--variant="base" class="spaces_item">
+                    {% for card in cms.spaces.spaceCards %}{% if loop.index <= 5 %}<div data-wf--space-item--variant="base" class="spaces_item">
                       <div class="parallax-parent">
-                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg" alt="" sizes="(max-width: 1064px) 100vw, 1064px" srcset="images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-500.jpg 500w, images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-800.jpg 800w, images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg 1064w" class="spaces_img"></div>
+                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="{{ card.image | sanityImage(1064) }}" alt="" class="spaces_img"></div>
                       </div>
                       <div class="spaces_content">
                         <div class="spaces_title-wrap">
-                          <div>Dining</div>
-                          <div class="spaces_title-number font-serif">(01)</div>
+                          <div>{{ card.title }}</div>
+                          <div class="spaces_title-number font-serif">({{ card.number }})</div>
                         </div>
-                        <p data-split="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                        <p data-split="">{{ card.description }}</p>
                       </div>
                     </div>
-                    <div data-wf--space-item--variant="base" class="spaces_item">
-                      <div class="parallax-parent">
-                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg" alt="" sizes="(max-width: 1064px) 100vw, 1064px" srcset="images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-500.jpg 500w, images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-800.jpg 800w, images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg 1064w" class="spaces_img"></div>
-                      </div>
-                      <div class="spaces_content">
-                        <div class="spaces_title-wrap">
-                          <div>Dining</div>
-                          <div class="spaces_title-number font-serif">(01)</div>
-                        </div>
-                        <p data-split="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                      </div>
-                    </div>
-                    <div data-wf--space-item--variant="base" class="spaces_item">
-                      <div class="parallax-parent">
-                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg" alt="" sizes="(max-width: 1064px) 100vw, 1064px" srcset="images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-500.jpg 500w, images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-800.jpg 800w, images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg 1064w" class="spaces_img"></div>
-                      </div>
-                      <div class="spaces_content">
-                        <div class="spaces_title-wrap">
-                          <div>Dining</div>
-                          <div class="spaces_title-number font-serif">(01)</div>
-                        </div>
-                        <p data-split="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                      </div>
-                    </div>
-                    <div data-wf--space-item--variant="base" class="spaces_item">
-                      <div class="parallax-parent">
-                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg" alt="" sizes="(max-width: 1064px) 100vw, 1064px" srcset="images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-500.jpg 500w, images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-800.jpg 800w, images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg 1064w" class="spaces_img"></div>
-                      </div>
-                      <div class="spaces_content">
-                        <div class="spaces_title-wrap">
-                          <div>Dining</div>
-                          <div class="spaces_title-number font-serif">(01)</div>
-                        </div>
-                        <p data-split="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                      </div>
-                    </div>
-                    <div data-wf--space-item--variant="base" class="spaces_item">
-                      <div class="parallax-parent">
-                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg" alt="" sizes="(max-width: 1064px) 100vw, 1064px" srcset="images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-500.jpg 500w, images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-800.jpg 800w, images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg 1064w" class="spaces_img"></div>
-                      </div>
-                      <div class="spaces_content">
-                        <div class="spaces_title-wrap">
-                          <div>Dining</div>
-                          <div class="spaces_title-number font-serif">(01)</div>
-                        </div>
-                        <p data-split="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                      </div>
-                    </div>
-                    <div data-wf--space-item--variant="empty" class="spaces_item">
+                    {% endif %}{% endfor %}<div data-wf--space-item--variant="empty" class="spaces_item">
                       <div class="parallax-parent"></div>
                       <p class="spaces_title-alt font-serif">Spaces meant to inspire</p>
                       <div class="spaces_dots-wrap">
@@ -189,30 +109,19 @@ navTheme: light
                         <div class="spaces_dot is--4"></div>
                       </div>
                     </div>
-                    <div data-wf--space-item--variant="base" class="spaces_item">
+                    {% for card in cms.spaces.spaceCards %}{% if loop.index > 5 %}<div data-wf--space-item--variant="base" class="spaces_item">
                       <div class="parallax-parent">
-                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg" alt="" sizes="(max-width: 1064px) 100vw, 1064px" srcset="images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-500.jpg 500w, images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-800.jpg 800w, images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg 1064w" class="spaces_img"></div>
+                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="{{ card.image | sanityImage(1064) }}" alt="" class="spaces_img"></div>
                       </div>
                       <div class="spaces_content">
                         <div class="spaces_title-wrap">
-                          <div>Dining</div>
-                          <div class="spaces_title-number font-serif">(01)</div>
+                          <div>{{ card.title }}</div>
+                          <div class="spaces_title-number font-serif">({{ card.number }})</div>
                         </div>
-                        <p data-split="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
+                        <p data-split="">{{ card.description }}</p>
                       </div>
                     </div>
-                    <div data-wf--space-item--variant="base" class="spaces_item">
-                      <div class="parallax-parent">
-                        <div class="spaces_img-wrap parallax"><img loading="lazy" src="images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg" alt="" sizes="(max-width: 1064px) 100vw, 1064px" srcset="images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-500.jpg 500w, images/1a0ff1b0a6ca6f0414d963b798c9dbf4_WhatsApp-Image-2026-05-29-at-14.21.07-p-800.jpg 800w, images/WhatsApp-Image-2026-05-29-at-14.21.07.jpg 1064w" class="spaces_img"></div>
-                      </div>
-                      <div class="spaces_content">
-                        <div class="spaces_title-wrap">
-                          <div>Dining</div>
-                          <div class="spaces_title-number font-serif">(01)</div>
-                        </div>
-                        <p data-split="">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
-                      </div>
-                    </div>
+                    {% endif %}{% endfor %}
                   </div>
                 </div>
               </div>
@@ -225,16 +134,16 @@ navTheme: light
               <div class="padding-section-large padding-bottom">
                 <div class="location_component u-grid">
                   <div id="w-node-_368bdecc-7e41-764f-aedb-3abcc653b025-a56624c4" class="location_title-container">
-                    <div data-split="" class="location_title-p tagline font-serif">[ Locations ]</div>
-                    <div id="" class="location_title-wrap"><span class="location_title_img-wrap"><img src="images/draw.avif" loading="lazy" alt="" class="location_title_img"></span><span class="location_title h4 font-body">One location, built with intention. Sint Baafsplein 10, Ghent — a building that earns its place. More locations coming in 2027–2028. We&#x27;re building this the way everything here gets built: deliberately.</span></div>
+                    <div data-split="" class="location_title-p tagline font-serif">{{ cms.spaces.location.eyebrow }}</div>
+                    <div id="" class="location_title-wrap"><span class="location_title_img-wrap"><img src="images/draw.avif" loading="lazy" alt="" class="location_title_img"></span><span class="location_title h4 font-body">{{ cms.spaces.location.text }}</span></div>
                   </div>
                   <div id="w-node-_2e453c9a-f963-5945-ae75-cf76b5f30048-a56624c4" class="location_item">
-                    <h3 class="location_item_title h4">Ghent</h3>
+                    <h3 class="location_item_title h4">{{ cms.spaces.location.locationItems[0].title }}</h3>
                     <div class="location_item_bot">
-                      <p data-split="" class="location_item_p">Sint Baafsplein 10,<br>Belgium</p>
+                      <p data-split="" class="location_item_p">{{ cms.spaces.location.locationItems[0].text | breaks | safe }}</p>
                       <div data-wf--link--variant="base">
-                        <a aria-label="" href="#" class="link w-inline-block">
-                          <div data-button-text="" class="button_text">Show me the way</div>
+                        <a aria-label="" href="https://www.google.com/maps/place/Sint-Baafsplein+10,+9000+Gent" target="_blank" rel="noopener noreferrer" class="link w-inline-block">
+                          <div data-button-text="" class="button_text">{{ cms.spaces.location.locationItems[0].cta }}</div>
                         </a>
                       </div>
                     </div>
@@ -242,7 +151,7 @@ navTheme: light
                   <div id="w-node-d2260aaa-f43b-d75d-5321-a2c283634836-a56624c4" class="location_item">
                     <h3 class="location_item_title h4"><span>[</span><span class="o--20">...loading...</span><span>]</span></h3>
                     <div class="location_item_bot">
-                      <p data-split="" class="location_item_p">Going global,<br>stay tuned.</p>
+                      <p data-split="" class="location_item_p">{{ cms.spaces.location.locationItems[1].text | breaks | safe }}</p>
                     </div>
                   </div>
                 </div>
@@ -254,17 +163,13 @@ navTheme: light
           <div data-parallax="" class="basement_img-container parallax-parent">
             <div data-slideshow="wrap" class="img-slider">
               <div class="img-slider__list parallax">
-                <div data-slideshow="slide" class="img-slide is--current"><img width="960" data-slideshow="parallax" alt="" src="images/basement.jpg" loading="lazy" draggable="false" class="img-slide__inner"></div>
-                <div data-slideshow="slide" class="img-slide"><img width="960" data-slideshow="parallax" alt="" src="images/osmo-slideshow-img-1_1osmo-slideshow-img-1.avif" loading="lazy" draggable="false" class="img-slide__inner"></div>
-                <div data-slideshow="slide" class="img-slide"><img width="960" data-slideshow="parallax" alt="" src="images/osmo-slideshow-img-2_1osmo-slideshow-img-2.avif" loading="lazy" draggable="false" class="img-slide__inner"></div>
-                <div data-slideshow="slide" class="img-slide"><img width="960" data-slideshow="parallax" alt="" src="images/osmo-slideshow-img-4_1osmo-slideshow-img-4.avif" loading="lazy" draggable="false" class="img-slide__inner"></div>
-              </div>
+                {% for sl in cms.spaces.basement.slides %}<div data-slideshow="slide" class="img-slide{% if loop.first %} is--current{% endif %}"><img width="960" data-slideshow="parallax" alt="" src="{{ sl.image | sanityImage(960) }}" loading="lazy" draggable="false" class="img-slide__inner"></div>
+                {% endfor %}
+</div>
               <div class="img-slider__nav">
-                <div data-slideshow="thumb" class="img-slider__thumb is--current"><img sizes="100vw" srcset="images/basement-p-500.jpg 500w, images/basement-p-800.jpg 800w, images/basement-p-1080.jpg 1080w, images/basement-p-1600.jpg 1600w, images/basement.jpg 2000w" alt="" src="images/basement.jpg" loading="lazy" class="slider-thumb__img"></div>
-                <div data-slideshow="thumb" class="img-slider__thumb"><img sizes="100vw" srcset="images/osmo-slideshow-img-1_1osmo-slideshow-img-1.avif 500w, images/osmo-slideshow-img-1_1osmo-slideshow-img-1.avif 800w, images/osmo-slideshow-img-1_1osmo-slideshow-img-1.avif 1080w, images/osmo-slideshow-img-1_1osmo-slideshow-img-1.avif 1920w" alt="" src="images/osmo-slideshow-img-1_1osmo-slideshow-img-1.avif" loading="lazy" class="slider-thumb__img"></div>
-                <div data-slideshow="thumb" class="img-slider__thumb"><img sizes="100vw" srcset="images/osmo-slideshow-img-2_1osmo-slideshow-img-2.avif 500w, images/osmo-slideshow-img-2_1osmo-slideshow-img-2.avif 800w, images/osmo-slideshow-img-2_1osmo-slideshow-img-2.avif 1080w, images/osmo-slideshow-img-2_1osmo-slideshow-img-2.avif 1920w" alt="" src="images/osmo-slideshow-img-2_1osmo-slideshow-img-2.avif" loading="lazy" class="slider-thumb__img"></div>
-                <div data-slideshow="thumb" class="img-slider__thumb"><img sizes="100vw" srcset="images/osmo-slideshow-img-4_1osmo-slideshow-img-4.avif 500w, images/osmo-slideshow-img-4_1osmo-slideshow-img-4.avif 800w, images/osmo-slideshow-img-4_1osmo-slideshow-img-4.avif 1080w, images/osmo-slideshow-img-4_1osmo-slideshow-img-4.avif 1920w" alt="" src="images/osmo-slideshow-img-4_1osmo-slideshow-img-4.avif" loading="lazy" class="slider-thumb__img"></div>
-              </div>
+                {% for sl in cms.spaces.basement.slides %}<div data-slideshow="thumb" class="img-slider__thumb{% if loop.first %} is--current{% endif %}"><img alt="" src="{{ sl.image | sanityImage(500) }}" loading="lazy" class="slider-thumb__img"></div>
+                {% endfor %}
+</div>
             </div>
           </div>
           <div class="u-rel-z-1">
@@ -274,12 +179,12 @@ navTheme: light
                   <div class="basement_content u-theme-dark">
                     <div class="margin-bottom margin-xsmall">
                       <div>
-                        <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">The basement</span><span class="tagline_span"> ]</span></div>
+                        <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">{{ cms.spaces.basement.eyebrow }}</span><span class="tagline_span"> ]</span></div>
                         <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
                       </div>
-                      <h2 data-split-heading="" class="h2">Basement</h2>
+                      <h2 data-split-heading="" class="h2">{{ cms.spaces.basement.heading }}</h2>
                     </div>
-                    <p data-split="">Boldhouse is home to designers, architects, filmmakers, strategists, and builders. We don&#x27;t take just anyone - not because we&#x27;re precious, but because we know who&#x27;s around you shapes what you make. This is the club.</p>
+                    <p data-split="">{{ cms.spaces.basement.description }}</p>
                   </div>
                 </div>
               </div>
@@ -292,74 +197,19 @@ navTheme: light
               <div class="padding-section-large">
                 <div class="faq12_component">
                   <div class="margin-bottom margin-xxlarge">
-                    <h2 class="h2">FAQs</h2>
+                    <h2 class="h2">{{ cms.spaces.faqHeading }}</h2>
                   </div>
                   <div class="w-layout-grid faq12_grid-list">
-                    <div class="faq12_item">
+                    {% for faq in cms.spaces.faqs %}<div class="faq12_item">
                       <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">What spaces are available?</div>
+                        <div class="faq12_question h5">{{ faq.question }}</div>
                       </div>
                       <div class="w-richtext">
-                        <p>Drop-in desks, fixed desks, meeting rooms, and the Bold Basement event venue. Each serves a different kind of work.</p>
+                        <p>{{ faq.answer }}</p>
                       </div>
                     </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">How do I book a meeting room?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Via Archie, our member platform. Booking is available to all active members.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">What is the Bold Basement?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>200m² of flexible event space in the heart of Ghent. Seminars, screenings, shoots, workshops — it fits whatever you bring. Email hello@boldhouse.space to inquire.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Is the Basement available for non-members?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Yes. External rental is possible. Email us at hello@boldhouse.space for rates and availability.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">What&#x27;s included with every desk?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>High-speed wifi, barista-grade coffee, printing, phone booths, and access to all common areas.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Do you offer day passes?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Yes, via a Flexi membership. Drop in when it suits you — no commitment, no minimum.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Is there 24/7 access?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Fixed and Resident members have 24/7 building access. Flexi members work during standard hours.</p>
-                      </div>
-                    </div>
-                    <div class="faq12_item">
-                      <div class="margin-bottom margin-xsmall">
-                        <div class="faq12_question h5">Where are you located?</div>
-                      </div>
-                      <div class="w-richtext">
-                        <p>Sint Baafsplein 10, in the heart of Ghent. Hard to miss.</p>
-                      </div>
-                    </div>
-                  </div>
+                    {% endfor %}
+</div>
                 </div>
               </div>
             </div>
@@ -367,50 +217,7 @@ navTheme: light
         </section>
       </main>
       <div data-theme-page-to="dark" class="footer_container">
-        <section class="section_cta">
-          <div class="padding-global">
-            <div class="container-large">
-              <div class="cta_component">
-                <div class="cta_heading">
-                  <div>
-                    <div class="tagline font-serif"><span class="tagline_span">[ </span><span class="tagline_span">Join the creative club and let’s make it real</span><span class="tagline_span"> ]</span></div>
-                    <div data-wf--spacer--variant="tiny-0-25rem" class="spacer w-variant-a65c8b2f-bb82-667a-21df-8f8b70978a4c"></div>
-                  </div>
-                  <h2 data-split="heading" class="h0">You&#x27;re in the<br>right place.</h2>
-                </div>
-                <div data-wf--button-group--variant="base" class="u-rel-z-3">
-                  <div data-wf--spacer--variant="large-3rem" class="spacer w-variant-0b9907b0-2817-9a8a-5ef4-2bb04007c79d"></div>
-                  <div class="button-group">
-                    <div data-wf--button--variant="base">
-                      <a aria-label="" href="#" class="button w-inline-block">
-                        <div data-button-text="" class="button_text">Apply for membership</div>
-                        <div class="button_bg"></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div data-trail-area="" class="rotating-image-trail">
-                  <div data-trail-collection="" class="rotating-image-trail__collection">
-                    <div class="rotating-image-trail__list">
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-4.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-3.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/Rectangle-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                      <div data-trail-item="" class="rotating-image-trail__item">
-                        <div class="rotating-image-trail__card"><img loading="eager" src="images/image-2.avif" alt="" class="rotating-image-trail__card-img"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+{% include "partials/cta.njk" %}
         {% include "partials/footer.njk" %}
       </div>
     </div>
