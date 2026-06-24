@@ -1,9 +1,9 @@
 ## Dev Setup
 
 - This folder (`boldhouse-2026.webflow`) is the primary development project — it is both the Webflow export AND the Vite source.
-- **Build**: `yarn dev` (Vite at `:4747`, HMR), `yarn build` (UMD → `dist/main.js`).
-- HTML pages use a smart script loader: tries `localhost:4747` first, falls back to `https://boldhouse.vercel.app/main.js` (production).
-- If something is running on port 4747 and returning errors, kill it so the loader falls back to Vercel.
+- **Build**: `yarn dev` (Vite at `:4747`, HMR), `yarn build` (UMD → `dist/main.js`). **Deploy build**: `yarn build:deploy` (Vite + Eleventy → `_site/`, then copies `main.js` to the site root) — this is what Vercel runs.
+- HTML pages use a smart script loader: tries `localhost:4747` first, falls back to the relative `/main.js` (production, same-origin — works on any domain).
+- If `:4747` isn't running, the loader falls back to `/main.js`, which only resolves on a full build (`yarn build:deploy` or the deployed site) — `yarn site:dev` alone does NOT serve it. Run `yarn dev` for local JS.
 - `src/main.js` is the Vite entry point (UMD, externalises gsap/three/barba/lenis/jquery).
 - `src/shop/` contains the Shopify headless integration (client, cart state, drawer, nav badge, shop/product pages).
 - `dev-webflow/` is the OLD source project — it is now superseded by this one.
@@ -11,9 +11,9 @@
 ### Local dev & verification gotchas
 
 - **Viewing pages locally needs BOTH servers**: `yarn dev` (Vite `:4747`, serves `src/main.js`) **and** `yarn site:dev` (Eleventy, serves the built HTML at `:8383`). Vite alone isn't enough — it only serves the JS bundle.
-- **Vite MUST be on `:4747`.** The page loader only checks `localhost:4747`; if `:4747` is taken, Vite silently uses `:4001` and pages load the **stale production `main.js` from Vercel** instead of your local changes. If a page seems to ignore your edits, free `:4747` and restart `yarn dev` (`lsof -ti :4747 | xargs kill -9`).
+- **Vite MUST be on `:4747`.** The page loader only checks `localhost:4747`; if `:4747` is taken, Vite silently uses `:4001` and the loader's `/main.js` fallback won't resolve on the Eleventy dev server, so pages load **no JS** instead of your local changes. If a page seems to ignore your edits, free `:4747` and restart `yarn dev` (`lsof -ti :4747 | xargs kill -9`).
 - **Don't run `yarn site:build` while `yarn site:dev` is running** — it can SIGTERM the serve. Eleventy `--serve` also occasionally misses root `.html` edits; restart it or do a one-off `yarn site:build` (after stopping the serve) to force a rebuild.
-- **Vercel deploys only `dist/main.js`** (`vercel.json` → `yarn build`, output `dist`). Pushing to `main` updates the production JS bundle; the Eleventy HTML / CMS templates are NOT deployed by Vercel.
+- **Vercel deploys the full site** (`vercel.json` → `yarn build:deploy`, output `_site`). Pushing to `main` rebuilds + deploys HTML + CSS + JS (incl. `/main.js`) and re-fetches Sanity CMS at build time. Production project `boldhouse-2026-new` (alias `boldhouse-2026-new.vercel.app`); custom domain `bold.house`. Build-time env vars (Sanity + Shopify) are set in Vercel project settings (Production).
 - **To screenshot a loading/skeleton state**, localhost serves the fetch instantly. Throttle with chrome-devtools `emulate` `cpuThrottlingRate: 20` + navigate `ignoreCache: true` + short timeout. Network throttling alone won't hold it (cache serves fast).
 
 ## Shop / Shopify
@@ -37,8 +37,8 @@ All 9 site pages are wired to Sanity (project `szr2k18n`, dataset `production`) 
 - **`scripts/seed-sanity.mjs`** — idempotent seed script. Populates all singletons + shared docs from current HTML copy. Re-run to reset to baseline: `node scripts/seed-sanity.mjs`.
 - **Shared document types**: `membershipTier`, `testimonial`, `partnerLogo` — edited once, referenced from multiple pages.
 - **Events are NOT in Sanity** — they come from Archie. No `event` schema, no `_data/events.js`.
-- **Studio deploy pending**: run `cd studio && npx sanity deploy` to give Dennis a public Studio URL (`szr2k18n.sanity.studio`).
-- **Eleventy `_site` hosting is unresolved** — Vercel currently only builds Vite `dist/main.js`. The Eleventy HTML is not deployed. A Sanity webhook for auto-rebuild cannot be wired until this is decided.
+- **Studio is deployed** → `https://boldhouse.sanity.studio` (appId in `studio/sanity.cli.js`, `autoUpdates: true`). Re-deploy after schema changes: `cd studio && npx sanity deploy`. The Presentation preview targets `https://bold.house` via `SANITY_STUDIO_PREVIEW_URL` in `studio/.env`.
+- **The full site is hosted on Vercel** via `yarn build:deploy` (`_site/`). Content auto-rebuild: a Sanity publish webhook (manage.sanity.io → API → Webhooks) POSTs to a Vercel Deploy Hook (project Settings → Git → Deploy Hooks, branch `main`) on create/update/delete in `production`.
 - **Terms page**: currently seeded with placeholder RÖLING IMPORT legal text. Dennis needs to replace via Studio.
 
 Nunjucks filters (in `eleventy.config.js`): `sanityImage(img, w, h?)` (optimized CDN URL), `portableText(blocks)` (rich text → HTML), `breaks(str)` (newlines → `<br>`), `richInline(blocks)` (portable text, blocks joined by double-br).
