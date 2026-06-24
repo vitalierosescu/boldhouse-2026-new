@@ -8,6 +8,14 @@
 - `src/shop/` contains the Shopify headless integration (client, cart state, drawer, nav badge, shop/product pages).
 - `dev-webflow/` is the OLD source project — it is now superseded by this one.
 
+### Local dev & verification gotchas
+
+- **Viewing pages locally needs BOTH servers**: `yarn dev` (Vite `:4000`, serves `src/main.js`) **and** `yarn site:dev` (Eleventy, serves the built HTML at `:8080`). Vite alone isn't enough — it only serves the JS bundle.
+- **Vite MUST be on `:4000`.** The page loader only checks `localhost:4000`; if `:4000` is taken, Vite silently uses `:4001` and pages load the **stale production `main.js` from Vercel** instead of your local changes. If a page seems to ignore your edits, free `:4000` and restart `yarn dev` (`lsof -ti :4000 | xargs kill -9`).
+- **Don't run `yarn site:build` while `yarn site:dev` is running** — it can SIGTERM the serve. Eleventy `--serve` also occasionally misses root `.html` edits; restart it or do a one-off `yarn site:build` (after stopping the serve) to force a rebuild.
+- **Vercel deploys only `dist/main.js`** (`vercel.json` → `yarn build`, output `dist`). Pushing to `main` updates the production JS bundle; the Eleventy HTML / CMS templates are NOT deployed by Vercel.
+- **To screenshot a loading/skeleton state**, localhost serves the fetch instantly. Throttle with chrome-devtools `emulate` `cpuThrottlingRate: 20` + navigate `ignoreCache: true` + short timeout. Network throttling alone won't hold it (cache serves fast).
+
 ## Shop / Shopify
 
 - Shopify store: `boldhouse-masnmd9c.myshopify.com` (Storefront API, headless).
