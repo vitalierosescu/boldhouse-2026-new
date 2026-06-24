@@ -24,8 +24,24 @@
 - Shop listing page: `shop.html` (`data-barba-namespace="shop"`).
 - Product detail page: `shop-product.html?handle=<handle>` (`data-barba-namespace="product"`).
 - Styles for all shop UI live in `css/shop.css`. It drives every colour through the shared theme tokens (`--_theme---*`, `--swatch--dark-*`, `--brand--accent`) — **do not hardcode `rgba(13,14,14,X)`**; `rgba()` only as a `var()` fallback.
-- **The shop is light** — which matches the site's *default* theme (the site is light by default with dark sections layered in). The PDP (`shop-product.html`) is a No Art-style editorial 3-column layout: meta blocks (Materials/Care/Size & fit/Delivery, from `custom.*` metafields) · stacked gallery · buy column; plus "You might also like" (Shopify `productRecommendations`) and prev/next nav.
+- **The shop is light** — which matches the site's *default* theme (the site is light by default with dark sections layered in). The PDP (`shop-product.html`) is a No Art-style editorial 2-column layout: gallery (left) + buy column + meta blocks (Materials/Care/Size & fit/Delivery, from `custom.*` metafields) below the CTA (right); plus "You might also like" (Shopify `productRecommendations`) and prev/next nav.
 - See `.claude/docs/shop-implementation.md` for the full implementation reference.
+
+## Sanity CMS
+
+All 9 site pages are wired to Sanity (project `szr2k18n`, dataset `production`) at build time. Content flows: Sanity → `_data/cms.js` (GROQ) → Nunjucks templates. No client-side Sanity calls.
+
+- **`_data/cms.js`** — one combined GROQ query, returns `{home, club, spaces, manifesto, memberships, apply, contact, shop, terms}`. Templates use `{{ cms.home.hero.headline }}` etc.
+- **`_data/site.js`** — fetches `siteSettings` singleton (footer, CTA block, memberCount). Falls back to static object if no token.
+- **`studio/`** — Sanity Studio. Run `npm run dev` from inside `studio/` to start on `:3333`. Open in Chrome/Safari (Arc has auth issues).
+- **`scripts/seed-sanity.mjs`** — idempotent seed script. Populates all singletons + shared docs from current HTML copy. Re-run to reset to baseline: `node scripts/seed-sanity.mjs`.
+- **Shared document types**: `membershipTier`, `testimonial`, `partnerLogo` — edited once, referenced from multiple pages.
+- **Events are NOT in Sanity** — they come from Archie. No `event` schema, no `_data/events.js`.
+- **Studio deploy pending**: run `cd studio && npx sanity deploy` to give Dennis a public Studio URL (`szr2k18n.sanity.studio`).
+- **Eleventy `_site` hosting is unresolved** — Vercel currently only builds Vite `dist/main.js`. The Eleventy HTML is not deployed. A Sanity webhook for auto-rebuild cannot be wired until this is decided.
+- **Terms page**: currently seeded with placeholder RÖLING IMPORT legal text. Dennis needs to replace via Studio.
+
+Nunjucks filters (in `eleventy.config.js`): `sanityImage(img, w, h?)` (optimized CDN URL), `portableText(blocks)` (rich text → HTML), `breaks(str)` (newlines → `<br>`), `richInline(blocks)` (portable text, blocks joined by double-br).
 
 ## Design & Collaboration Workflow
 
