@@ -3732,37 +3732,13 @@ const initSpacesPage = (container) => {
 }
 
 // --- Sanity visual editing (click-to-edit overlays) ---
-// Loads ONLY inside the Studio Presentation iframe, from a CDN, so real site
-// visitors never download it. Reads the data-sanity="..." attributes emitted by
-// the `sanityEdit` Eleventy filter and draws clickable overlays that jump to the
-// matching field in the Studio. Barba is wired into the history option so the
-// Studio URL bar + "documents on this page" follow SPA page transitions.
-// ponytail: CDN runtime import (esm.sh resolves the React peer dep) instead of
-// bundling — keeps React out of the public main.js. Swap to a bundled entry only
-// if esm.sh proves unreliable.
+// Inject the overlay bundle ONLY inside the Studio Presentation iframe, so real
+// site visitors never download it (it bundles React). The bundle self-initialises
+// — see src/visual-editing-entry.js. @sanity/visual-editing hard-requires React,
+// which is why it's a separate file rather than part of this lean UMD bundle.
 if (window.self !== window.top) {
-  import(/* @vite-ignore */ 'https://esm.sh/@sanity/visual-editing@5')
-    .then(({ enableVisualEditing }) => {
-      let veNavigate = null
-      barba.hooks.after(() => {
-        if (veNavigate) veNavigate({ type: 'push', url: location.pathname + location.search })
-      })
-      enableVisualEditing({
-        history: {
-          subscribe: (navigate) => {
-            veNavigate = navigate
-            return () => {
-              veNavigate = null
-            }
-          },
-          update: (update) => {
-            const here = location.pathname + location.search
-            if ((update.type === 'push' || update.type === 'replace') && update.url !== here) {
-              barba.go(update.url)
-            }
-          },
-        },
-      })
-    })
-    .catch((e) => console.error('[visual-editing] failed to load', e))
+  const veScript = document.createElement('script')
+  veScript.src = '/visual-editing.js'
+  veScript.onerror = () => console.error('[visual-editing] failed to load /visual-editing.js')
+  document.head.appendChild(veScript)
 }
