@@ -27,6 +27,7 @@
     "vite-plugin-eslint2": "^5.0.0"
   },
   "dependencies": {
+    "@sanity/visual-editing": "^5.4.4",
     "gsap": "^3.12.0"
   }
 }

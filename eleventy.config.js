@@ -2,11 +2,15 @@ require('dotenv').config()
 
 const imageUrlBuilder = require('@sanity/image-url').default
 const { toHTML, escapeHTML } = require('@portabletext/to-html')
+const { createDataAttribute } = require('@sanity/visual-editing/create-data-attribute')
 
 const imageBuilder = imageUrlBuilder({
   projectId: process.env.SANITY_PROJECT_ID,
   dataset: process.env.SANITY_DATASET || 'production',
 })
+
+// Studio that click-to-edit overlays jump to. Override via env if it ever moves.
+const STUDIO_URL = process.env.SANITY_STUDIO_URL || 'https://boldhouse.sanity.studio'
 
 module.exports = function (eleventyConfig) {
   // Build an optimised Sanity image URL. Usage: {{ image | sanityImage(1600) }}
@@ -23,6 +27,14 @@ module.exports = function (eleventyConfig) {
 
   // Convert newlines to <br> for headlines that wrap lines in the design.
   eleventyConfig.addFilter('breaks', (str) => (str ? String(str).replace(/\r?\n/g, '<br>') : ''));
+
+  // Emit a data-sanity attribute value for click-to-edit overlays.
+  // Usage: data-sanity="{{ 'homePage' | sanityEdit('homePage', 'hero.headline') }}"
+  // For shared docs pipe the doc _id: {{ tier._id | sanityEdit('membershipTier', 'priceMonthly') }}
+  eleventyConfig.addFilter('sanityEdit', (id, type, path) => {
+    if (!id || !type || !path) return '';
+    return createDataAttribute({ baseUrl: STUDIO_URL, id, type, path }).toString();
+  });
 
   // Render Portable Text as a single inline run (strong marks kept, blocks
   // joined by <br><br>) — for the manifesto hero, which is one <p> the

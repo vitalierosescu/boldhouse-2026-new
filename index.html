@@ -50,7 +50,7 @@ showCursor: true
                   </svg></div>
                 <div class="h-hero_bottom u-grid">
                   <div id="w-node-_0444b767-6b10-d2ca-453f-cc91177e7cce-220bbe28" class="h-hero-2_left">
-                    <p data-hero-heading="" data-split="">{{ cms.home.hero.headline | breaks | safe }}</p>
+                    <p data-hero-heading="" data-split="" data-sanity="{{ 'homePage' | sanityEdit('homePage', 'hero.headline') }}">{{ cms.home.hero.headline | breaks | safe }}</p>
                     <div class="button-group">
                       <div data-wf--button--variant="base">
                         <a aria-label="" href="{{ cms.home.hero.ctaLink }}" class="button w-inline-block">
@@ -62,7 +62,7 @@ showCursor: true
                   </div>
                   <div id="w-node-fc0ade8b-f316-02ad-e4dd-1a080e8d1768-220bbe28"></div>
                   <div id="w-node-_2a3e1ee7-b985-aeb9-8860-0bfc41b82511-220bbe28" class="h-hero-2_right">
-                    <p data-hero-heading="" data-split="" class="h-hero-2_p">{{ cms.home.hero.subhead }}</p>
+                    <p data-hero-heading="" data-split="" class="h-hero-2_p" data-sanity="{{ 'homePage' | sanityEdit('homePage', 'hero.subhead') }}">{{ cms.home.hero.subhead }}</p>
                   </div>
                 </div>
               </div>
